@@ -1,72 +1,70 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .navbar-container {
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    width: 100%;
-    height: autopx;
-    background-color:#6c67ffd8;
-    font-family: 'inter';
-    box-shadow: 10px 20px 40px #000000;
-    border-bottom-left-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: autopx;
+  background-color: #6c67ffd8;
+  font-family: 'inter';
+  box-shadow: 10px 25px 50px #060606;
+  border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
 .navbar {
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    gap: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  gap: 5px;
 }
 
 .input-group {
-    width: 100%;
-     height: auto;
-     display: flex;
-     justify-content:center;
-     align-items: center;
-    font-size: 1.25rem;
-
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
 }
 
 .input-text {
-   width: 900px;
-   height: 60px;
-   border-radius: 15px;
-   margin-right: 5px;
+  width: 900px;
+  height: 60px;
+  border-radius: 15px;
+  margin-right: 5px;
 }
 
-
 .input-city {
-    width: 300px;
-    height: 60px;
-    border-radius: 15px;
-    margin-right: 5px;
+  width: 300px;
+  height: 60px;
+  border-radius: 15px;
+  margin-right: 5px;
 }
 
 .search-btn {
-    width:120px ;
-    height: 60px;
-    border-radius: 15px;
-    color: #7d7d7d;
+  width: 120px;
+  height: 60px;
+  border-radius: 15px;
+  color: #7d7d7d;
 }
 
 .search-icon {
-    font-size: 1.5rem;
-    
+  font-size: 1.5rem;
 }
 
-.input-text, .input-city {
-    padding-left: 20px;
-  }
+.input-text,
+.input-city {
+  padding-left: 20px;
+}

@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+VN:wght@100..400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    background-color: rgba(178, 246, 175, 0.396) !important;
+  background-color: rgb(255, 255, 255) !important;
+  font-family: 'Inter' sans-serif;
+  overflow: hidden;
 }
