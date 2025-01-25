@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.header-container {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background-color:#00004a;
+    font-family: 'inter';
+}
+
+.header {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+
+.header-icons {
+     width: 100%;
+     height: auto;
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+     font-size: 1.25rem;
+     color:white;
+}
+
+
+.chat-icon {
+    margin-right: 60px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.chat-icon:hover {
+    cursor: pointer;
+    color: #83baf8;
+    transform: scale(1.5);
+}
+
+.heart-icon {
+   margin-right: 60px;
+   transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.heart-icon:hover {
+    cursor: pointer;
+    color: #83baf8;
+    transform: scale(1.5);
+}
+
+.notification-icon {
+    margin-right: 60px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.notification-icon:hover {
+    cursor: pointer;
+    color: #83baf8;
+    transform: scale(1.5);
+}
+
+.account-icon {
+    width: 100px;
+    margin-right: 60px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.account-icon:hover {
+    cursor: pointer;
+    color: #83baf8;
+    transform: scale(1.5);
+}
+
+.header-btn {
+    width: 180px;
+    height: 40px;
+    margin-right:150px;
+    border-radius: 10px;
+    border: none;
+    background-color:white;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.header-btn:hover {
+    cursor: pointer;
+    background-color: #83baf8;
+    transform: scale(1.1);
+}
+
+.header-icons .chat-icon,
+.header-icons .heart-icon,
+.header-icons .notification-icon,
+.header-icons .account-icon {
+    margin-right: 10%; 
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-icons {
+        justify-content: center;
+        margin-bottom: 10px; 
+    }
+
+    .header-icons .chat-icon,
+    .header-icons .heart-icon,
+    .header-icons .notification-icon,
+    .header-icons .account-icon {
+        margin-right: 15%; 
+    }
+
+    .header-btn {
+        width: 30%; 
+        height: 50%;
+        margin: 2px;
+    }
+}
