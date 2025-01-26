@@ -20,7 +20,7 @@
 .container-card {
     height: 350px;
     width: 300px;
-    border: 1px solid rgb(79, 79, 79);
+    border: none;
     box-shadow: 15px 15px 25px rgb(120, 118, 118);
     border-radius:10px ;
     overflow: hidden;
@@ -36,4 +36,10 @@
     text-align: center;
     margin-top: 30px;
     font-size: larger;
+}
+
+.cards-title  {
+   text-align: center;
+   margin-top: 50px;
+   font-weight: bolder;
 }
