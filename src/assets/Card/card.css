@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cards-container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px ;
+    width: 100%;
+    height: auto;
+    margin: 50px 20px;
+
+}
+
+.container-card {
+    height: 350px;
+    width: 300px;
+    border: 1px solid rgb(79, 79, 79);
+    box-shadow: 15px 15px 25px rgb(120, 118, 118);
+    border-radius:10px ;
+    overflow: hidden;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.card-para {
+    text-align: center;
+    margin-top: 30px;
+    font-size: larger;
+}

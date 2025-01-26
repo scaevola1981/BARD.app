@@ -10,7 +10,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/imobiliare.jpg"
+            src="../foto-icons/imagines-categories/imobiliare.jpg"
             alt=""
           />
           <span className="span-btn">Imobiliare</span>
@@ -18,7 +18,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/masini.jpg"
+            src="../public/foto-icons/imagines-categories/masini.jpg"
             alt=""
           />
           <span className="span-btn">Mașini și Piese </span>
@@ -26,7 +26,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/electronice.jpg"
+            src="../public/foto-icons/imagines-categories/electronice.jpg"
             alt=""
           />
           <span className="span-btn">Electronice</span>
@@ -34,7 +34,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/moda.jpg"
+            src="../public/foto-icons/imagines-categories/moda.jpg"
             alt=""
           />
           <span className="span-btn">Modă</span>
@@ -42,7 +42,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/hobby-crafting.jpg"
+            src="../public/foto-icons/imagines-categories/hobby-crafting.jpg"
             alt=""
           />
           <span className="span-btn">Hobby și Crafting</span>
@@ -50,7 +50,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/casa-gradina.jpg"
+            src="../public/foto-icons/imagines-categories/casa-gradina.jpg"
             alt=""
           />
           <span className="span-btn">Casă și Grădină</span>
@@ -58,7 +58,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/mobilier-decoratiuni.jpg"
+            src="../public/foto-icons/imagines-categories/mobilier-decoratiuni.jpg"
             alt=""
           />
           <span className="span-btn">Mobilier/Decorațiuni</span>
@@ -66,7 +66,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/carti.jpg"
+            src="../public/foto-icons/imagines-categories/carti.jpg"
             alt=""
           />
           <span className="span-btn">Cărți/Filme,Muzică</span>
@@ -74,7 +74,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/unelte.jpg"
+            src="../public/foto-icons/imagines-categories/unelte.jpg"
             alt=""
           />
           <span className="span-btn">Unelte și Echipamente</span>
@@ -82,7 +82,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/produse-alimentare.jpg"
+            src="../public/foto-icons/imagines-categories/produse-alimentare.jpg"
             alt=""
           />
           <span className="span-btn">Produse Alimentare</span>
@@ -90,7 +90,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/articole-sportive.jpg"
+            src="../public/foto-icons/imagines-categories/articole-sportive.jpg"
             alt=""
           />
           <span className="span-btn">Articole Sportive</span>
@@ -98,7 +98,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/animale.jpg"
+            src="../public/foto-icons/imagines-categories/animale.jpg"
             alt=""
           />
           <span className="span-btn">Animale</span>
@@ -106,7 +106,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/voluntariat.jpg"
+            src="../public/foto-icons/imagines-categories/voluntariat.jpg"
             alt=""
           />
           <span className="span-btn">Servicii</span>
@@ -114,7 +114,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/antichitati.jpg"
+            src="../public/foto-icons/imagines-categories/antichitati.jpg"
             alt=""
           />
           <span className="span-btn">Antichități </span>
@@ -122,7 +122,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/it-software.jpg"
+            src="../public/foto-icons/imagines-categories/it-software.jpg"
             alt=""
           />
           <span className="span-btn">IT și Software</span>
@@ -130,7 +130,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="../public/foto-icons/imagines categories/altele.jpg"
+            src="../public/foto-icons/imagines-categories/altele.jpg"
             alt=""
           />
           <span className="span-btn">Altele</span>
