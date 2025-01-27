@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer-head">
-        <img className="footer-logo" src="../public//stock-logo.jpg" alt="" />
+        <img className="footer-logo" src="./stock-logo.jpg" alt="" />
         <p>Descoperă oferta BARD.App pentru schimbul tau dorit !</p>
         <button>Vezi mai multe detalii</button>
       </div>
@@ -32,9 +32,9 @@ const Footer = () => {
           <p>Fii alaturi de noi si pe retelele sociale:</p>
         </div>
         <div className="social-icons">
-        <img src="./public/insta-icon.jpg" alt="" />
-        <img src="./public/facebook-icon.jpg" alt="" />
-        <img src="./public/ytb-icon.jpg" alt="" />
+        <img src="./insta-icon.jpg" alt="" />
+        <img src="./facebook-icon.jpg" alt="" />
+        <img src="./ytb-icon.jpg" alt="" />
       </div>
       </div>
 
