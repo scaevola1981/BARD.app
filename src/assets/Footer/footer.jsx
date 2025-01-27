@@ -31,15 +31,36 @@ const Footer = () => {
         <div className="para-container">
           <p>Fii alaturi de noi si pe retelele sociale:</p>
         </div>
-        <div className="social-icons">
-        <img src="./insta-icon.jpg" alt="" />
-        <img src="./facebook-icon.jpg" alt="" />
-        <img src="./ytb-icon.jpg" alt="" />
       </div>
+      <div className="social-icons">
+        <img src="./logo-icon2.jpg" alt="link-instagram" />
+        <img src="./facebook-icon.jpg" alt="link-facebook" />
+        <img src="./ytb-icon.jpg" alt="link-youtube" />
       </div>
-
-     
-      <div className="footer-info"></div>
+      <div className="footer-info">
+        <p>
+          Aplicatii mobilebr <br /> Ajutor si contact <br /> Anunturi promovate{' '}
+          <br /> BARD marketplace <br />
+          Citeste blog-ul BARD.ro <br />
+          Conditii de utilizare <br /> Politica de confidentialitate <br />
+          Preturi de publicitate <br /> Liste de preturi <br /> ANPC <br />
+          Academia de Business <br /> Livrare prin BARD <br /> Informatii Ordin
+          225/2023 <br />
+        </p>
+        <p>
+          Recompense Vânzãtor <br /> Cum să te ferești de phishing <br /> Harta
+          site <br /> Harta judetelor <br /> Harta mini-site-urilor <br />{' '}
+          Căutări frecvente <br /> Cariere in BARD.app <br /> Cum functioneaza?{' '}
+          <br /> How to BARD <br /> Bun de angajat <br /> Politica privind
+          cookie-urile <br />
+          Setări Cookies
+        </p>
+        <img src="./google & appStore icons.jpg" alt="" />
+        <div className="flag-container">
+        <p>🇧🇬 BARD.bg 🇵🇱 BARD.pl 🇺🇦 BARD.ua 🇵🇹 BARD.pt 🇷🇴Autovit.ro 🇷🇴Storia.ro 🇷🇴BARD Business</p>
+        </div>
+       
+      </div>
     </footer>
   );
 };

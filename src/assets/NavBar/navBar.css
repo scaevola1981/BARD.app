@@ -14,7 +14,7 @@ body {
   align-items: center;
   width: 100%;
   height: autopx;
-  background-color: #6c67ffd8;
+  background-color:#4bdec0;
   font-family: 'inter';
   box-shadow: 10px 25px 50px #060606;
   border-bottom-left-radius: 10px;
@@ -44,6 +44,7 @@ body {
   height: 60px;
   border-radius: 15px;
   margin-right: 5px;
+  border: none;
 }
 
 .input-city {
@@ -51,6 +52,7 @@ body {
   height: 60px;
   border-radius: 15px;
   margin-right: 5px;
+  border: none;
 }
 
 .search-btn {
@@ -58,6 +60,7 @@ body {
   height: 60px;
   border-radius: 15px;
   color: #7d7d7d;
+  border: none;
 }
 
 .search-icon {
