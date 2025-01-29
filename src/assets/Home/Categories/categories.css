@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+VN:wght@100..400&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.title h2 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    font-weight: bolder;
+} 
+
+.categories-title > h2 {
+    font-size: 2.5rem;
+    font-family: 'Inter';
+    color: white;
+}
+
+.categories-container {
+    display: grid;
+    /* grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr); */
+    gap: 30px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding:20px ;
+}
+
+.category-btn {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 150px;
+    height: 100px;
+    border: none;
+    padding: 2px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 15px #1e1e1e;
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.category-btn:hover {
+    transform: scale(1.05); 
+    cursor: pointer;
+}
+
+.img-foto {
+    width: 150px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.span-btn {
+    position: absolute;
+    color: rgb(255, 255, 255);
+    bottom: 10px;
+    z-index: 2;
+}
+
