@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [react()],
 
   server: {
-    hmr: process.env.NODE_ENV !== 'production'
+    hmr: import.meta.env.MODE !== 'production'
+
   }
 })
 
