@@ -18,7 +18,7 @@
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-template-rows: auto;
   justify-items: center;
   gap: 20px;
@@ -69,8 +69,8 @@
 
 .card-title {
   margin: 5px 0 0 110px;
-  font-weight: 200;
-  
+  font-weight: 100;
+  font-size:1.2rem ;
 }
 
 .card-icon-heart {

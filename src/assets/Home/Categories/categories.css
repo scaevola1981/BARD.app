@@ -59,13 +59,14 @@
     height: 100px;
     overflow: hidden;
     border-radius: 20px;
-    object-fit: cover;
+    object-fit:cover;
 }
 
 .span-btn {
     position: absolute;
-    color: rgb(255, 255, 255);
-    bottom: 10px;
+    color: rgb(144, 144, 144);
+    bottom: 0px;
     z-index: 2;
+    
 }
 

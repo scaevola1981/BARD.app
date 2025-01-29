@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer-head">
-        <img className="footer-logo" src="./stock-logo.jpg" alt="" />
+        <img className="footer-logo" src="./foto-icons/stock-logo.jpg" alt="" />
         <p>Descoperă oferta BARD.App pentru schimbul tau dorit !</p>
         <button>Vezi mai multe detalii</button>
       </div>
@@ -33,9 +33,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="social-icons">
-        <img src="./logo-icon2.jpg" alt="link-instagram" />
-        <img src="./facebook-icon.jpg" alt="link-facebook" />
-        <img src="./ytb-icon.jpg" alt="link-youtube" />
+        <img src="./foto-icons/logo-icon2.jpg" alt="link-instagram" />
+        <img src="./foto-icons/facebook-icon.jpg" alt="link-facebook" />
+        <img src="./foto-icons/ytb-icon.jpg" alt="link-youtube" />
       </div>
       <div className="footer-info">
         <p>
@@ -55,7 +55,7 @@ const Footer = () => {
           cookie-urile <br />
           Setări Cookies
         </p>
-        <img src="./google & appStore icons.jpg" alt="" />
+        <img src="./foto-icons/google & appStore icons.jpg" alt="" />
         <div className="flag-container">
         <p>🇧🇬 BARD.bg 🇵🇱 BARD.pl 🇺🇦 BARD.ua 🇵🇹 BARD.pt 🇷🇴Autovit.ro 🇷🇴Storia.ro 🇷🇴BARD Business</p>
         </div>

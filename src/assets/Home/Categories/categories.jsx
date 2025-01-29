@@ -11,7 +11,7 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/imobiliare.jpg"
+            src="./foto-icons/logo-imobiliare.jpg"
             alt=""
             effect="blur"
           />
@@ -20,7 +20,7 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/masini.jpg"
+            src="./foto-icons/logo-masini.jpg"
             alt=""
             effect='blur'
           />
@@ -29,7 +29,7 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/electronice.jpg"
+            src="./foto-icons/logo-electronice.jpg"
             alt=""
             effect='blur'
           />
@@ -38,7 +38,7 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/moda.jpg"
+            src="./foto-icons/logo-moda.jpg"
             alt=""
             effect='blur'
           />
@@ -47,7 +47,7 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/hobby-crafting.jpg"
+            src="./foto-icons/logo-hobby.jpg"
             alt=""
             effect='blur'
           />
@@ -56,7 +56,7 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/casa-gradina.jpg"
+            src="./foto-icons/logo-casa-gradina.jpg"
             alt=""
             effect='blur'
           />
@@ -65,7 +65,7 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/mobilier-decoratiuni.jpg"
+            src="./foto-icons/logo-mobilier.jpg"
             alt=""
             effect='blur'
           />
@@ -74,7 +74,7 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/carti.jpg"
+            src="./foto-icons/logo-carti.jpg"
             alt=""
             effect='blur'
           />
@@ -83,16 +83,16 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/unelte.jpg"
+            src="./foto-icons/logo-unelte.jpg"
             alt=""
             effect='blur'
           />
-          <span className="span-btn">Unelte și Echipamente</span>
+          <span className="span-btn">Echipamente</span>
         </button>
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/produse-alimentare.jpg"
+            src="./foto-icons/logo-alimente.jpg"
             alt=""
             effect='blur'
           />
@@ -101,7 +101,7 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/articole-sportive.jpg"
+            src="./foto-icons/logo-articole-sportive.jpg"
             alt=""
             effect='blur'
           />
@@ -110,7 +110,7 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/animale.jpg"
+            src="./foto-icons/logo-animale.jpg"
             alt=""
             effect='blur'
           />
@@ -119,16 +119,16 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/voluntariat.jpg"
+            src="./foto-icons/logo-voluntairs.jpg"
             alt=""
             effect='blur'
           />
-          <span className="span-btn">Servicii</span>
+          <span className="span-btn">Voluntariat</span>
         </button>
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/antichitati.jpg"
+            src="./foto-icons/logo-antiques.jpg"
             alt=""
             effect='blur'
           />
@@ -137,7 +137,7 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/it-software.jpg"
+            src="./foto-icons/logo-it-software.jpg"
             alt=""
             effect='blur'
           />
@@ -146,7 +146,7 @@ const Categories = () => {
         <button className="category-btn">
           <LazyLoadImage
             className="img-foto"
-            src="./foto-icons/imagines-categories/altele.jpg"
+            src="./foto-icons/logo-altele.jpg"
             alt=""
             effect='blur'
           />

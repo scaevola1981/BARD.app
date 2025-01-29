@@ -70,9 +70,17 @@ body {
   cursor: pointer;
 }
 
+.heart-icon:hover {
+  color: red;
+}
+
 .notification-icon {
   margin-right: 60px;
   cursor: pointer;
+}
+
+.notification-icon:hover {
+  color: rgb(18, 194, 252);
 }
 
 .my-account-icon {
@@ -81,6 +89,10 @@ body {
   justify-content: center;
   margin-right: 30px;
   cursor: pointer;
+}
+
+.my-account-icon:hover {
+  color: aqua;
 }
 
 .account-span {
@@ -94,13 +106,19 @@ body {
 .header-btn {
   width: 180px;
   height: 40px;
-  margin-right: 150px;
+  margin:5px 50px;
   border-radius: 10px;
-  border: none;
-  background-color: white;
+  background-color:#007d66 ;
+  color: white;
+  border: 1px solid white;
   cursor: pointer;
 }
 
+.header-btn:hover {
+  background-color:#ffffff ;
+  color: #007d66;
+  border:none;
+}
 
 
 @media (max-width: 768px) {
