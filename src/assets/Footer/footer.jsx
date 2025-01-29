@@ -9,7 +9,7 @@ const Footer = () => {
         <button>Vezi mai multe detalii</button>
       </div>
       <div className="main-content">
-        <img src="../public/foto-icons/logo.jpg" alt="" />
+        <img src="./foto-icons/logo.jpg" alt="" />
         <p>
           BARD - Platforma de schimb simplu și eficient BARD este o aplicație
           inovatoare, dedicată schimburilor de bunuri și alimente între

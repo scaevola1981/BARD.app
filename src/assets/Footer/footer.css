@@ -11,10 +11,12 @@ footer {
 }
 
 .footer-head {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px , 1fr));
   justify-content: center;
   align-items: center;
   background-color: #007d66;
+  overflow: hidden;
 }
 
 .footer-logo {
@@ -96,10 +98,12 @@ footer {
 .footer-info {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: auto;
+  overflow: hidden;
 }
 
 .footer-info p {

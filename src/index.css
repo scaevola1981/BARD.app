@@ -9,6 +9,6 @@
 body {
   background-color: rgb(255, 255, 255) !important;
   font-family: 'Inter' sans-serif;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow:auto;
+
 }
