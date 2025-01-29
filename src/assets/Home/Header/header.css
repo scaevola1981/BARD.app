@@ -53,10 +53,7 @@ body {
   margin-right: 60px;
   cursor: pointer;
 }
-
-.chat-icon:hover {
-  color: blue;
-}
+ 
 
 .chat-span {
   font-size: 1rem;
@@ -111,18 +108,12 @@ body {
   .header-icons {
     justify-content: center;
     margin-bottom: 10px;
-  }
-
-  .header-icons .chat-icon,
-  .header-icons .heart-icon,
-  .header-icons .notification-icon,
-  .header-icons .account-icon {
-    margin-right: 15%;
+    margin-top: 25%;
   }
 
   .header-btn {
     width: 30%;
     height: 50%;
-    margin: 2px;
+    margin-right: 50px;
   }
 }

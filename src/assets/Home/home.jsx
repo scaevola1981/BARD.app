@@ -3,8 +3,7 @@ import Header from './Header/header';
 import Navbar from './NavBar/navBar';
 import Categories  from './Categories/categories';
 import Card from './Card/card';
-import Footer from './Footer/footer'
-import LazyImage from './LazyImage/lazyImage';
+import Footer from './Footer/footer';
 
 
 const Home = () => {
@@ -15,7 +14,6 @@ const Home = () => {
       <Categories/>
       <Card/>
       <Footer/>
-      <LazyImage/>
     </>
     )
 }
