@@ -53,6 +53,10 @@ body {
   margin-right: 60px;
   cursor: pointer;
 }
+
+.chat-icon:hover {
+   color: rgb(0, 64, 255);
+}
  
 
 .chat-span {
