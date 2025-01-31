@@ -58,16 +58,18 @@
 }
 
 .img-foto {
-    width: 150px;
+    width: 100px;
     height: 100px;
     overflow: hidden;
     border-radius: 20px;
     object-fit:cover;
+    
 }
 
 .span-btn {
     position: absolute;
-    color: rgb(144, 144, 144);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
     bottom: 0px;
     z-index: 2;
     

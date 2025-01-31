@@ -10,35 +10,35 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="./foto-icons/logo-imobiliare.jpg"
+            src="./foto-icons/logo-imobiliare.png"
             alt=""
           />
           <span className="span-btn">Imobiliare</span>
         </button>
         <button className="category-btn">
-          <img className="img-foto" src="./foto-icons/logo-masini.jpg" alt="" />
+          <img className="img-foto" src="./foto-icons/logo-car.png" alt="" />
           <span className="span-btn">Mașini și Piese </span>
         </button>
         <button className="category-btn">
           <img
             className="img-foto"
-            src="./foto-icons/logo-electronice.jpg"
+            src="./foto-icons/logo-electronic.png"
             alt=""
           />
           <span className="span-btn">Electronice</span>
         </button>
         <button className="category-btn">
-          <img className="img-foto" src="./foto-icons/logo-moda.jpg" alt="" />
+          <img className="img-foto" src="./foto-icons/logo-fashion.png" alt="" />
           <span className="span-btn">Modă</span>
         </button>
         <button className="category-btn">
-          <img className="img-foto" src="./foto-icons/logo-hobby.jpg" alt="" />
+          <img className="img-foto" src="./foto-icons/logo-hobby.png" alt="" />
           <span className="span-btn">Hobby și Crafting</span>
         </button>
         <button className="category-btn">
           <img
             className="img-foto"
-            src="./foto-icons/logo-casa-gradina.jpg"
+            src="./foto-icons/logo-garden.png"
             alt=""
           />
           <span className="span-btn">Casă și Grădină</span>
@@ -46,23 +46,23 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="./foto-icons/logo-mobilier.jpg"
+            src="./foto-icons/logo-mobilier.png"
             alt=""
           />
           <span className="span-btn">Mobilier/Decorațiuni</span>
         </button>
         <button className="category-btn">
-          <img className="img-foto" src="./foto-icons/logo-carti.jpg" alt="" />
+          <img className="img-foto" src="./foto-icons/logo-books.png" alt="" />
           <span className="span-btn">Cărți/Filme,Muzică</span>
         </button>
         <button className="category-btn">
-          <img className="img-foto" src="./foto-icons/logo-unelte.jpg" alt="" />
+          <img className="img-foto" src="./foto-icons/logo-equipment.png" alt="" />
           <span className="span-btn">Echipamente</span>
         </button>
         <button className="category-btn">
           <img
             className="img-foto"
-            src="./foto-icons/logo-alimente.jpg"
+            src="./foto-icons/logo-food.png"
             alt=""
           />
           <span className="span-btn">Produse Alimentare</span>
@@ -70,7 +70,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="./foto-icons/logo-articole-sportive.jpg"
+            src="./foto-icons/logo-sports.png"
             alt=""
           />
           <span className="span-btn">Articole Sportive</span>
@@ -78,7 +78,8 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="./foto-icons/logo-animale.jpg"
+            src="./foto-icons/logo-animals.png
+            "
             alt=""
           />
           <span className="span-btn">Animale</span>
@@ -86,7 +87,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="./foto-icons/logo-voluntairs.jpg"
+            src="./foto-icons/logo-voluntary.png"
             alt=""
           />
           <span className="span-btn">Voluntariat</span>
@@ -94,7 +95,7 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="./foto-icons/logo-antiques.jpg"
+            src="./foto-icons/logo-antiques.png"
             alt=""
           />
           <span className="span-btn">Antichități </span>
@@ -102,13 +103,13 @@ const Categories = () => {
         <button className="category-btn">
           <img
             className="img-foto"
-            src="./foto-icons/logo-it-software.jpg"
+            src="./foto-icons/logo-it.png"
             alt=""
           />
           <span className="span-btn">IT și Software</span>
         </button>
         <button className="category-btn">
-          <img className="img-foto" src="./foto-icons/logo-altele.jpg" alt="" />
+          <img className="img-foto" src="./foto-icons/logo-others.png" alt="" />
           <span className="span-btn">Altele</span>
         </button>
       </div>
