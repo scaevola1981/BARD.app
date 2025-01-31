@@ -1,10 +1,10 @@
-import { FaBell, FaHeart, FaComment, FaUser } from 'react-icons/fa';
+
 
 import './NavBar.css';
 
 const NavBar = () => {
   return (
-    <div className="navbar-container container-fluid">
+    <div className="navbar-container ">
       <nav className="navbar">
         <div className="input-group">
           <input type="text" className="input-text" placeholder="Ce cauți?" />

@@ -118,6 +118,7 @@ footer {
 .footer-info img {
   width: 200px;
   height: auto;
+  margin-left: 100px;
 }
 
 .flag-container {

@@ -30,10 +30,12 @@
     display: grid;
     /* grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr); */
-    gap: 30px 20px;
+    gap: 70px 10px;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    padding:20px ;
+    padding:10px 80px;
+   
 }
+
 
 .category-btn {
     display: flex;
@@ -44,13 +46,14 @@
     border: none;
     padding: 2px;
     border-radius: 20px;
-    box-shadow: 10px 10px 15px #1e1e1e;
+    box-shadow: 4px 13px 15px #1e1e1e;
     transition: transform 0.2s ease;
     position: relative;
+   
 }
 
 .category-btn:hover {
-    transform: scale(1.05); 
+    transform: scale(1.1); 
     cursor: pointer;
 }
 

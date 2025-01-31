@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <div className="header-container container-fluid">
+    <div className="header-container ">
       
       <header className="header">
         <div className='logo-container'>
           <img className='logo-img' src="./foto-icons/logo.jpg" alt="Logo" />
         </div>
         <div className="header-icons">
-          <div className="chat-icon">
+          <Link to='/chat' className="chat-icon">
              <FaRegComment />
              <span className='chat-span'>Chat</span>
-          </div>
+          </Link>
              <FaRegHeart className="heart-icon" />
              <FaRegBell className="notification-icon" />
           <div className="my-account-icon">

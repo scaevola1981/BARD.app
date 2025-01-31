@@ -16,6 +16,9 @@ body {
   height: 70px;
   background-color: #007d66;
   font-family: 'inter';
+  position:sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo-container {
