@@ -12,10 +12,13 @@ const Header = () => {
         </div>
         <div className="header-icons">
           <Link to='/chat' className="chat-icon">
-             <FaRegComment />
+             <FaRegComment className=''/>
              <span className='chat-span'>Chat</span>
           </Link>
-             <FaRegHeart className="heart-icon" />
+          <Link to='/favorite' className='favorite-icon'>
+          <FaRegHeart className="heart-icon" />
+          </Link>
+             
              <FaRegBell className="notification-icon" />
           <div className="my-account-icon">
              <FaRegUser className='user-name-icon'/>
