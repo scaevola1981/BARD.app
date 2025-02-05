@@ -10,9 +10,9 @@ const AnunturiFavorite = () => {
              <h1>Anunturile tale favorite </h1>
         </div>
         <div className="buttons-anunturi-favorite-container">
-        <button className='anunturi-favorite'>Anunturi favorite</button>
-        <button className='cautari-salvate'>Cautari salvate</button>
-        <button className='vazute-recent'>Vazute recent</button>
+          <button className='anunturi-favorite'>Anunturi favorite</button>
+          <button className='cautari-salvate'>Cautari salvate</button>
+          <button className='vazute-recent'>Vazute recent</button>
         </div>
         <div className="filtered-anunturi-container">
             <img src="public/foto-icons/heart-for-anunturi-favorite.png" alt="" />

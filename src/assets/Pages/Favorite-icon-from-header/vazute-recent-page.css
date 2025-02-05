@@ -1,0 +1,66 @@
+.h1-vazute-recent-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 150px;
+  background-color: white;
+}
+
+.h1-vazute-recent-container h1 {
+  font-family: 'Inter' sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  margin: 20px 0 40px 100px;
+}
+
+.buttons-vazute-recent-container {
+  display: flex;
+  width: 100%;
+  height: 60px;
+  align-items: center;
+  background-color: white;
+}
+
+.buttons-vazute-recent-container button {
+  border: none;
+  background-color: transparent;
+  margin-left: 110px;
+  font-weight: 200;
+  font-size: 0.8rem;
+  width: 150px;
+  height: 30px;
+}
+
+.vazute-recent:hover {
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.filtered-anunturi-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 500px;
+  justify-content: center;
+}
+
+.filtered-anunturi-container img {
+  width: 300px;
+  height: 320px;
+  border-radius: 50%;
+  margin: 150px 0 25px 0;
+}
+
+.para-anunturi-titlu {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.para-anunturi {
+  font-weight: 300;
+  font-size: 1rem;
+}
