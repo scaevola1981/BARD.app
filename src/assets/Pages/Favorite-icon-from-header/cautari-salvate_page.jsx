@@ -13,7 +13,7 @@ const Favorite = () => {
           <h1>Cautarile tale favorite</h1>
         </div>
         <div className='para-container'>
-          <Link to='anunturi-favorite ' className='anunturi-favorite'>
+          <Link to='/anunturi-favorite' className='anunturi-favorite'>
           <button className='anunturi-favorite'>Anunturi favorite</button>
           </Link>
           

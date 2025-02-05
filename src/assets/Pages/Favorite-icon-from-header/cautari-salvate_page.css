@@ -41,21 +41,10 @@
 .cautari-salvate:hover {
   cursor: pointer;
   font-weight: bold;
-  color: rgb(126, 126, 126);
+  color: rgb(0, 0, 0);
   
 }
 
-.vazute-recent:hover {
-  cursor: pointer;
-  font-weight: bold;
-  color: rgb(126, 126, 126);
-}
-
-.anunturi-favorite:hover {
-  cursor: pointer;
-  font-weight: bold;
-  color: rgb(126, 126, 126);
-}
 
 .filtered-ads-container {
   display: flex;
