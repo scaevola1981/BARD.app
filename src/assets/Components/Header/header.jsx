@@ -15,7 +15,7 @@ const Header = () => {
              <FaRegComment className=''/>
              <span className='chat-span'>Chat</span>
           </Link>
-          <Link to='/favorite' className='favorite-icon'>
+          <Link to='/cautari-salvate_page' className='favorite-icon'>
           <FaRegHeart className="heart-icon" />
           </Link>
              

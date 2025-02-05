@@ -1,5 +1,8 @@
 import Header from '../../Components/Header/header';
-import './favorite.css';
+import './cautari-salvate_page.css';
+import {Link} from 'react-router-dom';
+
+
 
 const Favorite = () => {
   return (
@@ -10,9 +13,12 @@ const Favorite = () => {
           <h1>Cautarile tale favorite</h1>
         </div>
         <div className='para-container'>
-          <p>Anunturi favorite</p>
-          <p>Cautari salvate</p>
-          <p>Vazute recent</p>
+          <Link to='anunturi-favorite ' className='anunturi-favorite'>
+          <button className='anunturi-favorite'>Anunturi favorite</button>
+          </Link>
+          
+          <button className='cautari-salvate'>Cautari salvate</button>
+          <button className='vazute-recent'>Vazute recent</button>
         </div>
         <div className="filtered-ads-container">
           <img className="filtered-ads-container-icon" src="./foto-icons/magnifying-glass.png" alt="" />
