@@ -4,28 +4,43 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <div className="header-container ">
-      
+    <div className="header-container">
       <header className="header">
-        <div className='logo-container'>
-          <img className='logo-img' src="./foto-icons/logo.jpg" alt="Logo" />
+        <div className="logo-container">
+          <img
+            className="logo-img"
+            src="./foto-icons/logo-4-app-bard.png"
+            alt="Logo"
+          />
         </div>
+
         <div className="header-icons">
-          <Link to='/chat' className="chat-icon">
-             <FaRegComment className=''/>
-             <span className='chat-span'>Chat</span>
+          <Link to="/chat" className="chat-icon" aria-label="Chat">
+            <FaRegComment className="chat-icon-svg" />
+            <span className="chat-span">Chat</span>
           </Link>
-          <Link to='/favorite' className='favorite-icon'>
-          <FaRegHeart className="heart-icon" />
+
+          <Link to="/favorite" className="favorite-icon" aria-label="Favorite">
+            <FaRegHeart className="heart-icon" />
           </Link>
-             
-             <FaRegBell className="notification-icon" />
+
+          <button
+            className="notification-icon"
+            aria-label="Notificări"
+            onClick={() => alert('Notificări')}
+          >
+            <FaRegBell />
+          </button>
+
           <div className="my-account-icon">
-             <FaRegUser className='user-name-icon'/>
+            <FaRegUser className="user-name-icon" />
             <span className="account-span">Contul meu</span>
           </div>
         </div>
-        <button className="header-btn"> Adauga anunt</button>
+
+        <button className="header-btn" aria-label="Adăuga anunț">
+          Adaugă anunț
+        </button>
       </header>
     </div>
   );

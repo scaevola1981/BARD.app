@@ -9,7 +9,7 @@ const Footer = () => {
         <button>Vezi mai multe detalii</button>
       </div>
       <div className="main-content">
-        <img src="./foto-icons/logo.jpg" alt="" />
+        <img src="./foto-icons/logo-4-app-bard.png" alt="" />
         <p>
           BARD - Platforma de schimb simplu și eficient BARD este o aplicație
           inovatoare, dedicată schimburilor de bunuri și alimente între
@@ -28,11 +28,9 @@ const Footer = () => {
           facilitează comunicarea între utilizatori și un sistem simplu pentru
           gestionarea anunțurilor. Începe să schimbi, nu să cumperi, cu BARD!
         </p>
-        <div className="para-container">
-          <p>Fii alaturi de noi si pe retelele sociale:</p>
-        </div>
       </div>
       <div className="social-icons">
+     
         <img src="./foto-icons/logo-icon2.jpg" alt="link-instagram" />
         <img src="./foto-icons/facebook-icon.jpg" alt="link-facebook" />
         <img src="./foto-icons/ytb-icon.jpg" alt="link-youtube" />

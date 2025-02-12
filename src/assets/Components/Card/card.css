@@ -6,14 +6,17 @@
 }
 
 .for-title {
+  background-color: #fff;
   width: 100%;
   height: auto;
   text-align: center;
-  margin: 50px 0 20px 0;
+  margin: 50px 0 40px 0;
 }
 
 .cards-title {
-  font-weight: bold;
+  font-weight: 500;
+  color: #4e4e4e;
+  font-size: 2.5rem;
 }
 
 .cards-container {
@@ -22,9 +25,9 @@
   grid-template-rows: auto;
   justify-items: center;
   gap: 20px;
-  padding: 0 100px;
-  margin-bottom: 100px;
+  padding: 50px 100px;
   overflow: hidden;
+  background-color: #fff;
 }
 
 @media (max-width: 1200) {
@@ -51,12 +54,12 @@
 
 .container-card {
   height: auto;
-  border: none;
+  border:1px solid #aeaeae;
   border-radius: 10px;
-  box-shadow: 5px 5px 15px rgba(81, 81, 81, 0.994);
+  box-shadow: 15px 25px 15px #c2c2c2fd;
   min-height: 350px;
-  margin-bottom: 10px;
-  background-color: white;
+  margin-bottom: 20px;
+  background-color: #fff;
 }
 
 
@@ -77,7 +80,7 @@
 
 .card-icon-heart {
   margin: 5px 0 0 140px;
-  color: rgb(116, 116, 116);
+  color: #32ff04;
 }
 
 .card-para {
