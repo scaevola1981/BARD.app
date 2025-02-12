@@ -1,9 +1,5 @@
-
-
-
 import './card.css';
 import { FaRegHeart } from 'react-icons/fa';
-import CardFoto from './cardFoto';
 
 const Card = ({ cardData }) => {
   return (
@@ -13,11 +9,14 @@ const Card = ({ cardData }) => {
       </div>
       <div className="cards-container">
         {cardData.map((card) => (
-          <div key={card.id} className="container-card">
-            <CardFoto category={card.category} />
-            <img className="card-img" src={card.image} alt={card.title} />
+          <div key={card.key} className="container-card">
+               <FaRegHeart className="card-icon-heart" />
+            <img src={card.image} alt={card.title} className="card-img" />
             <h2 className="card-title">{card.title}</h2>
-            <FaRegHeart className='card-icon-heart' />
+         
+            <p className="card-info">Județ: {card.judet}</p>
+            <p className="card-info">Oras:{card.cities}</p>
+            <p className="card-info">Comuna:{card.comune}</p>
             <p className="card-para">{card.eventDescription}</p>
           </div>
         ))}
@@ -25,6 +24,4 @@ const Card = ({ cardData }) => {
     </>
   );
 };
-
 export default Card;
-
