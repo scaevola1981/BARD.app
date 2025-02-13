@@ -19,7 +19,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  margin-bottom: 40px; 
+  margin-bottom: 40px;
 }
 
 .logo-container {
@@ -79,10 +79,14 @@ body {
   color: #fb8888;
 }
 
-.notification-icon {
-  margin-right: 60px;
+.notification-icon , .bell-icon {
+  margin: 0;
+  margin-right:30px;
   cursor: pointer;
+  background-color: #023c40;
+  padding: 0;
 }
+
 
 .notification-icon:hover {
   color: rgb(18, 194, 252);

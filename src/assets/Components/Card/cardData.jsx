@@ -54,7 +54,7 @@ const cardData = [
     judet: "Bistrița-Năsăud",
     cities: ["Bistrița"], // Un singur oraș
     comune: ["Dumitra"], // O singură comună
-    eventDescription: "Târg de animale de companie în Bistrița.",
+    eventDescription: "Târg de animale de companie ",
     categories: ["Animale"],
     title: "Anunțuri în Bistrița-Năsăud",
     image: "./foto-icons/logo-animals.png"

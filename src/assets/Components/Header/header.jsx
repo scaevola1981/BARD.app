@@ -1,8 +1,14 @@
 import './header.css';
 import { FaRegComment, FaRegHeart, FaRegBell, FaRegUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Modal from '../../Pages/Notifications-icon/notifications-page';
+
 
 const Header = () => {
+
+ 
+
+
   return (
     <div className="header-container">
       <header className="header">
@@ -23,14 +29,15 @@ const Header = () => {
           <Link to="/favorite" className="favorite-icon" aria-label="Favorite">
             <FaRegHeart className="heart-icon" />
           </Link>
-
-          <button
-            className="notification-icon"
-            aria-label="Notificări"
-            onClick={() => alert('Notificări')}
-          >
-            <FaRegBell />
-          </button>
+          
+        
+            <Modal>
+              <div className="notification-icon"
+                   aria-label="Notificări" >
+                <FaRegBell className="bell-icon" />
+              </div>
+            </Modal>
+       
 
           <div className="my-account-icon">
             <FaRegUser className="user-name-icon" />
@@ -45,5 +52,4 @@ const Header = () => {
     </div>
   );
 };
-
 export default Header;
