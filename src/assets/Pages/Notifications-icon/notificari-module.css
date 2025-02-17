@@ -1,0 +1,20 @@
+
+
+
+.notificari-header-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 70px;
+    left: 52%;
+    width: 450px;
+    height: auto;
+    background-color: blue;
+}
+
+.custom-modal .modal-body {
+    width: 450px;
+}
+

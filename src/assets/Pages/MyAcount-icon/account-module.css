@@ -1,0 +1,29 @@
+
+
+.account-header-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 70px;
+    left: 70%;
+    width: 200px;
+    height: 500px;
+    border: none;
+  }
+
+  .custom-modal {
+    width: 250px;
+    height: auto;
+    
+  }
+
+
+
+  .account-modal-btn {
+    width: 100px;
+    margin: 0 75px 5px  ;
+    border-radius: 5px;
+    background-color:#013c40 ;
+    color: white;
+  }

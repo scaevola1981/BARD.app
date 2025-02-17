@@ -8,7 +8,11 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+
+
+
 .header-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,9 +20,9 @@ body {
   height: auto;
   background-color: #043e42;
   font-family: 'Inter', sans-serif;
-  position: sticky;
+  /* position: sticky; */
   top: 0;
-  z-index: 1000;
+  z-index: 999;
   margin-bottom: 40px;
 }
 
@@ -29,8 +33,8 @@ body {
 }
 
 .logo-img {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   margin-left: 30px;
 }
@@ -61,7 +65,7 @@ body {
 }
 
 .chat-icon:hover {
-  color: rgb(106, 105, 105);
+  color: #4ce1f8;
 }
 
 .chat-span {
@@ -73,23 +77,26 @@ body {
 .heart-icon {
   margin-right: 60px;
   cursor: pointer;
+  color: #ffffff;
 }
 
 .heart-icon:hover {
-  color: #fb8888;
+  color: #4ce1f8;
 }
 
-.notification-icon , .bell-icon {
-  margin: 0;
-  margin-right:30px;
+.bell-icon {
+ 
+  margin-right:60px;
   cursor: pointer;
-  background-color: #023c40;
   padding: 0;
 }
 
 
+
+
 .notification-icon:hover {
-  color: rgb(18, 194, 252);
+  color: #4ce1f8;
+  
 }
 
 .my-account-icon {
@@ -98,10 +105,13 @@ body {
   justify-content: center;
   margin-right: 30px;
   cursor: pointer;
+  background-color: #013c40;
+  color: white;
+  border: none;
 }
 
 .my-account-icon:hover {
-  color: aqua;
+  color: #4ce1f8;
 }
 
 .account-span {
@@ -115,7 +125,7 @@ body {
   height: 40px;
   margin: 5px 50px;
   border-radius: 10px;
-  background-color: #007d66;
+  background-color:  #043e42;
   color: white;
   border: 1px solid white;
   cursor: pointer;
@@ -123,7 +133,7 @@ body {
 
 .header-btn:hover {
   background-color: #ffffff;
-  color: #007d66;
+  color:  #043e42;
   border: none;
 }
 
