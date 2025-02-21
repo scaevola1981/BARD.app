@@ -39,7 +39,7 @@ const Header = () => {
         </div>
 
         <button className="header-btn" aria-label="Adăuga anunț">
-          Adaugă anunț
+         Login
         </button>
       </header>
     </div>
