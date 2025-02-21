@@ -1,6 +1,3 @@
-
-
-
 import './notificari-module.css';
 import CustomModal from '../../Components/Modal/modal-component';
 import { useState } from 'react';
@@ -10,7 +7,7 @@ const AnunturiFavorite = () => {
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
-    console.log('modal status', !isModalOpen)
+    console.log('modal status', !isModalOpen);
   };
 
   return (
@@ -20,7 +17,6 @@ const AnunturiFavorite = () => {
         isOpen={isModalOpen}
         onClose={toggleModal}
         className="notificari-modal , notificari-dialog"
-     
       >
         <div>
           <h2>Notificări</h2>

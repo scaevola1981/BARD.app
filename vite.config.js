@@ -12,6 +12,7 @@ export default defineConfig({
   define: {
     "process.env.MODE": JSON.stringify(process.env.MODE || "development"),
   },
+  base: '/', 
 });
 
 

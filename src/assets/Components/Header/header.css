@@ -85,16 +85,19 @@ body {
 }
 
 .bell-icon {
- 
+  color: white;
   margin-right:60px;
   cursor: pointer;
   padding: 0;
 }
 
 
+.notification-icon {
+  background-color:#013c40 ;
+  border: none;
+}
 
-
-.notification-icon:hover {
+.bell-icon:hover {
   color: #4ce1f8;
   
 }

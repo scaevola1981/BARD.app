@@ -60,17 +60,13 @@ const Header = () => {
               <FaRegUser className="user-name-icon" />
               <span className="account-span">Contul meu</span>
             </button>
-        
-              <button className= 'notification-header-bell'>
-              
-                  <CustomModal
-                    title="Notificări"
-                    isOpen={isNotificationModalOpen}
-                    onClose={toggleNotificationModal}
-                    className="notificari-header-modal"
-                  ></CustomModal>
-            
-              </button>
+
+            <CustomModal
+              title="Notificări"
+              isOpen={isNotificationModalOpen}
+              onClose={toggleNotificationModal}
+              className="notificari-header-modal"
+            ></CustomModal>
 
             <CustomModal
               title="Contul meu"

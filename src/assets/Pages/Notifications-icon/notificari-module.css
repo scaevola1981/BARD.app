@@ -7,14 +7,19 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 70px;
-    left: 52%;
+    top: 40px;
+    left: 50%;
     width: 450px;
     height: auto;
-    background-color: blue;
+    background-color:transparent;
 }
 
-.custom-modal .modal-body {
-    width: 450px;
+.custom-modal  {
+    width: 700px;
+
 }
 
+.notificari-dialog {
+    width: 600px;
+}
+  
