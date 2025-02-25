@@ -8,9 +8,6 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-
-
-
 .header-container {
   position: relative;
   display: flex;
@@ -86,20 +83,18 @@ body {
 
 .bell-icon {
   color: white;
-  margin-right:60px;
+  margin-right: 60px;
   cursor: pointer;
   padding: 0;
 }
 
-
 .notification-icon {
-  background-color:#013c40 ;
+  background-color: #013c40;
   border: none;
 }
 
 .bell-icon:hover {
   color: #4ce1f8;
-  
 }
 
 .my-account-icon {
@@ -128,7 +123,7 @@ body {
   height: 40px;
   margin: 5px 50px;
   border-radius: 10px;
-  background-color:  #043e42;
+  background-color: #043e42;
   color: white;
   border: 1px solid white;
   cursor: pointer;
@@ -136,7 +131,7 @@ body {
 
 .header-btn:hover {
   background-color: #ffffff;
-  color:  #043e42;
+  color: #043e42;
   border: none;
 }
 
@@ -257,53 +252,80 @@ body {
   }
 }
 
-
 /* Modal Login  */
+
 
 .login-modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  background-color: rgb(47, 194, 14);
+  background-color: transparent;
+  backdrop-filter: blur(10px);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-}
-
-/* Form styling login */
-.login-header-modal {
-  background-color:black;
+  width: 100%;
+  height: 100vh;
   z-index: 1001;
+
 }
 
-.login-form  {
+.login-form {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  width: 500px;
-  height: auto;
+ 
+
 }
 
 .login-form input {
   height: 60px;
   border-radius: 15px;
-  margin-top: 20px;
   padding: 10px;
-  border: none;
+  border: 0.5px solid grey;
+  width: 500px;
+  margin-bottom: 25px;
 }
 
 .login-form button {
-  margin-top: 30px;
+  
   height: 60px;
- background-color: #043e42;
+  width: 500px;
+  background-color: #025aa6;
   border-radius: 15px;
   border: none;
   color: white;
-  font-weight:800 ;
+  font-weight: 800;
+ 
 }
 
 .login-form button:hover {
-  background-color: #01575d;
+  background-color: #5d00e7;
+}
+
+.remember-forgot {
+  display: flex;
+  width: 500px;
+  height: auto;
+  justify-content:space-between;
+
+}
+
+.remember-forgot input {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.icon {
+  font-size:1.5rem;
+}
+
+.register-link p {
+  display: flex;
+  width: 500px;
+  height: auto;
+  justify-content:space-between;
+ 
 }
