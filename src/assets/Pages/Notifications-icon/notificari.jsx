@@ -7,12 +7,12 @@ const AnunturiFavorite = () => {
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
-    console.log('modal status', !isModalOpen);
+
   };
 
   return (
     <>
-      <button onClick={toggleModal}>Deschide Notificări</button>
+     
       <CustomModal
         isOpen={isModalOpen}
         onClose={toggleModal}
@@ -21,7 +21,9 @@ const AnunturiFavorite = () => {
         <div>
           <h2>Notificări</h2>
           <h3>Conținut adus dinamic</h3>
+          <button onClick={toggleModal}>Deschide Notificări</button>
         </div>
+        
       </CustomModal>
     </>
   );

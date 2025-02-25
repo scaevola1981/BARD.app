@@ -7,19 +7,15 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 40px;
+    top: 32px;
     left: 50%;
     width: 450px;
     height: auto;
-    background-color:transparent;
+   
 }
 
-.custom-modal  {
-    width: 700px;
-
+.notificari-modal-btn {
+    width: 100px;
+    margin: 5px 35%;
+    background-color:#04aebb;
 }
-
-.notificari-dialog {
-    width: 600px;
-}
-  

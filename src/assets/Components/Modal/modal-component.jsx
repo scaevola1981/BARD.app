@@ -16,12 +16,13 @@ const CustomModal = ({
         show={isOpen}
         onHide={onClose}
         backdrop={false}
-        dialogClassName={`custom-modal, notificari-dialog ${dialogClassName}`}
+        dialogClassName={`custom-modal, account-modal ${dialogClassName}`}
         className={` ${className}`}
         container={document.body}
         position={position}
       >
         <Modal.Body>{children}</Modal.Body>
+  
         <Button className='account-modal-btn' variant="secondary" onClick={onClose}>
           Close
         </Button>
