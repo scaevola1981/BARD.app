@@ -7,6 +7,7 @@ import Favorite from './assets/Pages/Favorite-icon/favorite';
 import Modal from './assets/Components/Modal/modal-component';  
 import Account from './assets/Pages/MyAcount-icon/account-page'
 import AnunturiFavorite from './assets/Pages/Notifications-icon/notificari';
+import SearchPage from './assets/Pages/SearchPage/search-page';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/notifications' element={<Modal/>}/>
           <Route path="/account-page" element={<Account />} />
           <Route path="/anunturi-favorite" element={<AnunturiFavorite />} />
+          <Route path='/search-page' element={<SearchPage />}/>
         </Routes>
      
 
