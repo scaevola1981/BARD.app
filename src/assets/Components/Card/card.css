@@ -57,8 +57,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  height: auto;
+  height: 400px;
   border:1px solid #aeaeae;
   border-radius: 10px;
   box-shadow: 15px 25px 15px #c2c2c2fd;
@@ -69,10 +68,10 @@
 
 
 .card-img {
-  border-radius: 10px 10px 0 0;
+
   width: 60%;
   height: 60%;
-  padding-top: 10px;
+  /* padding-top: 10px; */
   object-fit: cover;
   
 }
@@ -84,7 +83,7 @@
 }
 
 .card-icon-heart {
-  margin:5px 0 5px 170px;
+  margin:5px 5px 5px 170px;
   color: #ff0404;
   font-size: 1.7rem;
 }
