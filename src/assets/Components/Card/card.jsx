@@ -8,7 +8,7 @@ const Card = ({ cardData }) => {
         <h2 className="cards-title">Anunturi promovate</h2>
       </div>
       <div className="cards-container">
-        {cardData.map((card) => (
+        {cardData.slice(0,8).map((card) => (
           <div key={card.key} className="container-card">
                <FaRegHeart className="card-icon-heart" />
             <img src={card.image} alt={card.title} className="card-img" />

@@ -1,3 +1,37 @@
 
+.search-title {
+  
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin: 40px;
+    
+}
 
+.search-title h2 {
+    font-weight: 200;
+    font-style: oblique;
+    font-weight: bold;
+}
 
+.search-page .for-title {
+    display: none;
+  }
+
+  .search-card {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+
+  .navbar {
+    margin-bottom: 60px;
+  }
+
+  .search-card p {
+    font-size: 1.2rem;
+  }
