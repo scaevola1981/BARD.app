@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import  Autocompletare from '../../Pages/Toata-Romania-input/autocompletare-orase'
+import  Autocompletare from '../../Components/Autocompletare/autocompletare-orase'
 import './NavBar.css';
 
 const NavBar = () => {
