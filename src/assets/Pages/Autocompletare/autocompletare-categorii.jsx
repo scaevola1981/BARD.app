@@ -1,5 +1,6 @@
 import { useState } from "react";
-import './autocompletare-orase.css';
+import './autocompletare-categorii.css';
+
 import categoriesData from '../../Components/Categories/categoriesData';
 
 // Funcția pentru eliminarea diacriticelor

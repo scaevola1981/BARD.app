@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './autocompletare.css'
+import './autocompletare-orase.css'
 
 const orase = [
     "Alba Iulia", "Arad", "Bacau", "Bistrita", "Botosani", "Brasov", 
