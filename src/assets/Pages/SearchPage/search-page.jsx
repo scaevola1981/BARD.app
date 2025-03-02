@@ -1,14 +1,14 @@
 import './search-page.css';
-import cardData from '../Card/cardData';
-import Card from '../Card/card';
+import cardData from '../../Components/Card/cardData';
+import Card from '../../Components/Card/card';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import Header from '../Header/header';
-import NavBar from '../NavBar/navBar';
-import Footer from '../Footer/footer';
+import Header from '../../Components/Header/header';
+import NavBar from '../../Components/NavBar/navBar';
+import Footer from '../../Components/Footer/footer';
 
-import Autocompletare from '../Autocompletare/autocompletare-orase';
-import AutocompletareCategorii from '../Autocompletare/autocompletare-categorii';
+
+
 
 const SearchPage = () => {
   const [carduriFiltrate, setCarduriFiltrate] = useState([]);
@@ -17,19 +17,9 @@ const SearchPage = () => {
   const searchTerm = queryParams.get('searchTerm') || '';
   const city = queryParams.get('city') || '';
 
-  //  Funcție pentru selectarea orașului
-  const handleCitySelect = (selectedCity) => {
-    const queryParams = new URLSearchParams(window.location.search);
-    queryParams.set('city', selectedCity);
-    window.history.pushState(null, '', `?${queryParams.toString()}`);
-  };
 
-  //  Funcție pentru selectarea categoriei
-  const handleSearchTermSelect = (selectedTerm) => {
-    const queryParams = new URLSearchParams(window.location.search);
-    queryParams.set('searchTerm', selectedTerm);
-    window.history.pushState(null, '', `?${queryParams.toString()}`);
-  };
+
+  
 
   useEffect(() => {
     if (!Array.isArray(cardData) || cardData.length === 0) {
@@ -73,8 +63,8 @@ const SearchPage = () => {
           <h2>Rezultatele căutării</h2>
         </div>
         <div className="search-filters">
-          <Autocompletare onSelect={handleCitySelect} />
-          <AutocompletareCategorii onSelect={handleSearchTermSelect} />
+           
+       
         </div>
         <div className="search-card">
           {carduriFiltrate.length > 0 ? (
