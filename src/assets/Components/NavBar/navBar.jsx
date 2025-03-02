@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import  Autocompletare from '../../Pages/Autocompletare/autocompletare-orase'
 import AutocompletareCategorii from '../../Pages/Autocompletare/autocompletare-categorii';
 
-import './NavBar.css';
+import './navBar.css';
 
 const NavBar = () => {
 
