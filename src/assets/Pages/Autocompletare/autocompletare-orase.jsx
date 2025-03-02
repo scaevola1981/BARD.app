@@ -12,7 +12,7 @@ const orase = [
 
 const Autocompletare = ({onSelect}) => {
   const [cautareTermeni, setCautareTermeni] = useState('');
-  const [filtrareOrase, setFiltrareOrase] = useState('');
+  const [filtrareOrase, setFiltrareOrase] = useState([]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
