@@ -1,0 +1,39 @@
+/* Stiluri pentru SearchPage */
+.searchPage {
+  padding: 20px;
+}
+
+.searchTitle {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin: 40px;
+}
+
+.searchTitle h2 {
+  font-weight: 200;
+  font-style: oblique;
+  font-weight: bold;
+}
+
+.forTitle {
+  display: none;
+}
+
+.searchCard {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.navBar {
+  margin-bottom: 60px;
+}
+
+.searchCard p {
+  font-size: 1.2rem;
+}

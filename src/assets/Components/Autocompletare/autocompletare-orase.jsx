@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import './autocompletare-orase.css'
+import styles from './autocompletare-orase.module.css';
 
 const orase = [
-    "Alba Iulia", "Arad", "Bacau", "Bistrita", "Botosani", "Brasov", 
+  "Alba Iulia", "Arad", "Bacau", "Bistrita", "Botosani", "Brasov", 
   "Braila", "Bucuresti", "Buzau", "Cluj-Napoca", "Calarasi", 
   "Constanta", "Craiova", "Falticeni", "Fagaras", "Giurgiu", 
   "Galati", "Iasi", "Timisoara", "Sibiu", "Ploiesti", "Satu Mare",
@@ -10,7 +10,7 @@ const orase = [
   "Targoviste", "Deva", "Slobozia", "Bacau", "Drobeta-Turnu Severin"
 ];
 
-const Autocompletare = ({onSelect}) => {
+const Autocompletare = ({ onSelect }) => {
   const [cautareTermeni, setCautareTermeni] = useState('');
   const [filtrareOrase, setFiltrareOrase] = useState([]);
 
@@ -38,23 +38,24 @@ const Autocompletare = ({onSelect}) => {
     if (e.key === 'Enter' && filtrareOrase.length > 0) {
       handleSelectCity(filtrareOrase[0]);
     }
-  }
+  };
 
   return (
-    <div className="autocompletare-container">
+    <div className={styles.autocompletareContainer}>
       <input
         type="text"
-        placeholder="Cauta oras.."
+        placeholder="
+        Toata Romania"
         value={cautareTermeni}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        className="autocompletare-input"
+        className={styles.autocompletareInput}
       />
 
       {filtrareOrase.length > 0 && (
-        <ul className="autocompletare-dropdown">
+        <ul className={styles.autocompletareDropdown}>
           {filtrareOrase.map((city, index) => (
-            <li key={index} onClick={() => handleSelectCity(city)}>
+            <li key={index} onClick={() => handleSelectCity(city)} className={styles.dropdownItem}>
               {city}
             </li>
           ))}
@@ -65,3 +66,4 @@ const Autocompletare = ({onSelect}) => {
 };
 
 export default Autocompletare;
+

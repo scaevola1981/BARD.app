@@ -5,7 +5,7 @@ import Chat from './assets/Pages/Chat/chat';
 import './index.css';
 import Favorite from './assets/Pages/Favorite-icon/favorite';
 import Modal from './assets/Components/Modal/modal-component';  
-import Account from './assets/Pages/MyAcount-icon/account-page'
+import Account from './assets/Pages/MyAccount-icon/account-page'
 import AnunturiFavorite from './assets/Pages/Notifications-icon/notificari';
 import SearchPage from './assets/Pages/SearchPage/search-page';
 
