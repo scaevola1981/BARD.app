@@ -1,4 +1,4 @@
-import './header.css';
+import styles from'./header.module.css';
 import {
   FaRegComment,
   FaRegHeart,
@@ -10,8 +10,8 @@ import {
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import CustomModal from '../Modal/modal-component';
-import '../../Pages/Notifications-icon/notificari-module.css';
-import '../../Pages/MyAcount-icon/account-module.css';
+import '../../Pages/Notifications-icon/notificari.module.css';
+import '../../Pages/MyAccount-icon/account.module.css';
 
 const Header = () => {
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
@@ -41,50 +41,50 @@ const Header = () => {
 
   return (
     <>
-      <div className="header-container">
-        <header className="header">
-          <div className="logo-container">
+      <div className={styles.headerContainer}>
+        <header className={styles.header}>
+          <div className={styles.logoContainer}>
             <img
-              className="logo-img"
+              className={styles.logoImg}
               src="./foto-icons/logo-5-app-bard.png"
               alt="Logo"
             />
           </div>
 
-          <div className="header-icons">
-            <Link to="/chat" className="chat-icon" aria-label="Chat">
-              <FaRegComment className="chat-icon-svg" />
-              <span className="chat-span">Chat</span>
+          <div className={styles.headerIcons}>
+            <Link to="/chat" className={styles.chatIcon} aria-label="Chat">
+              <FaRegComment className={styles.chatIconSvg} />
+              <span className={styles.chatSpan}>Chat</span>
             </Link>
 
             <Link
               to="/favorite"
-              className="favorite-icon"
+              className={styles.favoriteIcon}
               aria-label="Favorite"
             >
-              <FaRegHeart className="heart-icon" />
+              <FaRegHeart className={styles.heartIcon} />
             </Link>
 
             <button
               onClick={toggleNotificationModal}
-              className="notification-icon"
+              className={styles.notificationIcon}
               aria-label="Notificări"
             >
-              <FaRegBell className="bell-icon" />
+              <FaRegBell className={styles.bellIcon} />
             </button>
 
             <button
-              className="my-account-icon"
+              className={styles.myAccountIcon}
               aria-label="account"
               onClick={toggleAccountModal}
             >
-              <FaRegUser className="user-name-icon" />
-              <span className="account-span">Contul meu</span>
+              <FaRegUser className={styles.userNameIcon} />
+              <span className={styles.accountSpan}>Contul meu</span>
             </button>
           </div>
 
           <button
-            className="header-btn"
+            className={styles.headerBtn}
             aria-label="Login"
             onClick={toggleLoginModal}
           >
@@ -98,7 +98,7 @@ const Header = () => {
         title="Notificări"
         isOpen={isNotificationModalOpen}
         onClose={toggleNotificationModal}
-        className="notificari-header-modal"
+        className={styles.notificariHeaderModal}
       />
 
       {/* Modal Contul meu */}
@@ -106,7 +106,7 @@ const Header = () => {
         title="Contul meu"
         isOpen={isAccountModalOpen}
         onClose={toggleAccountModal}
-        className="account-header-modal"
+        className={styles.accountHeaderModal}
         position="top-right"
       />
 
@@ -115,11 +115,11 @@ const Header = () => {
         title="Autentificare"
         isOpen={isLoginModalOpen}
         onClose={toggleLoginModal}
-        className="login-header-modal"
+        className={styles.loginHeaderModal}
       >
-        <form className="login-form login-modal" onSubmit={handleLoginSubmit}>
+        <form className={`${styles.loginForm} ${styles.loginModal}`} onSubmit={handleLoginSubmit}>
           <h1>🫣 WELCOME </h1>
-          <div className="input-container">
+          <div className={styles.inputContainer}>
             <input
               type="text"
               placeholder=" Username"
@@ -127,9 +127,9 @@ const Header = () => {
               value={username}
               onChange={(e) => setUserName(e.target.value)}
             />
-            <FaUser className="icon" />
+            <FaUser className={styles.icon} />
           </div>
-          <div className="input-container">
+          <div className={styles.inputContainer}>
             <input
               type="password"
               placeholder="Parola"
@@ -137,9 +137,9 @@ const Header = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <FaLock className="icon" />
+            <FaLock className={styles.icon} />
           </div>
-          <div className="remember-forgot">
+          <div className={styles.rememberForgot}>
             <label>
               <input type="checkbox" />
               Remember me
@@ -147,11 +147,11 @@ const Header = () => {
             <a href="#">Forgot password</a>
           </div>
           
-          <button type="submit" className="login-btn">
+          <button type="submit" className={styles.loginBtn}>
             Autentificare
           </button>
 
-          <div className="register-link">
+          <div className={styles.registerLink}>
             <p>
               Don&apos;t have an account ? <a href="#">Register</a>
             </p>
@@ -163,4 +163,5 @@ const Header = () => {
 };
 
 export default Header;
+
 

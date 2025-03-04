@@ -1,6 +1,4 @@
-.custom-modal .modal-body {
+:global(.custom-modal) .modal-body {
   display: flex;
   justify-content: center;
-
-
 }

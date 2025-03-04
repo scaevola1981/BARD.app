@@ -1,5 +1,5 @@
 import { Modal, Button } from 'react-bootstrap';
-import './modal.css';
+import styles from './modal.module.css';
 
 const CustomModal = ({
   children,
@@ -8,26 +8,21 @@ const CustomModal = ({
   className,
   position,
 }) => {
-  const dialogClassName = 'custom-modal';
-
   return (
-    <>
-      <Modal
-        show={isOpen}
-        onHide={onClose}
-        backdrop={false}
-        dialogClassName={`custom-modal, account-modal ${dialogClassName}`}
-        className={` ${className}`}
-        container={document.body}
-        position={position}
-      >
-        <Modal.Body>{children}</Modal.Body>
-  
-        <Button className='account-modal-btn' variant="secondary" onClick={onClose}>
-          Close
-        </Button>
-      </Modal>
-    </>
+    <Modal
+      show={isOpen}
+      onHide={onClose}
+      backdrop={false}
+      dialogClassName={`${styles.customModal} ${styles.accountModal}`}
+      className={className}
+      container={document.body}
+      position={position}
+    >
+      <Modal.Body className={styles.modalBody}>{children}</Modal.Body>
+      <Button className={styles.accountModalBtn} variant="secondary" onClick={onClose}>
+        Close
+      </Button>
+    </Modal>
   );
 };
 

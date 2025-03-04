@@ -1,90 +1,83 @@
 import Header from '../../Components/Header/header';
 import { FaTrash, FaBookmark, FaTruck } from 'react-icons/fa';
-import './chat.css';
-
+import styles from './chat.module.css';  
 
 const Chat = () => {
   return (
-    <div className="chat-page-container">
+    <div className={styles.chatPageContainer}>
       <Header />
 
-      <div className="navBar-chat-container">
-        
+      <div className={styles.navBarChatContainer}>
         <p>De lucrat pe viitor (adaugare continut) !!</p>
-        <nav className="navBar-chat">
-          <button className="myAds-btn">Anunturile mele</button>
-          <button className="chat-btn">Chat</button>
-          <button className="exchanges-btn">Schimburi</button>
-          <button className="ratings-btn">Ratinguri</button>
-          <button className="delivery-btn">
-            <FaTruck className="truck-icon-btn" />
+        <nav className={styles.navBarChat}>
+          <button className={styles.myAdsBtn}>Anunțurile mele</button>
+          <button className={styles.chatBtn}>Chat</button>
+          <button className={styles.exchangesBtn}>Schimburi</button>
+          <button className={styles.ratingsBtn}>Ratinguri</button>
+          <button className={styles.deliveryBtn}>
+            <FaTruck className={styles.truckIconBtn} />
             Curier
           </button>
-          <button className="clientProfile-btn">Profil client</button>
-          <button className="chatSetings-btn">Setari</button>
+          <button className={styles.clientProfileBtn}>Profil client</button>
+          <button className={styles.chatSettingsBtn}>Setări</button>
         </nav>
       </div>
 
-      <div className="chat-container">
-        <div className="favoritIcon-trashIcon-container">
-          <button className="favorites-btn">
-            <FaBookmark className="favorites-icon" />
+      <div className={styles.chatContainer}>
+        <div className={styles.favoritIconTrashIconContainer}>
+          <button className={styles.favoritesBtn}>
+            <FaBookmark className={styles.favoritesIcon} />
             <span>Favorite</span>
           </button>
-          <button className="recycleBin-btn">
-            <FaTrash className="recycleBin-icon" />
-            <span>Mesaje sterse</span>
+          <button className={styles.recycleBinBtn}>
+            <FaTrash className={styles.recycleBinIcon} />
+            <span>Mesaje șterse</span>
           </button>
-          <div className="customerList-container">
-            <button className="change-btn">Schimbat</button>
-            <button className="forChange-btn">De schimbat</button>
+          <div className={styles.customerListContainer}>
+            <button className={styles.changeBtn}>Schimbat</button>
+            <button className={styles.forChangeBtn}>De schimbat</button>
             <img
-              className="icon-list-chat"
-              src="public/foto-icons/icon-mesagerie.jpg"
-              alt=""
+              className={styles.iconListChat}
+              src="/foto-icons/icon-mesagerie.jpg"  // Evită folosirea "public/"
+              alt="Mesagerie"
             />
-            <p className='para-title'>Deocamdată nu sunt conversații în curs</p>
-            <p> 
-            Când un cumpărător începe o conversație cu tine, ea apare <br />
-            Dacă ai ceva de vândut sau un serviciu de oferit, începe publicând
-            un anunț
+            <p className={styles.paraTitle}>Deocamdată nu sunt conversații în curs</p>
+            <p>
+              Când un cumpărător începe o conversație cu tine, ea apare <br />
+              Dacă ai ceva de vândut sau un serviciu de oferit, începe publicând
+              un anunț.
             </p>
-         
           </div>
         </div>
 
-        <div className="chatMessage-container">
-          <div className="photo-para-container">
+        <div className={styles.chatMessageContainer}>
+          <div className={styles.photoParaContainer}>
             <img
-              className="icon-chat"
-              src="public/foto-icons/icon-mesagerie.jpg"
-              alt=""
+              className={styles.iconChat}
+              src="/foto-icons/icon-mesagerie.jpg"
+              alt="Selectează o conversație"
             />
             <p>Selectează o conversație pentru a o citi</p>
           </div>
         </div>
       </div>
       <hr />
-     <div className="footer-chat-page">
-     <p>
-          Aplicatii mobilebr <br /> Ajutor si contact <br /> Anunturi promovate{' '}
-          <br /> BARD marketplace <br />
-          Citeste blog-ul BARD.ro <br />
-          Conditii de utilizare <br /> Politica de confidentialitate <br />
-          Preturi de publicitate <br /> Liste de preturi <br /> ANPC <br />
-          Academia de Business <br /> Livrare prin BARD <br /> Informatii Ordin
-          225/2023 <br />
+
+      <div className={styles.footerChatPage}>
+        <p>
+          Aplicații mobile <br /> Ajutor și contact <br /> Anunțuri promovate <br />
+          BARD marketplace <br /> Citește blog-ul BARD.ro <br /> Condiții de utilizare <br />
+          Politica de confidențialitate <br /> Prețuri de publicitate <br /> Liste de prețuri <br />
+          ANPC <br /> Academia de Business <br /> Livrare prin BARD <br /> Informații Ordin 225/2023 <br />
         </p>
         <p>
-          Recompense Vânzãtor <br /> Cum să te ferești de phishing <br /> Harta
-          site <br /> Harta judetelor <br /> Harta mini-site-urilor <br />{' '}
-          Căutări frecvente <br /> Cariere in BARD.app <br /> Cum functioneaza?{' '}
-          <br /> How to BARD <br /> Bun de angajat <br /> Politica privind
-          cookie-urile <br />
-          Setări Cookies
+          Recompense Vânzător <br /> Cum să te ferești de phishing <br /> Harta site <br />
+          Harta județelor <br /> Harta mini-site-urilor <br /> Căutări frecvente <br />
+          Cariere în BARD.app <br /> Cum funcționează? <br /> How to BARD <br />
+          Bun de angajat <br /> Politica privind cookie-urile <br /> Setări Cookies
         </p>
-        <img src="./foto-icons/google & appStore icons.jpg" alt="" />
-     </div>
+        <img src="/foto-icons/google-&-appStore-icons.jpg" alt="App Store și Google Play" />
+      </div>
     </div>
   );
 };

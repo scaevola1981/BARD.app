@@ -1,14 +1,11 @@
-import './search-page.css';
-import cardData from '../../Components/Card/cardData';
-import Card from '../../Components/Card/card';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import cardData from '../../Components/Card/cardData';
+import Card from '../../Components/Card/card';
 import Header from '../../Components/Header/header';
 import NavBar from '../../Components/NavBar/navBar';
 import Footer from '../../Components/Footer/footer';
-
-
-
+import styles from './search-page.module.css';  // Importă stilurile CSS Module
 
 const SearchPage = () => {
   const [carduriFiltrate, setCarduriFiltrate] = useState([]);
@@ -16,10 +13,6 @@ const SearchPage = () => {
   const queryParams = new URLSearchParams(search);
   const searchTerm = queryParams.get('searchTerm') || '';
   const city = queryParams.get('city') || '';
-
-
-
-  
 
   useEffect(() => {
     if (!Array.isArray(cardData) || cardData.length === 0) {
@@ -55,29 +48,27 @@ const SearchPage = () => {
   }, [searchTerm, city]);
 
   return (
-    <>
-      <div className="search-page">
-        <Header />
-        <NavBar />
-        <div className="search-title">
-          <h2>Rezultatele căutării</h2>
-        </div>
-        <div className="search-filters">
-           
-       
-        </div>
-        <div className="search-card">
-          {carduriFiltrate.length > 0 ? (
-            <Card cardData={carduriFiltrate} />
-          ) : (
-            <p>🤔 Nu s-au găsit rezultate pentru căutarea ta!</p>
-          )}
-        </div>
-        <Footer />
+    <div className={styles.searchPage}>
+      <Header />
+      <NavBar />
+      <div className={styles.searchTitle}>
+        <h2>Rezultatele căutării</h2>
       </div>
-    </>
+      <div className={styles.searchFilters}>
+        {/* Poți adăuga filtre de căutare aici, dacă dorești */}
+      </div>
+      <div className={styles.searchCard}>
+        {carduriFiltrate.length > 0 ? (
+          <Card cardData={carduriFiltrate} />
+        ) : (
+          <p>🤔 Nu s-au găsit rezultate pentru căutarea ta!</p>
+        )}
+      </div>
+      <Footer />
+    </div>
   );
 };
 
 export default SearchPage;
+
 
