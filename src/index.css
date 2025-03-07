@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #fff !important;
+  background-color: #ffffff !important ;
   font-family: 'Inter' ,sans-serif;
 }
 
@@ -17,13 +17,13 @@ html, body {
   overflow-x: hidden;
   font-family: 'Inter', sans-serif;
 }
-
+ 
 .header-container, .navbar-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-}
+} 
 
 
 

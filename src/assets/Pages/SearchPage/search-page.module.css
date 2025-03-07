@@ -1,6 +1,8 @@
 /* Stiluri pentru SearchPage */
 .searchPage {
-  padding: 20px;
+
+  width: 100%;
+  height: auto;
 }
 
 .searchTitle {
@@ -21,13 +23,9 @@
 }
 
 .searchCard {
-  display: flex;
+  
   width: 100%;
   height: auto;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 50px;
 }
 
 .navBar {

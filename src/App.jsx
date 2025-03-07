@@ -22,6 +22,7 @@ function App() {
           <Route path="/account-page" element={<Account />} />
           <Route path="/anunturi-favorite" element={<AnunturiFavorite />} />
           <Route path='/search-page' element={<SearchPage />}/>
+          <Route path='/anunturi' element={<SearchPage/>}/>
         </Routes>
      
 
