@@ -42,28 +42,38 @@ const NavBar = () => {
     setJudet(selectedCity);
   };
 
+  const goToAddPostForm = () => {
+    navigate('/addPostForm');
+  }
+
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.inputGroup}>
-        <Autocompletare
-          onSelect={handleCitySelect}
-          onChange={(e) => setJudet(e.target.value)}
-          value={judet}
-          onKeyDown={handleKeyDown}
-        />
-        <AutocompletareCategorii
-          onSelect={handleSearchTermSelect}
-          onChange={(e) => setTermeniCautare(e.target.value)}
-          onKeyDown={handleKeyDown}
-          value={termeniCautare}
-          placeholder="Ce cauți?"
-        />
-        <button className={styles.searchBtn} onClick={handleSearch}>
-          Caută
-          <span className={styles.searchIcon}>🔍</span>
+    <>
+     <button className={styles.addPostBtn} onClick={goToAddPostForm}>
+          Adaugă Anunț
         </button>
-      </div>
-    </nav>
+      <nav className={styles.navbar}>
+        <div className={styles.inputGroup}>
+          <Autocompletare
+            onSelect={handleCitySelect}
+            onChange={(e) => setJudet(e.target.value)}
+            value={judet}
+            onKeyDown={handleKeyDown}
+          />
+          <AutocompletareCategorii
+            onSelect={handleSearchTermSelect}
+            onChange={(e) => setTermeniCautare(e.target.value)}
+            onKeyDown={handleKeyDown}
+            value={termeniCautare}
+            placeholder="Ce cauți?"
+          />
+          <button className={styles.searchBtn} onClick={handleSearch}>
+            Caută
+            <span className={styles.searchIcon}>🔍</span>
+          </button>
+        </div>
+       
+      </nav>
+    </>
   );
 };
 

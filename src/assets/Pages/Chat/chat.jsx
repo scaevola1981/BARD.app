@@ -26,7 +26,7 @@ const Chat = () => {
               <button className={styles.forChangeBtn}>De schimbat</button>
               <img
                 className={styles.iconListChat}
-                src="/foto-icons/icon-mesagerie.jpg" // Evită folosirea "public/"
+                src="/foto-icons/icon-mesagerie.jpg" 
                 alt="Mesagerie"
               />
               <p className={styles.paraTitle}>
