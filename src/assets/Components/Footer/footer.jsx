@@ -66,8 +66,8 @@ const Footer = () => {
 
         <div className={styles.flagContainer}>
           <p>
-            🇧🇬 BARD.bg 🇵🇱 BARD.pl 🇺🇦 BARD.ua 🇵🇹 BARD.pt 🇷🇴Autovit.ro 🇷🇴Storia.ro
-            🇷🇴BARD Business
+            🇧🇬 EXVERO.bg 🇵🇱 EXVERO.pl 🇺🇦 EXVERO.ua 🇵🇹 EXVERO.pt 🇷🇴Autovit.ro 🇷🇴Storia.ro
+            🇷🇴EXVERO Business
           </p>
         </div>
       </div>

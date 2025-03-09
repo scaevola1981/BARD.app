@@ -5,7 +5,7 @@ const Card = ({ cardData }) => {
   return (
     <>
       <div className={styles.forTitle}>
-        <h2 className={styles.cardsTitle}>Anunturi promovate</h2>
+        <h2 className={styles.cardsTitle}>Anunturi</h2>
       </div>
       <div className={styles.cardsContainer}>
         {cardData.slice(0, 8).map((card) => (

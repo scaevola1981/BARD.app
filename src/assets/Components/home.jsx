@@ -5,6 +5,7 @@ import Card from './Card/card';
 import Footer from './Footer/footer';
 import categoriesData from './Categories/categoriesData';
 import cardData from './Card/cardData';
+import AddPostForm from '../Pages/FormAddPost/AddPostForm';
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Navbar />
       <Categories categories={categoriesData} />
       <Card cardData={cardData} />
+      <AddPostForm/>
       <Footer />
     </>
   );

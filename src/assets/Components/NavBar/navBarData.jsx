@@ -7,7 +7,7 @@ const judete = [
         eventDescription: "Târg de imobiliare în Alba.",
         categories: ["Imobiliare"],
         title: "Anunțuri în Alba",
-        image: "https://example.com/images/alba.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/alba.jpg" 
       },
       {
         id: 2,
@@ -17,7 +17,7 @@ const judete = [
         eventDescription: "Vânzare de echipamente IT în Arad.",
         categories: ["IT și Software"],
         title: "Anunțuri în Arad",
-        image: "https://example.com/images/arad.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/arad.jpg" 
       },
       {
         id: 3,
@@ -27,7 +27,7 @@ const judete = [
         eventDescription: "Eveniment de modă în Pitești.",
         categories: ["Modă"],
         title: "Anunțuri în Argeș",
-        image: "https://example.com/images/arges.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/arges.jpg" 
       },
       {
         id: 4,
@@ -37,7 +37,7 @@ const judete = [
         eventDescription: "Târg de electronice în Bacău.",
         categories: ["Electronice"],
         title: "Anunțuri în Bacău",
-        image: "https://example.com/images/bacau.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/bacau.jpg" 
       },
       {
         id: 5,
@@ -47,7 +47,7 @@ const judete = [
         eventDescription: "Expoziție de produse alimentare în Oradea.",
         categories: ["Produse Alimentare"],
         title: "Anunțuri în Bihor",
-        image: "https://example.com/images/bihor.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/bihor.jpg" 
       },
       {
         id: 6,
@@ -57,7 +57,7 @@ const judete = [
         eventDescription: "Târg de animale de companie în Bistrița.",
         categories: ["Animale"],
         title: "Anunțuri în Bistrița-Năsăud",
-        image: "https://example.com/images/bistrita.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/bistrita.jpg" 
       },
       {
         id: 7,
@@ -67,7 +67,7 @@ const judete = [
         eventDescription: "Eveniment de imobiliare în Brașov.",
         categories: ["Imobiliare"],
         title: "Anunțuri în Brașov",
-        image: "https://example.com/images/brasov.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/brasov.jpg" 
       },
       {
         id: 8,
@@ -77,7 +77,7 @@ const judete = [
         eventDescription: "Conferință IT în București.",
         categories: ["IT și Software"],
         title: "Anunțuri în București",
-        image: "https://example.com/images/bucuresti.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/bucuresti.jpg" 
       },
       {
         id: 9,
@@ -87,7 +87,7 @@ const judete = [
         eventDescription: "Târg de modă în Cluj-Napoca.",
         categories: ["Modă"],
         title: "Anunțuri în Cluj",
-        image: "https://example.com/images/cluj.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/cluj.jpg" 
       },
       {
         id: 10,
@@ -97,7 +97,7 @@ const judete = [
         eventDescription: "Eveniment echipamente IT în Constanța.",
         categories: ["Echipamente"],
         title: "Anunțuri în Constanța",
-        image: "https://example.com/images/constanta.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/constanta.jpg" 
       },
     
       {
@@ -108,7 +108,7 @@ const judete = [
         eventDescription: "Eveniment imobiliare în Craiova.",
         categories: ["Imobiliare"],
         title: "Anunțuri în Dolj",
-        image: "https://example.com/images/dolj.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/dolj.jpg" 
       },
       {
         id: 12,
@@ -118,7 +118,7 @@ const judete = [
         eventDescription: "Expoziție electronice în Galați.",
         categories: ["Electronice"],
         title: "Anunțuri în Galați",
-        image: "https://example.com/images/galati.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/galati.jpg" 
       },
       {
         id: 13,
@@ -128,7 +128,7 @@ const judete = [
         eventDescription: "Eveniment de modă în Iași.",
         categories: ["Modă"],
         title: "Anunțuri în Iași",
-        image: "https://example.com/images/iasi.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/iasi.jpg" 
       },
       {
         id: 14,
@@ -138,7 +138,7 @@ const judete = [
         eventDescription: "Târg de animale de companie în Ilfov.",
         categories: ["Animale"],
         title: "Anunțuri în Ilfov",
-        image: "https://example.com/images/ilfov.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/ilfov.jpg" 
       },
       {
         id: 15,
@@ -148,7 +148,7 @@ const judete = [
         eventDescription: "Eveniment echipamente IT în Baia Mare.",
         categories: ["Echipamente"],
         title: "Anunțuri în Maramureș",
-        image: "https://example.com/images/maramures.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/maramures.jpg"
       },
       {
         id: 16,
@@ -158,7 +158,7 @@ const judete = [
         eventDescription: "Expoziție de imobiliare în Drobeta-Turnu Severin.",
         categories: ["Imobiliare"],
         title: "Anunțuri în Mehedinți",
-        image: "https://example.com/images/mehedinti.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/mehedinti.jpg"
       },
       {
         id: 17,
@@ -168,7 +168,7 @@ const judete = [
         eventDescription: "Târg de produse alimentare în Târgu Mureș.",
         categories: ["Produse Alimentare"],
         title: "Anunțuri în Mureș",
-        image: "https://example.com/images/mures.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/mures.jpg"
       },
       {
         id: 18,
@@ -178,7 +178,7 @@ const judete = [
         eventDescription: "Eveniment de modă în Piatra Neamț.",
         categories: ["Modă"],
         title: "Anunțuri în Neamț",
-        image: "https://example.com/images/neamt.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/neamt.jpg"
       },
       {
         id: 19,
@@ -188,7 +188,7 @@ const judete = [
         eventDescription: "Vânzare de electronice în Slatina.",
         categories: ["Electronice"],
         title: "Anunțuri în Olt",
-        image: "https://example.com/images/olt.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/olt.jpg"
       },
       {
         id: 20,
@@ -198,7 +198,7 @@ const judete = [
         eventDescription: "Târg imobiliare în Ploiești.",
         categories: ["Imobiliare"],
         title: "Anunțuri în Prahova",
-        image: "https://example.com/images/prahova.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/prahova.jpg"
       },
       {
         id: 21,
@@ -208,7 +208,7 @@ const judete = [
         eventDescription: "Expoziție de produse locale în Zalău.",
         categories: ["Produse locale"],
         title: "Anunțuri în Sălaj",
-        image: "https://example.com/images/salaj.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/salaj.jpg"
       },
       {
         id: 22,
@@ -218,7 +218,7 @@ const judete = [
         eventDescription: "Festival de muzică în Sibiu.",
         categories: ["Muzică"],
         title: "Anunțuri în Sibiu",
-        image: "https://example.com/images/sibiu.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/sibiu.jpg"
       },
       {
         id: 23,
@@ -228,7 +228,7 @@ const judete = [
         eventDescription: "Târg de artizanat în Suceava.",
         categories: ["Artizanat"],
         title: "Anunțuri în Suceava",
-        image: "https://example.com/images/suceava.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/suceava.jpg"
       },
       {
         id: 24,
@@ -238,7 +238,7 @@ const judete = [
         eventDescription: "Festival al culturii în Alexandria.",
         categories: ["Cultură"],
         title: "Anunțuri în Teleorman",
-        image: "https://example.com/images/teleorman.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/teleorman.jpg"
       },
       {
         id: 25,
@@ -248,7 +248,7 @@ const judete = [
         eventDescription: "Eveniment gastronomic în Timișoara.",
         categories: ["Gastronomie"],
         title: "Anunțuri în Timiș",
-        image: "https://example.com/images/timis.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/timis.jpg"
       },
       {
         id: 26,
@@ -258,7 +258,7 @@ const judete = [
         eventDescription: "Expoziție de pește în Tulcea.",
         categories: ["Pește și produse marine"],
         title: "Anunțuri în Tulcea",
-        image: "https://example.com/images/tulcea.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/tulcea.jpg"
       },
       {
         id: 27,
@@ -268,7 +268,7 @@ const judete = [
         eventDescription: "Târg de produse tradiționale în Vaslui.",
         categories: ["Produse tradiționale"],
         title: "Anunțuri în Vaslui",
-        image: "https://example.com/images/vaslui.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/vaslui.jpg"
       },
       {
         id: 28,
@@ -278,7 +278,7 @@ const judete = [
         eventDescription: "Festival de teatru în Râmnicu Vâlcea.",
         categories: ["Teatru"],
         title: "Anunțuri în Vâlcea",
-        image: "https://example.com/images/valcea.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/valcea.jpg"
       },
       {
         id: 29,
@@ -288,7 +288,7 @@ const judete = [
         eventDescription: "Festival gastronomic în Zalău.",
         categories: ["Gastronomie"],
         title: "Anunțuri în Zalău",
-        image: "https://example.com/images/zalau.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/zalau.jpg"
       },
       {
         id: 30,
@@ -298,7 +298,7 @@ const judete = [
         eventDescription: "Târg de antichități în Alba Iulia.",
         categories: ["Antichități"],
         title: "Anunțuri în Alba Iulia",
-        image: "https://example.com/images/albaiulia.jpg" // Exemplu de fotografie
+        image: "https://example.com/images/albaiulia.jpg"
       }
 ];
 

@@ -8,12 +8,13 @@
 
 body {
   font-family: 'Inter', sans-serif;
+
 }
 
 .navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  
+height: auto;
+ width: 100%;
 }
 
 .inputGroup {
@@ -103,4 +104,20 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+.addPostBtn {
+  background-color: #007bff; 
+  color: white; 
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  border: none; 
+  transition: background-color 0.3s ease; 
+  
+}
+
+.addPostBtn:hover {
+  background-color: #0056b3; 
 }

@@ -10,6 +10,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import CustomModal from '../Modal/modal-component';
+import userEntity from '../../../../server/api/user.entity';
 import '../../Pages/Notifications-icon/notificari.module.css';
 import '../../Pages/MyAccount-icon/account.module.css';
 
@@ -32,12 +33,37 @@ const Header = () => {
     setIsLoginModalOpen(!isLoginModalOpen);
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    toggleLoginModal();
+  
+    // Pregătim datele pentru login
+    const payload = {
+      email: username,
+      password: password,
+    };
+  
+    // Apelarea API-ul pentru autentificare
+    const response = await userEntity.signIn(payload);
+  
+    if (response.success) {
+      console.log('User logged in:', response.data);
+  
+      // Salvarea token-ul în localStorage (pentru menținerea sesiunii)
+      localStorage.setItem('token', response.data.idToken);
+      alert('Login successful!');
+  
+      // Închiderea modalul
+      toggleLoginModal();
+    } else {
+      console.error('Login failed:', response.message);
+      alert('Login failed: ' + response.message);
+    }
+  
+    // Curatare inputurilor 
     setUserName('');
     setPassword('');
   };
+  
 
   return (
     <>

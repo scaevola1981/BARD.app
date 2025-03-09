@@ -19,7 +19,7 @@ const CustomModal = ({
       position={position}
     >
       <Modal.Body className={styles.modalBody}>{children}</Modal.Body>
-      <Button className={styles.accountModalBtn} variant="secondary" onClick={onClose}>
+      <Button className={styles.accountModalBtn} variant="primary" onClick={onClose}>
         Close
       </Button>
     </Modal>
