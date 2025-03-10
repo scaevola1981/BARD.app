@@ -313,9 +313,10 @@ body {
   font-size: 1.5rem;
 }
 
-.registerLink p {
+.registerBtn{
   display: flex;
   width: 500px;
   height: auto;
-  justify-content: space-between;
+  margin-top: 20px;
+
 }
