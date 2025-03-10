@@ -9,7 +9,7 @@ const Card = ({ cardData }) => {
       </div>
       <div className={styles.cardsContainer}>
         {cardData.slice(0, 8).map((card) => (
-          <div key={card.key} className={styles.containerCard}>
+          <div key={card.id} className={styles.containerCard}>
            
             <img src={card.image} alt={card.title} className={styles.cardImg} />
             <h2 className={styles.cardTitle}>{card.title}</h2>

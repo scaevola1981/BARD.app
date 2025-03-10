@@ -10,9 +10,10 @@ import {
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import CustomModal from '../Modal/modal-component';
-import userEntity from '../../../../server/api/user.entity';
+
 import '../../Pages/Notifications-icon/notificari.module.css';
 import '../../Pages/MyAccount-icon/account.module.css';
+import Api from '../../../api';
 
 const Header = () => {
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
@@ -43,7 +44,7 @@ const Header = () => {
     };
   
     // Apelarea API-ul pentru autentificare
-    const response = await userEntity.signIn(payload);
+    const response = await Api.user.signIn(payload);
   
     if (response.success) {
       console.log('User logged in:', response.data);
@@ -114,7 +115,7 @@ const Header = () => {
             aria-label="Login"
             onClick={toggleLoginModal}
           >
-            Login
+            Inregistrare
           </button>
         </header>
       </div>

@@ -48,9 +48,11 @@ const NavBar = () => {
 
   return (
     <>
-     <button className={styles.addPostBtn} onClick={goToAddPostForm}>
-          Adaugă Anunț
-        </button>
+     <div className={styles.btnContainer}>
+       <button className={styles.addPostBtn} onClick={goToAddPostForm}>
+            Adaugă Anunț
+          </button>
+     </div>
       <nav className={styles.navbar}>
         <div className={styles.inputGroup}>
           <Autocompletare
