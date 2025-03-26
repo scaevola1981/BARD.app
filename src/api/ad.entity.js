@@ -1,32 +1,69 @@
-import { dbInstance } from './config';
+import { dbInstance } from './config'; // Importă instanța Axios configurată pentru baza de date
 
 const adEntity = {
-  // Tip : CRUD (CREATE / READ / UPDATE / DELETE)
+  /**
+   * Creează un nou anunț în baza de date
+   * @param {Object} payload - Obiectul cu datele anunțului
+   * @returns {Object} - Obiect cu rezultatul operației (data și success status)
+   */
   create: async (payload) => {
     try {
-      // Trimite datele formularului către API-ul backend
+      // Trimite cererea POST către endpoint-ul '/ads.json' cu payload-ul primit
       const response = await dbInstance.post('/ads.json', payload);
-   
-
+      
+      // Loghează răspunsul pentru debugging (dezvoltare only)
       console.log(response);
+      
       return {
         data: {
-       
+          // Aici poți include date relevante din răspuns
+          // De exemplu: id: response.data.name (pentru Firebase)
         },
-        success: true,
+        success: true, // Indică succesul operației
       };
     } catch (error) {
+      // Loghează eroarea în consolă
       console.log(`[API]: Failed to create the ad - error:${error.message}`);
+      
       return {
-        data: null,
-        success: false,
+        data: null, // Nu există date în caz de eroare
+        success: false, // Indică eșecul operației
       };
     }
   },
-  readById: () => {},
-  readAll: () => {},
-  update: () => {},
-  deleById: () => {},
+
+  /**
+   * Citește un anunț specific după ID
+   * @param {string} id - ID-ul anunțului
+   */
+  readById: () => {
+    // Implementare viitoare
+  },
+
+  /**
+   * Citește toate anunțurile disponibile
+   */
+  readAll: () => {
+    // Implementare viitoare
+  },
+
+  /**
+   * Actualizează un anunț existent
+   * @param {string} id - ID-ul anunțului
+   * @param {Object} updates - Obiectul cu actualizările
+   */
+  update: () => {
+    // Implementare viitoare
+  },
+
+  /**
+   * Șterge un anunț după ID
+   * @param {string} id - ID-ul anunțului de șters
+   */
+  deleteById: () => {
+    // Implementare viitoare
+    // Observație: Există o greșeală de tipografie în numele funcției (deleById vs deleteById)
+  },
 };
 
 export default adEntity;
