@@ -15,10 +15,14 @@ const Header = () => {
   }
 
   const goToMyAccount = () => {
-    navigate('/account-page')
-  }
-
-  return (
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/account-page');
+    }else {
+      navigate('/authentification-page')
+    }
+   }
+   return (
     <div className={styles.headerContainer}>
       <header className={styles.header}>
         <div className={styles.logoContainer}>
@@ -30,8 +34,6 @@ const Header = () => {
         </div>
 
         <div className={styles.headerIcons}>
-          {/* Butonul Adaugă Anunț mutat aici */}
-
           <Link to="/chat" className={styles.chatIcon} aria-label="Chat">
             <FaRegComment className={styles.chatIconSvg} />
             <span className={styles.chatSpan}>Chat</span>
@@ -45,16 +47,16 @@ const Header = () => {
             <FaRegHeart className={styles.heartIcon} />
           </Link>
 
-          <button className={styles.notificationIcon} aria-label="Notificări" onClick={goToNotifications} >
+          <button className={styles.notificationIcon} aria-label="Notificări" onClick={goToNotifications}>
             <FaRegBell className={styles.bellIcon} />
           </button>
 
-          <Link to="/account-page">
-            <button className={styles.myAccountIcon} aria-label="account" onClick={ goToMyAccount}>
-              <FaRegUser className={styles.userNameIcon} />
-              <span className={styles.accountSpan}>Contul meu</span>
-            </button>
-          </Link>
+          {/* Elimină Link și păstrează doar butonul cu onClick */}
+          <button className={styles.myAccountIcon} aria-label="account" onClick={goToMyAccount}>
+            <FaRegUser className={styles.userNameIcon} />
+            <span className={styles.accountSpan}>Contul meu</span>
+          </button>
+
           <button className={styles.addPostBtn} onClick={goToAddPostForm}>
             Adaugă Anunț
           </button>

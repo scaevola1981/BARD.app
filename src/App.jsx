@@ -9,6 +9,7 @@ import SearchPage from './assets/Pages/SearchPage/search-page';
 import AddPostForm from './assets/Pages/FormAddPost/AddPostForm';
 import AuthLayout from './assets/Pages/AuthLayout/authentification-page';
 import AccountPage from './assets/Pages/MyAccount-icon/account-page';
+import RegisterPage from './assets/Pages/Register/register';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         <Route path="/authentification-page" element={<AuthLayout />} />
         <Route path='/account-page' element={<AccountPage />}/>
         <Route path='/notificari' element={<AnunturiFavorite/>}/>
-       
+        <Route path='/autentificare' element={<RegisterPage/>}/>
       </Routes>
     
   );

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 
+
 const RegisterPage = () => {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -16,7 +17,7 @@ const RegisterPage = () => {
       if (user) {
         const redirectTo = localStorage.getItem('redirectTo') || '/addPostForm';
         if (redirectTo) {
-          localStorage.remveItem('redirectTo');
+          localStorage.removeItem('redirectTo');
           navigate(redirectTo); 
         }
       
