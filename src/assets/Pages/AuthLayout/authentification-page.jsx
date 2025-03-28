@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Outlet, Link, useNavigate } from 'react-router-dom';
+import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaUser, FaLock, FaRedo } from 'react-icons/fa';
 import Api from '../../../api';
 import styles from './autentificare.module.css';
@@ -12,11 +12,20 @@ const AuthLayout = () => {
   const [passwordError, setPasswordError] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation(); // Adaugă această linie
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token);
-  }, []);
+    // Verificăm parametrul URL la încărcare
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.get('mode') === 'register') {
+      setIsRegistering(true);
+    }
+
+        // Verificăm autentificarea
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token);
+      }, [location]); // Adaugăm location ca dependency
+    
 
   const validatePassword = () => {
     if (isRegistering && password !== confirmPassword) {
@@ -41,13 +50,13 @@ const AuthLayout = () => {
     try {
       let response;
       if (isRegistering) {
-        response = await Api.user.register({
+        response = await Api.user.signUp({
           email: username,
           password,
           confirmPassword
         });
       } else {
-        response = await Api.user.login({
+        response = await Api.user.signIn({
           email: username,
           password
         });
