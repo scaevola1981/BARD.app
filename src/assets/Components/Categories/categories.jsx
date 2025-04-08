@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router';
 
 
 
-
-
 const Categories = ({ categories }) => {
 
    const navigate = useNavigate();

@@ -1,5 +1,7 @@
 import { dbInstance } from './config'; // Importă instanța Axios configurată pentru baza de date
 
+
+
 const adEntity = {
   /**
    * Creează un nou anunț în baza de date
@@ -8,16 +10,24 @@ const adEntity = {
    */
   create: async (payload) => {
     try {
+       
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        throw new Error('Utilizatorul nu este autentifcat.'); 
+      }
+
       // Trimite cererea POST către endpoint-ul '/ads.json' cu payload-ul primit
-      const response = await dbInstance.post('/ads.json', payload);
-      
+      const response = await dbInstance.post(`/ads.json`, payload);
+
+  
       // Loghează răspunsul pentru debugging (dezvoltare only)
       console.log(response);
       
       return {
         data: {
           // Aici poți include date relevante din răspuns
-          // De exemplu: id: response.data.name (pentru Firebase)
+          id: response.data.name,
         },
         success: true, // Indică succesul operației
       };

@@ -1,6 +1,7 @@
 import { Form, Button, Container, Alert } from 'react-bootstrap';
 import { useState } from 'react';
 import Api from '../../../api';
+import Header from '../../Components/Header/header';
 
 const AddPostForm = () => {
   const [formData, setFormData] = useState({
@@ -48,79 +49,76 @@ const AddPostForm = () => {
   };
 
   return (
-    <Container className="mt-4">
-      <h2>Adaugă un anunț</h2>
-      {success && <Alert variant="success">Anunț postat cu succes!</Alert>}
-      {error && <Alert variant="danger">{error}</Alert>}
-
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3">
-          <Form.Label>Titlu</Form.Label>
-          <Form.Control
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Județ</Form.Label>
-          <Form.Control
-            type="text"
-            name="county"
-            value={formData.county}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Oraș</Form.Label>
-          <Form.Control
-            type="text"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Descriere</Form.Label>
-          <Form.Control
-            as="textarea"
-            name="description"
-            rows={3}
-            value={formData.description}
-            onChange={handleChange}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Categorii (separate prin virgulă)</Form.Label>
-          <Form.Control
-            type="text"
-            name="categories"
-            value={formData.categories.join(', ')}
-            onChange={handleChange}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>URL Imagine</Form.Label>
-          <Form.Control
-            type="text"
-            name="image"
-            value={formData.image}
-            onChange={handleChange}
-          />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Postează anunț
-        </Button>
-      </Form>
-    </Container>
+    <>
+    <Header/>
+      <Container className="mt-4">
+        <h2>Adaugă un anunț</h2>
+        {success && <Alert variant="success">Anunț postat cu succes!</Alert>}
+        {error && <Alert variant="danger">{error}</Alert>}
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label>Titlu</Form.Label>
+            <Form.Control
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Județ</Form.Label>
+            <Form.Control
+              type="text"
+              name="county"
+              value={formData.county}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Oraș</Form.Label>
+            <Form.Control
+              type="text"
+              name="city"
+              value={formData.city}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Descriere</Form.Label>
+            <Form.Control
+              as="textarea"
+              name="description"
+              rows={3}
+              value={formData.description}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Categorii (separate prin virgulă)</Form.Label>
+            <Form.Control
+              type="text"
+              name="categories"
+              value={formData.categories.join(', ')}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>URL Imagine</Form.Label>
+            <Form.Control
+              type="text"
+              name="image"
+              value={formData.image}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Postează anunț
+          </Button>
+        </Form>
+      </Container>
+    </>
   );
 };
 

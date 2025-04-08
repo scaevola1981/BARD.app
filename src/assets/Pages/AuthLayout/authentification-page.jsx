@@ -3,6 +3,9 @@ import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaUser, FaLock, FaRedo } from 'react-icons/fa';
 import Api from '../../../api';
 import styles from './autentificare.module.css';
+import Header from '../../Components/Header/header'
+
+
 
 const AuthLayout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -12,7 +15,20 @@ const AuthLayout = () => {
   const [passwordError, setPasswordError] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation(); // Adaugă această linie
+  const location = useLocation(); 
+
+  useEffect(() => {
+    const justLoggedIn = localStorage.getItem('justLoggedIn');
+    const token = localStorage.getItem('token');
+  
+    if (token && justLoggedIn === 'true') {
+      setIsLoggedIn(true);
+      navigate('/account-page');
+      localStorage.removeItem('justLoggedIn'); // evită redirecționarea ulterioară
+    }
+  }, [navigate]);
+  
+  
 
   useEffect(() => {
     // Verificăm parametrul URL la încărcare
@@ -20,10 +36,10 @@ const AuthLayout = () => {
     if (searchParams.get('mode') === 'register') {
       setIsRegistering(true);
     }
-
+     
         // Verificăm autentificarea
         const token = localStorage.getItem('token');
-        setIsLoggedIn(!!token);
+        setIsLoggedIn(token);
       }, [location]); // Adaugăm location ca dependency
     
 
@@ -63,9 +79,11 @@ const AuthLayout = () => {
       }
 
       if (response.success) {
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', response.data.idToken);
+        localStorage.setItem('justLoggedIn', 'true');
+        alert(isRegistering ? 'Înregistrare reușită!' : 'Autentificare reușită!');
         setIsLoggedIn(true);
-        navigate('/account');
+        navigate('/account-page');
       } else {
         alert(response.message || 'Eroare la autentificare');
       }
@@ -81,14 +99,18 @@ const AuthLayout = () => {
     navigate('/');
   };
 
+
   return (
+     <>
+    <Header/>
+   
     <div className={styles.authLayout}>
       <header className={styles.header}>
         <h1 className={styles.logo}>Bun venit!</h1>
         <nav className={styles.nav}>
           {isLoggedIn ? (
             <>
-              <Link to="profile" className={styles.navLink}>Profil</Link>
+              <Link to="/account-page" className={styles.navLink}>Profil</Link>
               <button onClick={handleLogout} className={styles.logoutBtn}>
                 Deconectare
               </button>
@@ -110,7 +132,7 @@ const AuthLayout = () => {
         ) : (
           <div className={styles.authSection}>
             <h2 className={styles.authTitle}>
-              {isRegistering ? 'Înregistrare' : 'Autentificare'}
+              {isRegistering ? 'Înregistrare' : 'Login'}
             </h2>
             
             <form onSubmit={handleSubmit} className={styles.authForm}>
@@ -160,13 +182,14 @@ const AuthLayout = () => {
               )}
 
               <button type="submit" className={styles.submitBtn}>
-                {isRegistering ? 'Înregistrează-te' : 'Autentifică-te'}
+                {isRegistering ? 'Înregistrează-te' : 'Login'}
               </button>
             </form>
           </div>
         )}
       </main>
     </div>
+    </>
   );
 };
 
