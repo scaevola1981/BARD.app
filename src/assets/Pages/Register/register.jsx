@@ -1,95 +1,194 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Form, Button, Alert } from 'react-bootstrap';
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { useState, useEffect } from 'react';
+import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
+import { FaUser, FaLock, FaRedo } from 'react-icons/fa';
+import Api from '../../../api';
+import styles from './register.module.css';
 
-
-const RegisterPage = () => {
-  const [username, setUserName] = useState('');
+const AuthLayout = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [isRegistering, setIsRegistering] = useState(false);
   const navigate = useNavigate();
-  const auth = getAuth();
+  const location = useLocation(); 
 
+  // Verificăm dacă utilizatorul este deja logat și redirecționăm la /account-page
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const redirectTo = localStorage.getItem('redirectTo') || '/addPostForm';
-        if (redirectTo) {
-          localStorage.removeItem('redirectTo');
-          navigate(redirectTo); 
-        }
-      
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+      // Dacă nu suntem deja pe account-page, trimitem utilizatorul acolo
+      if (location.pathname !== '/account-page') {
+        navigate('/account-page');
       }
-    });
-  }, [auth, navigate]);
+    }
+  }, [location.pathname, navigate]);
 
-  const handleRegisterSubmit = async (e) => {
+  // Gestionăm comportamentul de autentificare și înregistrare
+  useEffect(() => {
+    // Verificăm dacă userul a activat înregistrarea
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.get('mode') === 'register') {
+      setIsRegistering(true);
+    }
+  }, [location.search]);
+
+  const validatePassword = () => {
+    if (isRegistering && password !== confirmPassword) {
+      setPasswordError('Parolele nu coincid');
+      return false;
+    }
+    if (password.length < 6) {
+      setPasswordError('Parola trebuie să aibă minim 6 caractere');
+      return false;
+    }
+    setPasswordError('');
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (password !== confirmPassword) {
-      setError('Parolele nu se potrivesc');
+    
+    if (isRegistering && !validatePassword()) {
       return;
     }
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, username, password);
-      localStorage.setItem('token', userCredential.user.accessToken);
-      alert('Înregistrare reușită!');
+      let response;
+      if (isRegistering) {
+        response = await Api.user.signUp({
+          email: username,
+          password,
+          confirmPassword
+        });
+      } else {
+        response = await Api.user.signIn({
+          email: username,
+          password
+        });
+      }
 
-      const redirectTo = localStorage.getItem('redirectTo') || '/addPostForm';
-      localStorage.removeItem('redirectTo');
-
-      navigate(redirectTo);
+      if (response.success) {
+        localStorage.setItem('token', response.data.idToken);
+        alert(isRegistering ? 'Înregistrare reușită!' : 'Autentificare reușită!');
+        setIsLoggedIn(true);
+        navigate('/account-page');
+      } else {
+        alert(response.message || 'Eroare la autentificare');
+      }
     } catch (error) {
-      setError(error.message);
+      console.error('Error:', error);
+      alert('A apărut o eroare');
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    navigate('/');
+  };
+
   return (
-    <div>
-      <h2>Înregistrare</h2>
-      {error && <Alert variant="danger">{error}</Alert>}
-      <Form onSubmit={handleRegisterSubmit}>
-        <Form.Group>
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Introduceti email-ul"
-            value={username}
-            onChange={(e) => setUserName(e.target.value)}
-            required
-          />
-        </Form.Group>
+    <div className={styles.authLayout}>
+      <header className={styles.header}>
+        <h1 className={styles.logo}>Bun venit!</h1>
+        <nav className={styles.nav}>
+          {isLoggedIn ? (
+            <>
+              <Link to="/account-page" className={styles.navLink}>Profil</Link>
+              <button onClick={handleLogout} className={styles.logoutBtn}>
+                Deconectare
+              </button>
+            </>
+          ) : (
+            <button 
+              onClick={() => setIsRegistering(!isRegistering)}
+              className={styles.toggleBtn}
+            >
+              {isRegistering ? 'Ai deja cont? Autentifică-te' : 'Nu ai cont? Înregistrează-te'}
+            </button>
+          )}
+        </nav>
+      </header>
 
-        <Form.Group>
-          <Form.Label>Parolă</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Introduceti parola"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </Form.Group>
+      <main className={styles.mainContent}>
+        {isLoggedIn ? (
+          <Outlet />
+        ) : (
+          <div className={styles.authSection}>
+            <h2 className={styles.authTitle}>
+              {isRegistering ? 'Înregistrare' : 'Login'}
+            </h2>
+            
+            <form onSubmit={handleSubmit} className={styles.authForm}>
+  <div className={styles.inputGroup}>
+    <FaUser className={styles.inputIcon} />
+    <input
+      type="email"
+      placeholder="Email"
+      value={username}
+      onChange={(e) => setUsername(e.target.value)}
+      required
+      className={styles.input}
+    />
+  </div>
 
-        <Form.Group>
-          <Form.Label>Confirmă Parola</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Confirmă parola"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </Form.Group>
+  <div className={styles.inputGroup}>
+    <FaLock className={styles.inputIcon} />
+    <input
+      type="password"
+      placeholder="Parolă"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      required
+      className={styles.input}
+      minLength="6"
+    />
+  </div>
 
-        <Button type="submit">Înregistrează-te</Button>
-      </Form>
+  {isRegistering && (
+    <>
+      <div className={styles.inputGroup}>
+        <FaRedo className={styles.inputIcon} />
+        <input
+          type="password"
+          placeholder="Repetă parola"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+          className={styles.input}
+          minLength="6"
+        />
+      </div>
+      {passwordError && (
+        <p className={styles.errorText}>{passwordError}</p>
+      )}
+    </>
+  )}
+
+  <button type="submit" className={styles.submitBtn}>
+    {isRegistering ? 'Înregistrează-te' : 'Login'}
+  </button>
+
+  {/* ⬇️ Butonul mutat aici */}
+  <button 
+    type="button"
+    onClick={() => setIsRegistering(!isRegistering)}
+    className={styles.toggleBtn}
+  >
+    {isRegistering ? 'Ai deja cont? Autentifică-te' : 'Nu ai cont? Înregistrează-te'}
+  </button>
+</form>
+
+          </div>
+        )}
+      </main>
     </div>
   );
 };
 
-export default RegisterPage;
+export default AuthLayout;
+
 
