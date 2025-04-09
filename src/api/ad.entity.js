@@ -13,6 +13,7 @@ const adEntity = {
        
       const token = localStorage.getItem('token');
 
+
       if (!token) {
         throw new Error('Utilizatorul nu este autentifcat.'); 
       }
@@ -35,6 +36,7 @@ const adEntity = {
       // Loghează eroarea în consolă
       console.log(`[API]: Failed to create the ad - error:${error.message}`);
       
+
       return {
         data: null, // Nu există date în caz de eroare
         success: false, // Indică eșecul operației
@@ -53,11 +55,39 @@ const adEntity = {
   /**
    * Citește toate anunțurile disponibile
    */
-  readAll: () => {
-    // Implementare viitoare
+  readAll: async () => {
+    try {
+      const response = await dbInstance.get('/ads.json');
+  
+      if (!response.data) {
+        return {
+          data: [],
+          success: true,
+        };
+      }
+  
+      // Transformă obiectul Firebase într-un array de anunțuri
+      const adsArray = Object.entries(response.data).map(([id, value]) => ({
+        id,
+        ...value,
+      }));
+  
+      return {
+        data: adsArray,
+        success: true,
+      };
+    } catch (error) {
+      console.log(`[API]: Failed to read ads - error: ${error.message}`);
+
+      return {
+        data: null, // Nu există date în caz de eroare
+        success: false, // Indică eșecul operației
+      };
+    }
   },
 
   /**
+
    * Actualizează un anunț existent
    * @param {string} id - ID-ul anunțului
    * @param {Object} updates - Obiectul cu actualizările

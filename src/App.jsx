@@ -10,6 +10,7 @@ import AddPostForm from './assets/Pages/FormAddPost/AddPostForm';
 import AuthLayout from './assets/Pages/AuthLayout/authentification-page';
 import AccountPage from './assets/Pages/MyAccount-icon/account-page';
 import RegisterPage from './assets/Pages/Register/register';
+import DatabaseInteraction from './assets/Pages/DatabaseInteraction/dbContent';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/account-page' element={<AccountPage />}/>
         <Route path='/notificari' element={<AnunturiFavorite/>}/>
         <Route path='/autentificare' element={<RegisterPage/>}/>
+        <Route path='/db' element={<DatabaseInteraction/>}/>
       </Routes>
     
   );
