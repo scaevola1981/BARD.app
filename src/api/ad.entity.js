@@ -13,6 +13,7 @@ const adEntity = {
        
       const token = localStorage.getItem('token');
 
+
       if (!token) {
         throw new Error('Utilizatorul nu este autentifcat.'); 
       }
@@ -35,6 +36,7 @@ const adEntity = {
       // Loghează eroarea în consolă
       console.log(`[API]: Failed to create the ad - error:${error.message}`);
       
+
       return {
         data: null, // Nu există date în caz de eroare
         success: false, // Indică eșecul operației
@@ -76,14 +78,16 @@ const adEntity = {
       };
     } catch (error) {
       console.log(`[API]: Failed to read ads - error: ${error.message}`);
+
       return {
-        data: null,
-        success: false,
+        data: null, // Nu există date în caz de eroare
+        success: false, // Indică eșecul operației
       };
     }
   },
 
   /**
+
    * Actualizează un anunț existent
    * @param {string} id - ID-ul anunțului
    * @param {Object} updates - Obiectul cu actualizările

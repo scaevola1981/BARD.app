@@ -1,4 +1,5 @@
 import styles from './header.module.css';
+
 import { FaRegComment, FaRegHeart, FaRegBell, FaRegUser, FaHeart } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react'; // ✅ Aici era lipsa!
@@ -20,10 +21,12 @@ const Header = () => {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
+
   const goToAddPostForm = () => {
     const token = localStorage.getItem('token');
     if (token) {
       navigate('/addPostForm');
+
     } else {
       localStorage.setItem('redirectTo', 'AddPostForm');
       navigate('/authentification-page');
@@ -42,12 +45,14 @@ const Header = () => {
     const token = localStorage.getItem('token');
     if (token) {
       navigate('/account-page');
+
     } else {
       navigate('/authentification-page');
     }
   };
 
   return (
+
     <div className={styles.headerContainer}>
       <header className={styles.header}>
         <div className={styles.logoContainer}>
@@ -67,6 +72,7 @@ const Header = () => {
           </Link>
 
           <Link to="/favorite" className={styles.favoriteIcon} aria-label="Favorite">
+
             {isFavorite ? (
               <FaHeart className={styles.heartIconFilled} />
             ) : (
