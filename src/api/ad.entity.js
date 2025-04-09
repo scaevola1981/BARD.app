@@ -53,8 +53,34 @@ const adEntity = {
   /**
    * Citește toate anunțurile disponibile
    */
-  readAll: () => {
-    // Implementare viitoare
+  readAll: async () => {
+    try {
+      const response = await dbInstance.get('/ads.json');
+  
+      if (!response.data) {
+        return {
+          data: [],
+          success: true,
+        };
+      }
+  
+      // Transformă obiectul Firebase într-un array de anunțuri
+      const adsArray = Object.entries(response.data).map(([id, value]) => ({
+        id,
+        ...value,
+      }));
+  
+      return {
+        data: adsArray,
+        success: true,
+      };
+    } catch (error) {
+      console.log(`[API]: Failed to read ads - error: ${error.message}`);
+      return {
+        data: null,
+        success: false,
+      };
+    }
   },
 
   /**
