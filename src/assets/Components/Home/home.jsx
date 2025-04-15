@@ -7,11 +7,18 @@ import categoriesData from '../Categories/categoriesData';
 import adEntity from '../../../api/adEntity';
 import { useEffect, useState } from 'react';
 import styles from './home.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [latestAds, setLatestAds] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+
+  const handleCardClick = () => {
+    navigate('/ads'); 
+  };
 
   useEffect(() => {
     const fetchAds = async () => {
@@ -89,6 +96,7 @@ const Home = () => {
           
           <Card
             ads={latestAds}
+            onCardClick={handleCardClick}
             isLoading={isLoading}
             error={error}
             onAddFavorite={handleAddFavorite}

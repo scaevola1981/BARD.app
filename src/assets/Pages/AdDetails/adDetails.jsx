@@ -12,6 +12,7 @@ const AdDetail = () => {
   const [ad, setAd] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+ 
 
   useEffect(() => {
     const fetchAd = async () => {

@@ -4,341 +4,161 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-}
+
+ /* header.module.css */
 
 .headerContainer {
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: auto;
-  background-color: #007BFF;
-  font-family: 'Inter', sans-serif;
   top: 0;
-  z-index: 999;
-  margin-bottom: 40px;
+  z-index: 1000;
+  width: 100%;
 }
 
-.buttonHome {
-  background-color:#007BFF;
-  border: none;
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logoContainer {
   display: flex;
-  justify-content: center;
   align-items: center;
+}
+
+.buttonHome {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.buttonHome:hover {
+  transform: scale(1.05);
 }
 
 .logoImg {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-left: 0px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: auto;
+  height: 50px;
+  width: auto;
+  object-fit: contain;
 }
 
 .headerIcons {
-  width: 100%;
-  height: auto;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  font-size: 1.5rem;
-  color: white;
+  gap: 1.5rem;
 }
 
-.chatIcon {
-  margin-right: 60px;
-  cursor: pointer;
-  text-decoration: none;
-  color: white;
-}
-
-.chatIcon:hover {
-  color: #FFA726;
-}
-
-.chatSpan {
-  font-size: 1rem;
-  margin-top: 10px;
-  margin-left: 7px;
-}
-
-.heartIcon {
-  margin-right: 60px;
-  cursor: pointer;
-  color: #ffffff;
-}
-
-.heartIcon:hover {
-  color: #FFA726;
-}
-
-.bellIcon {
-  color: white;
-  margin-right: 60px;
-  cursor: pointer;
-  padding: 0;
-}
-
-.notificationIcon {
-  background-color: #007BFF;
-  border: none;
-}
-
-.bellIcon:hover {
-  color:#FFA726;
-}
-
+.chatIcon,
+.favoriteIcon,
+.notificationIcon,
 .myAccountIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 30px;
+  background: none;
+  border: none;
   cursor: pointer;
-  background-color: #007BFF;
+  color: #4a5568;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.chatIcon:hover,
+.favoriteIcon:hover,
+.notificationIcon:hover,
+.myAccountIcon:hover {
+  background-color: #f7fafc;
+  color: #2d3748;
+  transform: translateY(-2px);
+}
+
+.chatIconSvg,
+.heartIcon,
+.bellIcon,
+.userNameIcon {
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.heartIconFilled {
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+  color: #e53e3e;
+}
+
+.chatSpan,
+.accountSpan {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.addPostBtn {
+  background-color: #3182ce;
   color: white;
   border: none;
-}
-
-.myAccountIcon:hover {
-  color: #FFA726;
-}
-
-.accountSpan {
-  font-size: 1rem;
-  margin-top: 10px;
-  margin-left: 7px;
-}
-
-.headerBtn {
-  width: 200px;
-  height: 40px;
-  margin: 5px 70px;
-  border-radius: 5px;
-  background-color:#FFA726;
-  color: #007BFF,;
-  border: 1px solid white;
+  border-radius: 6px;
+  padding: 0.7rem 1.2rem;
+  font-weight: 600;
   cursor: pointer;
-  font-style: oblique;
-  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  margin-left: 1rem;
 }
 
-.headerBtn:hover {
-  background-color: #ffffff;
-  color: #043e42;
-  border: none;
-  font-style: oblique;
+.addPostBtn:hover {
+  background-color: #2c5282;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(49, 130, 206, 0.3);
 }
 
-@media (max-width: 1000px) {
-  .header {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .headerIcons {
-    justify-content: center;
-    margin-bottom: 10px;
-    margin-top: 10%;
-  }
-
-  .headerBtn {
-    width: 40%;
-    height: 50%;
-    margin-right: 50px;
-  }
-
-  .logoImg {
-    width: 50px;
-    height: 50px;
-  }
-
-  .chatIcon,
-  .heartIcon,
-  .notificationIcon {
-    margin-right: 30px;
-  }
-
-  .myAccountIcon {
-    margin-right: 30px;
-  }
-}
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .header {
-    flex-direction: column;
-    align-items: center;
+    padding: 1rem;
   }
-
+  
   .headerIcons {
-    justify-content: center;
-    margin-bottom: 10px;
-    margin-top: 20%;
+    gap: 1rem;
   }
-
-  .headerBtn {
-    width: 50%;
-    height: 40px;
-    margin-right: 30px;
-  }
-
-  .logoImg {
-    width: 40px;
-    height: 40px;
-  }
-
-  .chatIcon,
+  
+  .chatIconSvg,
   .heartIcon,
-  .notificationIcon {
-    margin-right: 20px;
+  .bellIcon,
+  .userNameIcon,
+  .heartIconFilled {
+    font-size: 1.2rem;
   }
-
-  .myAccountIcon {
-    margin-right: 20px;
-  }
-
-  .chatSpan,
-  .accountSpan {
+  
+  .addPostBtn {
+    padding: 0.6rem 1rem;
     font-size: 0.8rem;
   }
-
-  .headerBtn {
-    width: 60%;
+  
+  .chatSpan,
+  .accountSpan {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .header {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .headerIcons {
-    justify-content: center;
-    margin-top: 15%;
-  }
-
   .logoImg {
-    width: 35px;
-    height: 35px;
-  }
-
-  .chatIcon,
-  .heartIcon,
-  .notificationIcon {
-    margin-right: 15px;
-  }
-
-  .headerBtn {
-    width: 70%;
     height: 40px;
-    margin-right: 20px;
   }
-
-  .chatSpan,
-  .accountSpan {
-    font-size: 0.8rem;
+  
+  .headerIcons {
+    gap: 0.7rem;
   }
-
-  .headerBtn {
-    font-size: 0.9rem;
+  
+  .addPostBtn {
+    margin-left: 0.5rem;
+    padding: 0.5rem 0.8rem;
   }
-}
-
-.loginModal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: transparent;
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  border-radius: 8px;
-  width: 100%;
-  height: 100vh;
-  z-index: 1001;
-}
-
-.loginForm {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.loginForm input {
-  height: 60px;
-  border-radius: 15px;
-  padding: 10px;
-  border: 0.5px solid grey;
-  width: 500px;
-  margin-bottom: 25px;
-}
-
-.loginForm button {
-  height: 60px;
-  width: 500px;
-  background-color: #025aa6;
-  border-radius: 15px;
-  border: none;
-  color: white;
-  font-weight: 800;
-}
-
-.loginForm button:hover {
-  background-color: #5d00e7;
-}
-
-.rememberForgot {
-  display: flex;
-  width: 500px;
-  height: auto;
-  justify-content: space-between;
-}
-
-.rememberForgot input {
-  width: 15px;
-  height: 15px;
-  margin-right: 10px;
-}
-
-.icon {
-  font-size: 1.5rem;
-}
-
-.registerBtn{
-  display: flex;
-  width: 500px;
-  height: auto;
-  margin-top: 20px;
-
-}
-
-.addPostBtn {
-  background-color: #007bff; 
-  color: white; 
-  padding: 10px 30px; 
-  border-radius: 5px; 
-  font-size: 16px; 
-  cursor: pointer; 
-  border: none; 
-  transition: background-color 0.3s ease; 
-  border: 1px solid #fff;
-  margin-right: 75px;
-}
-
-.addPostBtn:hover {
-  background-color: #0056b3; 
 }
