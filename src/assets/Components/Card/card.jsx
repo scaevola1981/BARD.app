@@ -1,8 +1,7 @@
 import styles from './card.module.css';
-import { FaRegHeart } from 'react-icons/fa';
+import { FaRegHeart, FaTimes } from 'react-icons/fa';
 
-const Card = ({ cardData }) => {
-
+const Card = ({ cardData, isFavoriteView = false, onRemove }) => {
   const handleAddFavorite = (card) => {
     const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
@@ -17,22 +16,35 @@ const Card = ({ cardData }) => {
     alert('Anunț adăugat la favorite!');
   };
 
-  return (
-    <>
-      <div className={styles.forTitle}>
-        <h2 className={styles.cardsTitle}>Anunțuri</h2>
-      </div>
-      <div className={styles.cardsContainer}>
-        {cardData.slice(0, 8).map((card) => (
-          <div key={card.id} className={styles.containerCard}>
-            <img src={card.image} alt={card.title} className={styles.cardImg} />
-            <h2 className={styles.cardTitle}>{card.title}</h2>
+  // Dacă nu avem cardData, nu afișăm nimic
+  if (!cardData || cardData.length === 0) return null;
 
-            <p className={styles.cardInfo}>Județ: {card.judet}</p>
-            <p className={styles.cardInfo}>Oraș: {card.cities}</p>
-            <p className={styles.cardInfo}>Comuna: {card.comune}</p>
-            <p className={styles.cardPara}>{card.eventDescription}</p>
-            <div className={styles.cardBtnContainer}>
+  return (
+    <div className={styles.cardsContainer}>
+      {!isFavoriteView && (
+        <div className={styles.forTitle}>
+          <h2 className={styles.cardsTitle}>Anunțuri</h2>
+        </div>
+      )}
+      
+      {cardData.map((card) => (
+        <div key={card.id} className={styles.containerCard}>
+          <img src={card.image} alt={card.title} className={styles.cardImg} />
+          <h2 className={styles.cardTitle}>{card.title}</h2>
+          <p className={styles.cardInfo}>Județ: {card.judet}</p>
+          <p className={styles.cardInfo}>Oraș: {card.cities}</p>
+          <p className={styles.cardInfo}>Comuna: {card.comune}</p>
+          <p className={styles.cardPara}>{card.eventDescription}</p>
+          <div className={styles.cardBtnContainer}>
+            {isFavoriteView ? (
+              <button
+                className={styles.cardBtnRemove}
+                onClick={() => onRemove(card.id)}
+              >
+                <FaTimes className={styles.cardIcon} />
+                Remove
+              </button>
+            ) : (
               <button
                 className={styles.cardBtn}
                 onClick={() => handleAddFavorite(card)}
@@ -40,11 +52,11 @@ const Card = ({ cardData }) => {
                 <FaRegHeart className={styles.cardIconHeart} />
                 Add to favorite
               </button>
-            </div>
+            )}
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   );
 };
 
