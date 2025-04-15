@@ -7,7 +7,7 @@ const Footer = () => {
         <img
           className={styles.footerLogo}
           src="./foto-icons/stock-logo.jpg"
-          alt="Logo BARD"
+          alt="Logo stock-market"
         />
         <p>Descoperă oferta EXVERO.App pentru schimbul tău dorit!</p>
         <button className={styles.detailsButton}>Vezi mai multe detalii</button>

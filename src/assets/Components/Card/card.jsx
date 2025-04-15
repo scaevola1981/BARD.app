@@ -1,23 +1,27 @@
 import styles from './card.module.css';
 import { FaRegHeart, FaTimes } from 'react-icons/fa';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Card = ({ cardData, isFavoriteView = false, onRemove }) => {
-  const handleAddFavorite = (card) => {
-    const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+const Card = ({ 
+  ads = [],
+  isLoading = false,
+  error = null,
+  onAddFavorite = () => {},
+  onRemove = () => {},
+  isFavoriteView = false
+}) => {
+  if (isLoading) {
+    return <div className={styles.loading}>Se încarcă anunțurile...</div>;
+  }
 
-    const isAlreadyFavorite = existingFavorites.some(fav => fav.id === card.id);
-    if (isAlreadyFavorite) {
-      alert('Anunțul este deja în favorite.');
-      return;
-    }
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
 
-    const updatedFavorites = [...existingFavorites, card];
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-    alert('Anunț adăugat la favorite!');
-  };
-
-  // Dacă nu avem cardData, nu afișăm nimic
-  if (!cardData || cardData.length === 0) return null;
+  if (!ads || ads.length === 0) {
+    return <div className={styles.noAds}>Nu există anunțuri disponibile momentan.</div>;
+  }
 
   return (
     <div className={styles.cardsContainer}>
@@ -27,30 +31,48 @@ const Card = ({ cardData, isFavoriteView = false, onRemove }) => {
         </div>
       )}
       
-      {cardData.map((card) => (
-        <div key={card.id} className={styles.containerCard}>
-          <img src={card.image} alt={card.title} className={styles.cardImg} />
-          <h2 className={styles.cardTitle}>{card.title}</h2>
-          <p className={styles.cardInfo}>Județ: {card.judet}</p>
-          <p className={styles.cardInfo}>Oraș: {card.cities}</p>
-          <p className={styles.cardInfo}>Comuna: {card.comune}</p>
-          <p className={styles.cardPara}>{card.eventDescription}</p>
+      {ads.map((ad) => (
+        <div key={ad.id} className={styles.containerCard}>
+          {/* Link doar pe imagine și titlu */}
+          <Link to={`/ad/${ad.id}`} className={styles.cardLink}>
+            <img
+              src={ad.image || 'https://placehold.co/300x200?text=Imagine+Lipsă'}
+              alt={ad.title}
+              className={styles.cardImg}
+              onError={(e) => {
+                e.target.src = 'https://placehold.co/300x200?text=Imagine+Lipsă';
+              }}
+            />
+            <h2 className={styles.cardTitle}>{ad.title}</h2>
+          </Link>
+          
+          <p className={styles.cardInfo}>Județ: {ad.county}</p>
+          <p className={styles.cardInfo}>Oraș: {ad.city}</p>
+          {ad.comune && <p className={styles.cardInfo}>Comuna: {ad.comune}</p>}
+          <p className={styles.cardPara}>{ad.description}</p>
+      
           <div className={styles.cardBtnContainer}>
             {isFavoriteView ? (
               <button
                 className={styles.cardBtnRemove}
-                onClick={() => onRemove(card.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onRemove(ad.id);
+                }}
               >
                 <FaTimes className={styles.cardIcon} />
-                Remove
+                Șterge
               </button>
             ) : (
               <button
                 className={styles.cardBtn}
-                onClick={() => handleAddFavorite(card)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onAddFavorite(ad);
+                }}
               >
                 <FaRegHeart className={styles.cardIconHeart} />
-                Add to favorite
+                Adaugă la favorite
               </button>
             )}
           </div>
@@ -60,4 +82,25 @@ const Card = ({ cardData, isFavoriteView = false, onRemove }) => {
   );
 };
 
+Card.propTypes = {
+  ads: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      image: PropTypes.string,
+      county: PropTypes.string,
+      city: PropTypes.string,
+      comune: PropTypes.string,
+      description: PropTypes.string,
+      timestamp: PropTypes.number
+    })
+  ),
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
+  onAddFavorite: PropTypes.func,
+  onRemove: PropTypes.func,
+  isFavoriteView: PropTypes.bool
+};
+
 export default Card;
+

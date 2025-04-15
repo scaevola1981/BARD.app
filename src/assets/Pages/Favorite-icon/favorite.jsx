@@ -15,7 +15,9 @@ const Favorite = () => {
   }, []);
 
   const handleRemoveFavorite = (idToRemove) => {
-    const updatedFavorites = favoritesAds.filter(card => card.id !== idToRemove);
+    const updatedFavorites = favoritesAds.filter(
+      (card) => card.id !== idToRemove
+    );
     setFavoritesAds(updatedFavorites);
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setShowMessage(true);
@@ -36,9 +38,9 @@ const Favorite = () => {
             <p>Nu ai adăugat încă niciun anunț.</p>
           </div>
         ) : (
-          <Card 
-            cardData={favoritesAds} 
-            isFavoriteView={true} 
+          <Card
+            ads={favoritesAds}
+            isFavoriteView={true}
             onRemove={handleRemoveFavorite}
           />
         )}
