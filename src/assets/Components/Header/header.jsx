@@ -59,7 +59,7 @@ const Header = () => {
           <button className={styles.buttonHome} onClick={goToHome}>
             <img
               className={styles.logoImg}
-              src="./foto-icons/logo-5-app-bard.png"
+              src="./foto-icons/logo-4-app-bard.png"
               alt="Logo"
             />
           </button>

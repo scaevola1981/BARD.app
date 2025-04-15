@@ -1,0 +1,43 @@
+.detailContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .backButton {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .imageContainer {
+    margin: 20px 0;
+  }
+  
+  .mainImage {
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 8px;
+  }
+  
+  .detailsGrid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .detailSection, .descriptionSection, .contactSection {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .detailsGrid {
+      grid-template-columns: 1fr;
+    }
+  }
