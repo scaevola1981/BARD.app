@@ -68,7 +68,7 @@ const Header = () => {
         <div className={styles.headerIcons}>
           <Link to="/chat" className={styles.chatIcon} aria-label="Chat">
             <FaRegComment className={styles.chatIconSvg} />
-            <span className={styles.chatSpan}>Chat</span>
+           
           </Link>
 
           <Link to="/favorite" className={styles.favoriteIcon} aria-label="Favorite">
@@ -94,7 +94,7 @@ const Header = () => {
             onClick={goToMyAccount}
           >
             <FaRegUser className={styles.userNameIcon} />
-            <span className={styles.accountSpan}>Contul meu</span>
+           
           </button>
 
           <button className={styles.addPostBtn} onClick={goToAddPostForm}>

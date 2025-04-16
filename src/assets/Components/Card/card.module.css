@@ -5,140 +5,161 @@
   font-family: 'Inter';
 }
 
+/* Container principal */
+.wrapper {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Adaugă aceste stiluri în fișierul tău de stiluri (module.css) */
+
 .cardsTitle {
-  background-color: #fff;
-  width: 100%;
-  height: auto;
   text-align: center;
-  padding-top: 100px;
+  margin: 2rem 0;
+  position: relative;
+  display: inline-block; /* Facem ca elementul să se comporte ca un bloc inline */
+  left: 50%;
+  transform: translateX(-50%); /* Centrare perfectă */
 }
 
-.cardsContainer {
+.cardsTitle::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #3498db;
+  margin: 0.5rem auto 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* Centrare linie */
+}
+/* Titlu */
+.cardsTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+/* Grilă de carduri */
+.cardsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-template-rows: auto;
-  justify-items: center;
-  gap: 10px 10px ;
-  padding: 30px 100px;
-  overflow: hidden;
-  background-color: white;
-  font-weight: 500;
-  color: #4e4e4e;
-  font-size: 2.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
 }
 
-@media (max-width: 1200) {
-.cardsContainer {
+/* Responsive grid */
+@media (max-width: 1400px) {
+  .cardsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .cardsGrid {
     grid-template-columns: repeat(3, 1fr);
-    overflow: hidden;
   }
 }
 
-@media (max-width: 990) {
- .cardsContainer {
+@media (max-width: 768px) {
+  .cardsGrid {
     grid-template-columns: repeat(2, 1fr);
-    overflow: hidden;
   }
 }
 
-@media (max-width: 600) {
-.cardsContainer {
-    grid-template-columns: repeat(1fr);
-    padding: 0 20px;
-    
+@media (max-width: 480px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
   }
 }
 
+/* Card individual */
 .containerCard {
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* height: 400px; */
-  border:1px solid #a5a9ff;
-  border-radius: 10px;
-  min-height: 400px;
-  min-width: 300px;
-  background-color: #ffffff;
-}
-
-.cardImg {
-
-  width: 50%;
-  height: 80%;
-  padding-top: 10px;
-  object-fit: cover;
-  
-}
-
-.cardTitle {
-  font-weight: 400;
-  /* padding: 10px 2px 5px 2px; */
-  font-size:1rem ;
-  margin-top: 20px;
-}
-
-
-
-.cardInfo {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  cursor: pointer;
   display: flex;
-  justify-content:space-around;
-  align-items: center;
-  /* padding: 4px 5px; */
-  font-weight: 200;
-  font-size: 1rem;
+  flex-direction: column;
+  transition: transform 0.2s ease;
 }
 
+.containerCard:hover {
+  transform: scale(1.02);
+}
+
+/* Imagine card */
+.cardImg {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Titlu card */
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1rem 1rem 0.5rem 1rem;
+  color: #222;
+}
+
+/* Informații */
+.cardInfo {
+  font-size: 0.9rem;
+  margin: 0 1rem 0.3rem 1rem;
+  color: #666;
+}
+
+/* Descriere */
 .cardPara {
-  font-weight: 200;
-  font-size: 0.8rem;
-  margin-bottom:  15px;
+  font-size: 0.85rem;
+  margin: 0 1rem 1rem 1rem;
+  color: #444;
+  flex-grow: 1;
 }
 
+/* Container pentru butoane */
 .cardBtnContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
- 
+  justify-content: space-between;
+  padding: 1rem;
+  border-top: 1px solid #eee;
 }
 
-.cardBtn {
-  font-size: 0.8rem;
-  padding: 10px 10px;
-  border-radius: 20px;
-  background-color:  #007BFF;
-  font-weight: 400;
-  font-style:oblique ;
-  color: white;
-  border: none;
-}
-
-.cardIconHeart {
-  color: #ff0404;
-  font-size: 1.2rem;
-  margin-right: 10px;
-}
-
-
+/* Butoane */
+.cardBtn,
 .cardBtnRemove {
-  background-color: #ff6b6b;
+  background-color: #007bff;
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  transition: background-color 0.3s;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.cardBtnRemove {
+  background-color: #dc3545;
+}
+
+.cardBtn:hover {
+  background-color: #0056b3;
 }
 
 .cardBtnRemove:hover {
-  background-color: #ff5252;
+  background-color: #a51e2f;
 }
 
-.cardIcon {
-  font-size: 16px;
+/* Iconițe */
+.cardIcon,
+.cardIconHeart {
+  font-size: 1rem;
 }
-

@@ -1,43 +1,95 @@
+/* Container principal */
 .detailContainer {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .backButton {
-    background: none;
-    border: none;
-    color: #007bff;
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
-  
-  .imageContainer {
-    margin: 20px 0;
-  }
-  
-  .mainImage {
-    max-width: 100%;
-    max-height: 500px;
-    border-radius: 8px;
-  }
-  
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Buton Înapoi */
+.backButton {
+  background-color: #007bff;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.backButton:hover {
+  background-color: #0056b3;
+}
+
+/* Titlul anunțului */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Imagine principală */
+.imageContainer {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 450px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Grilă de detalii */
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
   .detailsGrid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 30px;
-    margin-top: 30px;
+    grid-template-columns: 1fr;
   }
-  
-  .detailSection, .descriptionSection, .contactSection {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-  }
-  
-  @media (max-width: 768px) {
-    .detailsGrid {
-      grid-template-columns: 1fr;
-    }
-  }
+}
+
+/* Secțiuni */
+.detailSection,
+.descriptionSection,
+.contactSection {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.detailSection h2,
+.descriptionSection h2,
+.contactSection h2 {
+  font-size: 1.2rem;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+/* Text */
+p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Loading & Error */
+.loading,
+.error,
+.notFound {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  padding: 2rem;
+}

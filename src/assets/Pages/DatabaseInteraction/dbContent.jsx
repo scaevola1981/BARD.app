@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import adEntity from '../../../api/adEntity';
-import Card from '../../Components/Card/Card';
+import Card from '../../Components/Card/card';
 import styles from './dbContent.module.css';
 
 const DbContent = () => {
@@ -11,6 +11,7 @@ const DbContent = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
   const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchAds = async () => {
@@ -34,8 +35,10 @@ const DbContent = () => {
   }, []);
 
   const handleCardClick = (id) => {
+    console.log('Navigating to ad with ID:', id);
     navigate(`/ad/${id}`);
   };
+
 
   // Calcul paginare
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -45,7 +48,9 @@ const DbContent = () => {
 
   return (
     <div className={styles.dbContainer}>
-      <h1>Toate anunțurile</h1>
+      <div className={styles.titleContainer}>
+        <h1>Toate anunțurile</h1>
+      </div>
       
       {error && <div className={styles.error}>{error}</div>}
       

@@ -1,7 +1,6 @@
 import styles from './card.module.css';
 import { FaRegHeart, FaTimes } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 const Card = ({ 
   ads = [],
@@ -9,7 +8,8 @@ const Card = ({
   error = null,
   onAddFavorite = () => {},
   onRemove = () => {},
-  isFavoriteView = false
+  isFavoriteView = false,
+  onCardClick = () => {} 
 }) => {
   if (isLoading) {
     return <div className={styles.loading}>Se încarcă anunțurile...</div>;
@@ -24,17 +24,18 @@ const Card = ({
   }
 
   return (
-    <div className={styles.cardsContainer}>
+    <div className={styles.wrapper}>
       {!isFavoriteView && (
-        <div className={styles.forTitle}>
-          <h2 className={styles.cardsTitle}>Anunțuri</h2>
-        </div>
+        <h2 className={styles.cardsTitle}>Anunțuri</h2>
       )}
-      
-      {ads.map((ad) => (
-        <div key={ad.id} className={styles.containerCard}>
-          {/* Link doar pe imagine și titlu */}
-          <Link to={`/ad/${ad.id}`} className={styles.cardLink}>
+
+      <div className={styles.cardsGrid}>
+        {ads.map((ad) => (
+          <div 
+            key={ad.id} 
+            className={styles.containerCard}
+            onClick={() => onCardClick(ad.id)}
+          >
             <img
               src={ad.image || 'https://placehold.co/300x200?text=Imagine+Lipsă'}
               alt={ad.title}
@@ -44,40 +45,39 @@ const Card = ({
               }}
             />
             <h2 className={styles.cardTitle}>{ad.title}</h2>
-          </Link>
-          
-          <p className={styles.cardInfo}>Județ: {ad.county}</p>
-          <p className={styles.cardInfo}>Oraș: {ad.city}</p>
-          {ad.comune && <p className={styles.cardInfo}>Comuna: {ad.comune}</p>}
-          <p className={styles.cardPara}>{ad.description}</p>
-      
-          <div className={styles.cardBtnContainer}>
-            {isFavoriteView ? (
-              <button
-                className={styles.cardBtnRemove}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onRemove(ad.id);
-                }}
-              >
-                <FaTimes className={styles.cardIcon} />
-                Șterge
-              </button>
-            ) : (
-              <button
-                className={styles.cardBtn}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onAddFavorite(ad);
-                }}
-              >
-                <FaRegHeart className={styles.cardIconHeart} />
-                Adaugă la favorite
-              </button>
-            )}
+            <p className={styles.cardInfo}>Județ: {ad.county}</p>
+            <p className={styles.cardInfo}>Oraș: {ad.city}</p>
+            {ad.comune && <p className={styles.cardInfo}>Comuna: {ad.comune}</p>}
+            <p className={styles.cardPara}>{ad.description}</p>
+
+            <div className={styles.cardBtnContainer}>
+              {isFavoriteView ? (
+                <button
+                  className={styles.cardBtnRemove}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onRemove(ad.id);
+                  }}
+                >
+                  <FaTimes className={styles.cardIcon} />
+                  Șterge
+                </button>
+              ) : (
+                <button
+                  className={styles.cardBtn}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onAddFavorite(ad);
+                  }}
+                >
+                  <FaRegHeart className={styles.cardIconHeart} />
+                  Adaugă la favorite
+                </button>
+              )}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
@@ -99,8 +99,10 @@ Card.propTypes = {
   error: PropTypes.string,
   onAddFavorite: PropTypes.func,
   onRemove: PropTypes.func,
-  isFavoriteView: PropTypes.bool
+  isFavoriteView: PropTypes.bool,
+  onCardClick: PropTypes.func
 };
 
 export default Card;
+
 
