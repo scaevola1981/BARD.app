@@ -9,8 +9,11 @@ const Card = ({
   onAddFavorite = () => {},
   onRemove = () => {},
   isFavoriteView = false,
-  onCardClick = () => {} 
+  onCardClick = () => {} ,
+  isFavorite = () => false
 }) => {
+
+  
   if (isLoading) {
     return <div className={styles.loading}>Se încarcă anunțurile...</div>;
   }
@@ -64,15 +67,19 @@ const Card = ({
                 </button>
               ) : (
                 <button
-                  className={styles.cardBtn}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onAddFavorite(ad);
-                  }}
-                >
-                  <FaRegHeart className={styles.cardIconHeart} />
-                  Adaugă la favorite
-                </button>
+                className={styles.cardBtn}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (isFavorite(ad.id)) {
+                    onRemove(ad.id); // Elimină din favorite
+                  } else {
+                    onAddFavorite(ad); // Adaugă la favorite
+                  }
+                }}
+              >
+                <FaRegHeart className={isFavorite(ad.id) ? styles.cardIconHeartActive : styles.cardIconHeart} />
+                {isFavorite(ad.id) ? 'Elimină din favorite' : 'Adaugă la favorite'}
+              </button>
               )}
             </div>
           </div>
@@ -100,7 +107,9 @@ Card.propTypes = {
   onAddFavorite: PropTypes.func,
   onRemove: PropTypes.func,
   isFavoriteView: PropTypes.bool,
-  onCardClick: PropTypes.func
+  onCardClick: PropTypes.func,
+  isFavorite: PropTypes.func
+
 };
 
 export default Card;

@@ -1,7 +1,7 @@
 
 
 .dbContainer {
-    max-width: 1800px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 2rem 1.5rem;
     min-height: calc(100vh - 120px);
@@ -29,8 +29,9 @@
   
   .titleContainer {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: -4rem;
     position: relative;
+    margin-top: 4rem;
   }
   
   .titleContainer h1 {
@@ -38,6 +39,7 @@
     color: #2c3e50;
     display: inline-block;
     position: relative;
+    margin-left: 0px;
   }
   
   .titleContainer h1::after {

@@ -1,5 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from 'firebase/storage';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBJWtrGHWFu1vsx_irClwYB2Gho56WDiHI',
@@ -12,5 +15,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
+export const auth = getAuth(app);
 
-export { storage };
+const db = getFirestore(app); // Adăugăm Firestore
+
+
+export { storage, db }; // Exportăm atât storage cât și db

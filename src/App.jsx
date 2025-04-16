@@ -10,10 +10,11 @@ import AddPostForm from './assets/Pages/FormAddPost/AddPostForm';
 import AuthLayout from './assets/Pages/AuthLayout/authentification-page';
 import AccountPage from './assets/Pages/MyAccount-icon/account-page';
 import RegisterPage from './assets/Pages/Register/register';
-// import AllAdsPage from './assets/Pages/AllAdsPage/allAdsPage';
+import AllAdsPage from './assets/Pages/AllAdsPage/allAdsPage';
 import DbContent from './assets/Pages/DatabaseInteraction/dbContent';
 import AdDetails from './assets/Pages/AdDetails/adDetails';
 import Card from './assets/Components/Card/card'
+
 
 function App() {
   return (
@@ -28,9 +29,11 @@ function App() {
       <Route path="/account-page" element={<AccountPage />} />
       <Route path="/inregistrare" element={<RegisterPage />} />
       <Route path='/anunturi-noi' element={<Card/>}/>
-      {/* <Route path="/anunturi" element={<AllAdsPage />} /> */}
+      <Route path="/anunturi" element={<AllAdsPage />} />
       <Route path="/ads" element={<DbContent/>} />
       <Route path='/ad/:id' element={<AdDetails/>}/>
+      <Route path="/login" element={<AuthLayout />} />
+
     </Routes>
   );
 }

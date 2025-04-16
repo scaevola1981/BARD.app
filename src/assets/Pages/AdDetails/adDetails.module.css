@@ -6,6 +6,8 @@
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #007bff;
+  height: auto;
 }
 
 /* Buton Înapoi */
@@ -19,6 +21,7 @@
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
   transition: background-color 0.2s ease;
+  margin-left: 750px;
 }
 
 .backButton:hover {
@@ -30,6 +33,7 @@ h1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
   color: #333;
+  margin-left: 400px;
 }
 
 /* Imagine principală */
@@ -66,7 +70,8 @@ h1 {
   background-color: #f9f9f9;
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  box-shadow: 1px 5px 20px #868686;
+  border: 1px solid #007bff;
 }
 
 .detailSection h2,

@@ -5,22 +5,22 @@
   font-family: 'Inter';
 }
 
-/* Container principal */
+
 .wrapper {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Adaugă aceste stiluri în fișierul tău de stiluri (module.css) */
+
 
 .cardsTitle {
   text-align: center;
   margin: 2rem 0;
   position: relative;
-  display: inline-block; /* Facem ca elementul să se comporte ca un bloc inline */
+  display: inline-block; 
   left: 50%;
-  transform: translateX(-50%); /* Centrare perfectă */
+  transform: translateX(-50%); 
 }
 
 .cardsTitle::after {
@@ -32,7 +32,7 @@
   margin: 0.5rem auto 0;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%); /* Centrare linie */
+  transform: translateX(-50%); 
 }
 /* Titlu */
 .cardsTitle {
@@ -77,10 +77,10 @@
 
 /* Card individual */
 .containerCard {
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #b5c4fb;
+  border: 1px solid #0a0a0a;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 20px 15px 26px #878787;
   overflow: hidden;
   cursor: pointer;
   display: flex;
@@ -136,7 +136,7 @@
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 8px;
   font-size: 0.9rem;
   cursor: pointer;

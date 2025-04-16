@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import adEntity from '../../../api/adEntity';
 import Card from '../../Components/Card/card';
 import styles from './dbContent.module.css';
+import Header from '../../Components/Header/header';
+import NavBar from '../../Components/NavBar/navBar';
 
 const DbContent = () => {
   const [ads, setAds] = useState([]);
@@ -47,6 +49,9 @@ const DbContent = () => {
   const totalPages = Math.ceil(ads.length / itemsPerPage);
 
   return (
+    <>
+    <Header />
+    <NavBar/>
     <div className={styles.dbContainer}>
       <div className={styles.titleContainer}>
         <h1>Toate anunțurile</h1>
@@ -83,6 +88,7 @@ const DbContent = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
