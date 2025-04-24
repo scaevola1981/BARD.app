@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './assets/Components/Home/home';
-import Chat from './assets/Pages/Chat/chat';
+import Chat from './assets/Components/Chat/chat';
 import './index.css';
 import Favorite from './assets/Pages/Favorite-icon/favorite';
 import Notifications from './assets/Pages/Notifications-icon/notificari';

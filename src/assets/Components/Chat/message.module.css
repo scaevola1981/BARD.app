@@ -1,0 +1,53 @@
+/* message.module.css */
+.messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .message {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 60%;
+  }
+  
+  .messageCurrentUser {
+    align-self: flex-start;
+  }
+  
+  .messageOtherUser {
+    align-self: flex-end;
+  }
+  
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  .text {
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+  }
+  
+  .textCurrentUser {
+    background-color: #5f4b8b;
+    color: white;
+  }
+  
+  .textOtherUser {
+    background-color: #e9ecef;
+    color: #333;
+  }
+  
+  .timestamp {
+    font-size: 10px;
+    color: #888;
+    margin-top: 5px;
+    text-align: right;
+  }

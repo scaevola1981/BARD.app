@@ -1,0 +1,14 @@
+/* search.module.css */
+.search {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #e9ecef;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .search::placeholder {
+    color: #888;
+  }
