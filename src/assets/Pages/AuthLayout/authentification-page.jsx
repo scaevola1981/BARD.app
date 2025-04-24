@@ -7,6 +7,7 @@ import Header from '../../Components/Header/header'
 
 
 
+
 const AuthLayout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');

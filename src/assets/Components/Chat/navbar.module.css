@@ -1,0 +1,40 @@
+/* navbar.module.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f5f7fb; /* Aceeași culoare ca zona principală */
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .chatTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .userName {
+    font-size: 14px;
+    color: #5f4b8b;
+    margin-left: 10px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .logout {
+    background: none;
+    border: none;
+    color: #5f4b8b;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }

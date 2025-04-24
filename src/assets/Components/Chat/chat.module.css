@@ -1,0 +1,58 @@
+/* chat.module.css */
+.appContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #e9ecef; /* Fundal gri-albăstrui din imagine */
+  }
+  
+  .chatContainer {
+    display: flex;
+    flex: 1; /* Ocupă spațiul rămas sub Header */
+    border-radius: 10px; /* Colțuri rotunjite ca în imagine */
+    overflow: hidden; /* Asigură că colțurile rotunjite sunt vizibile */
+    margin: 20px; /* Spațiu în jurul containerului */
+  }
+  
+  .sidebar {
+    width: 300px;
+    background-color: #5f4b8b; /* Mov închis din imagine */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .mainContent {
+    flex: 1;
+    background-color: #f5f7fb; /* Gri deschis pentru zona principală */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chatContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .placeholder {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 18px;
+  }
+  
+  /* Responsivitate */
+  @media (max-width: 768px) {
+    .chatContainer {
+      flex-direction: column;
+      margin: 10px;
+    }
+  
+    .sidebar {
+      width: 100%;
+    }
+  }
