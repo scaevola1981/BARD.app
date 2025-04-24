@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { collection, query, where, getDocs, doc, getDoc, addDoc, updateDoc } from 'firebase/firestore';
-import { auth, db } from '../../../api/firebase';
+import { collection, addDoc, onSnapshot, query, where, orderBy, doc, setDoc, getDoc, getDocs } from 'firebase/firestore';
+import { db, auth } from '../../../api/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import Header from '../../Components/Header/header';
 import styles from './chat.module.css';
@@ -8,22 +8,19 @@ import styles from './chat.module.css';
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  const [activeConversation, setActiveConversation] = useState(null);
-  const [conversations, setConversations] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-
-  useEffect(() => {
-    console.log('Current user:', currentUser);
-  }, [currentUser]);
-  // Monitorizăm starea de autentificare
+  // Monitor authentication state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser({
           uid: user.uid,
-          email: user.email
+          email: user.email,
+          displayName: user.displayName || user.email.split('@')[0]
         });
       } else {
         setCurrentUser(null);
@@ -34,204 +31,154 @@ const Chat = () => {
     return () => unsubscribe();
   }, []);
 
-  // Preluăm conversațiile când currentUser se schimbă
+  // Fetch users list
   useEffect(() => {
-    const fetchConversations = async () => {
-      if (!currentUser) return;
+    if (!currentUser) return;
 
+    const fetchUsers = async () => {
       try {
-        const q = query(
-          collection(db, 'conversations'),
-          where('participants', 'array-contains', currentUser.uid)
-        );
-
+        const usersRef = collection(db, 'users');
+        const q = query(usersRef, where('uid', '!=', currentUser.uid));
         const querySnapshot = await getDocs(q);
-        const conversationsData = [];
-
-        for (const docRef of querySnapshot.docs) {
-          const conversation = docRef.data();
-          const interlocutorId = conversation.participants.find(
-            id => id !== currentUser.uid
-          );
-
-          if (interlocutorId) {
-            const userDoc = await getDoc(doc(db, 'users', interlocutorId));
-            if (userDoc.exists()) {
-              conversationsData.push({
-                id: docRef.id,
-                interlocutorId,
-                name: userDoc.data().displayName || userDoc.data().email,
-                avatar: userDoc.data().photoURL || '',
-                lastMessage: conversation.lastMessage?.text || 'Niciun mesaj',
-                unread: conversation.unreadCount || 0,
-                timestamp: conversation.lastMessage?.timestamp?.toDate() || null
-              });
-            }
-          }
-        }
-
-        conversationsData.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-        setConversations(conversationsData);
-        if (conversationsData.length > 0) setActiveConversation(0);
+        
+        const usersList = [];
+        querySnapshot.forEach((doc) => {
+          usersList.push(doc.data());
+        });
+        
+        setUsers(usersList);
       } catch (error) {
-        console.error('Error fetching conversations:', error);
+        console.error("Error fetching users:", error);
       }
     };
 
-    fetchConversations();
+    fetchUsers();
   }, [currentUser]);
 
-  // Preluăm mesajele pentru conversația selectată
-  useEffect(() => {
-    const fetchMessages = async () => {
-      if (activeConversation === null || !conversations[activeConversation]) return;
+  // Select/create conversation
+  const selectUser = async (user) => {
+    setSelectedUser(user);
+    
+    // Generate unique conversation ID between users
+    const conversationId = [currentUser.uid, user.uid].sort().join('_');
+    
+    // Listen for new messages in real-time
+    const messagesRef = collection(db, 'conversations', conversationId, 'messages');
+    const q = query(messagesRef, orderBy('timestamp'));
 
-      try {
-        const conversationId = conversations[activeConversation].id;
-        const messagesRef = collection(db, 'conversations', conversationId, 'messages');
-        const querySnapshot = await getDocs(messagesRef);
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const messagesData = [];
+      querySnapshot.forEach((doc) => {
+        messagesData.push({ id: doc.id, ...doc.data() });
+      });
+      setMessages(messagesData);
+    });
 
-        const messagesData = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data(),
-          timestamp: doc.data().timestamp?.toDate()
-        }));
+    return () => unsubscribe();
+  };
 
-        messagesData.sort((a, b) => a.timestamp - b.timestamp);
-        setMessages(messagesData);
-
-      } catch (error) {
-        console.error('Error fetching messages:', error);
-      }
-    };
-
-    fetchMessages();
-  }, [activeConversation, conversations]);
-
+  // Send message
   const handleSend = async () => {
-    if (inputValue.trim() === '' || activeConversation === null || !currentUser) return;
+    if (!inputValue.trim() || !selectedUser || !currentUser) return;
 
     try {
-      const conversationId = conversations[activeConversation].id;
+      const conversationId = [currentUser.uid, selectedUser.uid].sort().join('_');
       
-      const newMessage = {
+      // Create conversation if it doesn't exist
+      const conversationRef = doc(db, 'conversations', conversationId);
+      const conversationSnap = await getDoc(conversationRef);
+      
+      if (!conversationSnap.exists()) {
+        await setDoc(conversationRef, {
+          participants: [currentUser.uid, selectedUser.uid],
+          createdAt: new Date()
+        });
+      }
+
+      // Add message
+      await addDoc(collection(db, 'conversations', conversationId, 'messages'), {
         text: inputValue,
         senderId: currentUser.uid,
+        senderName: currentUser.displayName,
         timestamp: new Date(),
         read: false
-      };
-
-      await addDoc(collection(db, 'conversations', conversationId, 'messages'), newMessage);
-
-      await updateDoc(doc(db, 'conversations', conversationId), {
-        lastMessage: newMessage,
-        updatedAt: new Date()
       });
 
-      setMessages([...messages, {
-        ...newMessage,
-        id: Date.now().toString()
-      }]);
-
       setInputValue('');
-
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error("Error sending message:", error);
     }
   };
 
   if (loading) {
-    return (
-      <>
-        <Header />
-        <div className={styles.loading}>Se încarcă...</div>
-      </>
-    );
-  }
-
-  if (!currentUser) {
-    return (
-      <>
-        <Header />
-        <div className={styles.authMessage}>
-          Trebuie să fii autentificat pentru a accesa chat-ul.
-        </div>
-      </>
-    );
+    return <div className={styles.loading}>Se încarcă...</div>;
   }
 
   return (
     <>
       <Header />
-      <div className={styles.chatPage}>
-        {/* Coloana conversații */}
-        <div className={styles.conversationsColumn}>
+      <div className={styles.chatContainer}>
+        {/* Users sidebar */}
+        <div className={styles.usersList}>
           <h2>Conversații</h2>
-          {conversations.length === 0 ? (
-            <p className={styles.noConversations}>Nu aveți nicio conversație</p>
-          ) : (
-            conversations.map((conversation, index) => (
-              <div 
-                key={conversation.id}
-                className={`${styles.conversationItem} ${
-                  activeConversation === index ? styles.active : ''
-                }`}
-                onClick={() => setActiveConversation(index)}
-              >
-                {conversation.avatar ? (
-                  <img 
-                    src={conversation.avatar} 
-                    alt={conversation.name} 
-                    className={styles.userAvatar}
-                  />
-                ) : (
+          <div className={styles.usersScroll}>
+            {users.length > 0 ? (
+              users.map((user) => (
+                <div
+                  key={user.uid}
+                  className={`${styles.userItem} ${selectedUser?.uid === user.uid ? styles.selected : ''}`}
+                  onClick={() => selectUser(user)}
+                >
                   <div className={styles.userAvatar}>
-                    {conversation.name.charAt(0).toUpperCase()}
+                    {user.displayName?.charAt(0).toUpperCase()}
                   </div>
-                )}
-                <div className={styles.userInfo}>
-                  <div className={styles.userName}>{conversation.name}</div>
-                  <div className={styles.lastMessage}>
-                    {conversation.lastMessage}
+                  <div className={styles.userInfo}>
+                    <div className={styles.userName}>{user.displayName}</div>
+                    <div className={styles.userEmail}>{user.email}</div>
                   </div>
                 </div>
-                {conversation.unread > 0 && (
-                  <span className={styles.unreadBadge}>
-                    {conversation.unread}
-                  </span>
-                )}
+              ))
+            ) : (
+              <div className={styles.noUsers}>
+                {loading ? 'Se încarcă utilizatori...' : 'Nu s-au găsit utilizatori'}
               </div>
-            ))
-          )}
+            )}
+          </div>
         </div>
 
-        {/* Coloana chat */}
-        <div className={styles.chatColumn}>
-          {activeConversation !== null ? (
+        {/* Chat area */}
+        <div className={styles.chatArea}>
+          {selectedUser ? (
             <>
               <div className={styles.chatHeader}>
-                {conversations[activeConversation].name}
+                <div className={styles.userAvatarHeader}>
+                  {selectedUser.displayName?.charAt(0).toUpperCase()}
+                </div>
+                <div className={styles.chatWith}>
+                  Conversație cu <strong>{selectedUser.displayName}</strong>
+                </div>
               </div>
               
               <div className={styles.messagesContainer}>
                 {messages.length === 0 ? (
-                  <p className={styles.noMessages}>
-                    Începeți conversația cu {conversations[activeConversation].name}
-                  </p>
+                  <div className={styles.noMessages}>
+                    Începeți conversația cu {selectedUser.displayName}
+                  </div>
                 ) : (
                   messages.map((message) => (
                     <div
                       key={message.id}
                       className={`${styles.message} ${
-                        message.senderId === currentUser.uid
-                          ? styles.userMessage
-                          : styles.otherMessage
+                        message.senderId === currentUser.uid ? styles.sent : styles.received
                       }`}
                     >
-                      <div className={styles.messageBubble}>
-                        {message.text}
+                      <div className={styles.messageContent}>
+                        {message.senderId !== currentUser.uid && (
+                          <div className={styles.senderName}>{message.senderName}</div>
+                        )}
+                        <div className={styles.messageText}>{message.text}</div>
                         <div className={styles.messageTime}>
-                          {message.timestamp?.toLocaleTimeString([], {
+                          {new Date(message.timestamp?.toDate()).toLocaleTimeString([], {
                             hour: '2-digit',
                             minute: '2-digit'
                           })}
@@ -261,8 +208,8 @@ const Chat = () => {
               </div>
             </>
           ) : (
-            <div className={styles.noChatSelected}>
-              Selectați o conversație pentru a începe discuția
+            <div className={styles.selectUserPrompt}>
+              Selectează un utilizator pentru a începe conversația
             </div>
           )}
         </div>
@@ -272,3 +219,4 @@ const Chat = () => {
 };
 
 export default Chat;
+
