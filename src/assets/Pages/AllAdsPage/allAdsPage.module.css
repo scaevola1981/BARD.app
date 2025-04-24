@@ -1,40 +1,113 @@
-.adsContainer {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.cardContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    margin: 30px 0;
-}
-
-.loading, .error {
-    text-align: center;
-    padding: 40px;
-    font-size: 18px;
-}
-
-.pagination {
+.wrapper {
+    margin: 20px;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  .filters {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin: 30px 0;
-}
-
-.pagination button {
-    padding: 8px 16px;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .autocompleteButton {
+    padding: 10px 20px;
+    border: none;
     background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 4px;
+    font-size: 1rem;
+    border-radius: 5px;
     cursor: pointer;
-}
-
-.pagination button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-}
+    transition: background-color 0.3s ease;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .autocompleteButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .autocompleteButton:focus {
+    outline: none;
+  }
+  
+  .autocompleteButton + .autocompleteButton {
+    margin-left: 10px;
+  }
+  
+  .autocompletare {
+    margin-top: 10px;
+    padding: 5px 0;
+    border-radius: 4px;
+  }
+  
+  .autocompletare ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  .autocompletare li {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .autocompletare li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  .pageButton {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pageButton:hover {
+    background-color: #ddd;
+  }
+  
+  .pageButtonActive {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+  }
+  
+  .pageButton:focus {
+    outline: none;
+  }
+  

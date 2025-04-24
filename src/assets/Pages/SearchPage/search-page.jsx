@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import cardData from '../../Components/Card/cardData';
-import Card from '../../Components/Card/Card';
+import Card from '../../Components/Card/card';
 import Header from '../../Components/Header/header';
 import NavBar from '../../Components/NavBar/navBar';
 import Footer from '../../Components/Footer/footer';

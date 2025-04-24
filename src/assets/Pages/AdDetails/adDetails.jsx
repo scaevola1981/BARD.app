@@ -44,9 +44,7 @@ const AdDetail = () => {
     <Header />
     <NavBar />
     <div className={styles.detailContainer}>
-      <button onClick={() => navigate(-1)} className={styles.backButton}>
-        &larr; Înapoi
-      </button>
+    
       
       <h1>{ad.title}</h1>
       
@@ -79,7 +77,11 @@ const AdDetail = () => {
           <p><strong>Email:</strong> {ad.email || 'Nespecificat'}</p>
         </div>
       </div>
+      
     </div>
+    <button onClick={() => navigate(-1)} className={styles.backButton}>
+        &larr; Înapoi
+      </button>
     <Footer />
     </>
   );
