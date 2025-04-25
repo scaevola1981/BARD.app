@@ -3,9 +3,11 @@ import styles from './favorite.module.css';
 import Footer from '../../Components/Footer/footer';
 import NavBar from '../../Components/NavBar/navBar';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Adaugă useNavigate
 import Card from '../../Components/Card/card';
 
 const Favorite = () => {
+  const navigate = useNavigate(); // Initializează navigate
   const [favoritesAds, setFavoritesAds] = useState([]);
   const [showMessage, setShowMessage] = useState(false);
 
@@ -22,6 +24,11 @@ const Favorite = () => {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setShowMessage(true);
     setTimeout(() => setShowMessage(false), 3000);
+  };
+
+  // Funcția pentru navigarea la detaliile anunțului
+  const handleCardClick = (id) => {
+    navigate(`/ad-detail/${id}`); // Navighează la pagina de detalii folosind id-ul anunțului
   };
 
   return (
@@ -42,6 +49,7 @@ const Favorite = () => {
             ads={favoritesAds}
             isFavoriteView={true}
             onRemove={handleRemoveFavorite}
+            onCardClick={handleCardClick} // Trimite funcția handleCardClick ca prop
           />
         )}
       </div>
@@ -58,3 +66,4 @@ const Favorite = () => {
 };
 
 export default Favorite;
+
