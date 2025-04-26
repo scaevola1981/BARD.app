@@ -4,8 +4,7 @@
   box-sizing: border-box;
 }
 
-
- /* header.module.css */
+/* header.module.css */
 
 .headerContainer {
   background-color: #fff;
@@ -73,7 +72,7 @@
   transition: all 0.2s ease;
   padding: 0.5rem;
   border-radius: 8px;
-  margin-left:5rem;
+  margin-left: 5rem;
 }
 
 .chatIcon:hover,
@@ -99,7 +98,6 @@
   color: #e53e3e;
 }
 
-
 .addPostBtn {
   background-color: #3182ce;
   color: white;
@@ -119,6 +117,31 @@
   box-shadow: 0 4px 8px rgba(49, 130, 206, 0.3);
 }
 
+/* Stiluri pentru butonul de temă */
+.themeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4a5568;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.themeButton:hover {
+  background-color: #cce8fa;
+  color: #2d3748;
+  transform: translateY(-2px);
+}
+
+.themeButton svg {
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .header {
@@ -134,6 +157,10 @@
   .bellIcon,
   .userNameIcon,
   .heartIconFilled {
+    font-size: 1.2rem;
+  }
+  
+  .themeButton svg {
     font-size: 1.2rem;
   }
   
@@ -161,4 +188,30 @@
     margin-left: 0.5rem;
     padding: 0.5rem 0.8rem;
   }
+}
+.themeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.themeButton:hover {
+  opacity: 0.8;
+}
+
+.themeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
 }

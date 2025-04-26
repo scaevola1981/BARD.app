@@ -70,6 +70,8 @@ const Card = ({
                 className={styles.cardBtn}
                 onClick={(e) => {
                   e.stopPropagation();
+                  console.log("ID-ul cardului de șters:", ad.id); // Debug
+                  console.log("Cardul curent:", ad); // Debug
                   if (isFavorite(ad.id)) {
                     onRemove(ad.id); // Elimină din favorite
                   } else {

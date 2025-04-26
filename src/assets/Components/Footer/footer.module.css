@@ -1,22 +1,23 @@
-/* Reset de bază */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Reset specific doar pentru Footer */
 .footer {
   width: 100%;
   height: auto;
+  background-color: #111111; /* fundal dark */
+  color: #cccccc; /* text gri deschis */
+  font-size: 14px;
 }
 
+/* HEADER Footer */
 .footerHead {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   justify-content: center;
   align-items: center;
-  background-color: #007BFF;
-  overflow: hidden;
+  background: linear-gradient(135deg, #0d6efd, #004080);
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  color: #ffffff;
 }
 
 .footerLogo {
@@ -24,42 +25,53 @@
   height: 80px;
   border-radius: 10px;
   margin-left: 250px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
-.footerHead p {
-  margin: 50px 100px;
+.footerParagraph {
+  margin: 30px 80px;
   font-size: 1.5rem;
-  color: white;
+  font-weight: 500;
+  color: #ffffff;
 }
 
 .detailsButton {
   width: 200px;
   height: 50px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: bold;
   border: none;
+  background-color: #ffffff;
+  color: #0d6efd;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.mainContent {
-  width: 100%;
-  height: auto;
-  background-color: #007BFF;
-}
-
-.mainContent img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-left: 650px;
-  margin-top: 80px;
-}
-
-.mainContent p {
-  text-align: center;
-  margin: 0px 180px;
+.detailsButton:hover {
+  background-color: #004080;
   color: #ffffff;
 }
 
+/* MAIN Content */
+.mainContent {
+  width: 100%;
+  height: auto;
+  background: linear-gradient(135deg, #0d6efd, #004080);
+  padding: 30px 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.mainParagraph {
+  text-align: center;
+  margin: 0px 180px;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* SOCIAL Icons */
 .socialIcons {
   display: flex;
   justify-content: center;
@@ -67,55 +79,75 @@
   flex-direction: row;
   width: 100%;
   height: 90px;
-  background-color:#0056b3;
+  background-color: #00264d;
+  border-radius: 12px;
+  margin-bottom: 30px;
 }
 
-.socialIcons img {
+.socialIconImg {
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  margin-top: 10px;
-  margin-right: 60px;
-  margin-left: 60px;
+  margin: 10px 60px 0 60px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
+.socialIconImg:hover {
+  transform: scale(1.2);
+}
+
+/* FOOTER Info */
 .footerInfo {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  grid-template-rows: auto;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: auto;
   overflow: hidden;
-;
+  padding: 20px;
 }
 
-.footerInfo p {
+.footerInfoText {
   font-weight: 300;
   padding: 5px;
   margin-left: 100px;
   margin-bottom: 10px;
   margin-top: 25px;
   line-height: 2;
+  color: #cccccc;
 }
 
 .storeIcons {
   width: 200px;
   height: auto;
   margin-left: 100px;
+  margin-top: 20px;
 }
 
 .flagContainer {
-  display: grid;
-  grid-column: 1/-1;
+  grid-column: 1 / -1;
   width: 100%;
   height: auto;
-  padding: 10px;
+  padding: 15px;
   word-spacing: 5px;
-  background-color: rgb(255, 255, 255);
+  background-color: #1a1a1a;
   font-weight: lighter;
-  color: rgba(128, 128, 128, 0.435);
-  cursor: pointer;
+  color: rgba(200, 200, 200, 0.7);
+  text-align: center;
+  border-radius: 12px;
+  margin-top: 20px;
+  font-size: 14px;
 }
 
+/* Footer links */
+footer a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #ffffff;
+}

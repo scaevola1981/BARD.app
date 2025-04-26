@@ -72,3 +72,47 @@
   .registerLink a:hover {
     text-decoration: underline;
   }
+
+  /* Stiluri pentru tema dark */
+.authLayout.darkTheme {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.authLayout.darkTheme .header {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+.authLayout.darkTheme .logo {
+  color: #ffffff;
+}
+
+.authLayout.darkTheme .navLink,
+.authLayout.darkTheme .toggleBtn {
+  color: #ffffff;
+}
+
+.authLayout.darkTheme .input {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
+}
+
+.authLayout.darkTheme .inputIcon {
+  color: #aaa;
+}
+
+.authLayout.darkTheme .submitBtn {
+  background-color: #4a4a4a;
+  color: #ffffff;
+}
+
+.authLayout.darkTheme .logoutBtn {
+  background-color: #4a4a4a;
+  color: #ffffff;
+}
+
+.authLayout.darkTheme .errorText {
+  color: #ff6b6b;
+}

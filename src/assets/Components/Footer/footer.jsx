@@ -3,20 +3,24 @@ import styles from './footer.module.css';
 const Footer = () => {
   return (
     <footer className={styles.footer}>
+      
+      {/* HEADER */}
       <div className={styles.footerHead}>
         <img
           className={styles.footerLogo}
           src="./foto-icons/stock-logo.jpg"
           alt="Logo stock-market"
         />
-        <p>Descoperă oferta EXVERO.App pentru schimbul tău dorit!</p>
+        <p className={styles.footerParagraph}>
+          Descoperă oferta EXVERO.App pentru schimbul tău dorit!
+        </p>
         <button className={styles.detailsButton}>Vezi mai multe detalii</button>
       </div>
 
+      {/* MAIN Content */}
       <div className={styles.mainContent}>
-       
-        <p>
-        EXVERO - Platforma de schimb simplu și eficient. EXVERO este o aplicație
+        <p className={styles.mainParagraph}>
+          EXVERO - Platforma de schimb simplu și eficient. EXVERO este o aplicație
           inovatoare, dedicată schimburilor de bunuri și alimente între
           utilizatori, oferind o alternativă la cumpărături tradiționale.
           Concepută pentru a simplifica interacțiunea între persoanele care
@@ -25,14 +29,28 @@ const Footer = () => {
         </p>
       </div>
 
+      {/* SOCIAL ICONS */}
       <div className={styles.socialIcons}>
-        <img src="./foto-icons/logo-icon2.jpg" alt="Instagram" />
-        <img src="./foto-icons/facebook-icon.jpg" alt="Facebook" />
-        <img src="./foto-icons/ytb-icon.jpg" alt="YouTube" />
+        <img
+          className={styles.socialIconImg}
+          src="./foto-icons/logo-icon2.jpg"
+          alt="Instagram"
+        />
+        <img
+          className={styles.socialIconImg}
+          src="./foto-icons/facebook-icon.jpg"
+          alt="Facebook"
+        />
+        <img
+          className={styles.socialIconImg}
+          src="./foto-icons/ytb-icon.jpg"
+          alt="YouTube"
+        />
       </div>
 
+      {/* FOOTER Info */}
       <div className={styles.footerInfo}>
-        <p>
+        <p className={styles.footerInfoText}>
           Aplicatii mobile <br />
           Ajutor și contact <br />
           Anunțuri promovate <br />
@@ -45,7 +63,7 @@ const Footer = () => {
           Livrare prin EXVERO <br />
           Informatii Ordin 225/2023
         </p>
-        <p>
+        <p className={styles.footerInfoText}>
           Cum să te ferești de phishing <br />
           Harta site <br />
           Cariere in EXVERO.app <br />
@@ -58,6 +76,7 @@ const Footer = () => {
           Cum functioneaza? <br />
           How to EXVERO
         </p>
+
         <img
           className={styles.storeIcons}
           src="./foto-icons/google & appStore icons.jpg"
@@ -66,13 +85,14 @@ const Footer = () => {
 
         <div className={styles.flagContainer}>
           <p>
-            🇧🇬 EXVERO.bg 🇵🇱 EXVERO.pl 🇺🇦 EXVERO.ua 🇵🇹 EXVERO.pt 🇷🇴Autovit.ro 🇷🇴Storia.ro
-            🇷🇴EXVERO Business
+            🇧🇬 EXVERO.bg 🇵🇱 EXVERO.pl 🇺🇦 EXVERO.ua 🇵🇹 EXVERO.pt 🇷🇴Autovit.ro 🇷🇴Storia.ro 🇷🇴EXVERO Business
           </p>
         </div>
       </div>
+
     </footer>
   );
 };
 
 export default Footer;
+

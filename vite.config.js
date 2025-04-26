@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react(), svgr()],
     server: {
-      hmr: mode !== "production", // use `mode` directly here
+      hmr: mode !== "production", 
     },
     base: '/',
     resolve: {
