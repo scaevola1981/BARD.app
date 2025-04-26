@@ -1,9 +1,11 @@
 import styles from './categories.module.css';
 import { useNavigate } from 'react-router';
-
+// import { useTheme } from '../../../api/themeContext';
 
 
 const Categories = ({ categories }) => {
+
+  // const { theme } = useTheme();// Folosim ThemeContext
 
    const navigate = useNavigate();
 

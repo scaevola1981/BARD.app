@@ -1,58 +1,64 @@
-/* chat.module.css */
 .appContainer {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #e9ecef; /* Fundal gri-albăstrui din imagine */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #0d1117; /* Fundal dark, inspirat de GitHub dark */
+  color: #c9d1d9; /* Text gri-albicios */
+}
+
+.chatContainer {
+  display: flex;
+  flex: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 20px;
+  background-color: #161b22; /* Dark mai deschis pentru interior */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.sidebar {
+  width: 300px;
+  background-color: #21262d; /* Dark SideBar */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-right: 1px solid #30363d; /* Liniuță de separare subtilă */
+}
+
+.mainContent {
+  flex: 1;
+  background-color: #0d1117;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.placeholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8b949e; /* Text placeholder ușor de citit */
+  font-size: 18px;
+  padding: 20px;
+}
+
+/* Responsivitate */
+@media (max-width: 768px) {
   .chatContainer {
-    display: flex;
-    flex: 1; /* Ocupă spațiul rămas sub Header */
-    border-radius: 10px; /* Colțuri rotunjite ca în imagine */
-    overflow: hidden; /* Asigură că colțurile rotunjite sunt vizibile */
-    margin: 20px; /* Spațiu în jurul containerului */
+    flex-direction: column;
+    margin: 10px;
   }
-  
+
   .sidebar {
-    width: 300px;
-    background-color: #5f4b8b; /* Mov închis din imagine */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #30363d;
   }
-  
-  .mainContent {
-    flex: 1;
-    background-color: #f5f7fb; /* Gri deschis pentru zona principală */
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .chatContent {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  
-  .placeholder {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-    font-size: 18px;
-  }
-  
-  /* Responsivitate */
-  @media (max-width: 768px) {
-    .chatContainer {
-      flex-direction: column;
-      margin: 10px;
-    }
-  
-    .sidebar {
-      width: 100%;
-    }
-  }
+}

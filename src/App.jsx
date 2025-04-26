@@ -1,5 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { Routes, Route } from 'react-router-dom';
+import ThemeProvider from './api/themeProvider'; // Importul ThemeProvider
 import Home from './assets/Components/Home/home';
 import Chat from './assets/Components/Chat/chat';
 import './index.css';
@@ -13,30 +14,30 @@ import RegisterPage from './assets/Pages/Register/register';
 import AllAdsPage from './assets/Pages/AllAdsPage/allAdsPage';
 import DbContent from './assets/Pages/DatabaseInteraction/dbContent';
 import AdDetails from './assets/Pages/AdDetails/adDetails';
-import Card from './assets/Components/Card/card'
-
+import Card from './assets/Components/Card/card';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/chat" element={<Chat />} />
-      <Route path="/favorite" element={<Favorite />} />
-      <Route path="/notificari" element={<Notifications />} />
-      <Route path="/cautare" element={<SearchPage />} />
-      <Route path="/addPostForm" element={<AddPostForm />} />
-      <Route path="/authentification-page" element={<AuthLayout />} />
-      <Route path="/account-page" element={<AccountPage />} />
-      <Route path="/inregistrare" element={<RegisterPage />} />
-      <Route path='/anunturi-noi' element={<Card/>}/>
-      <Route path="/anunturi" element={<AllAdsPage />} />
-      <Route path="/ads" element={<DbContent/>} />
-      <Route path='/ad/:id' element={<AdDetails/>}/>
-      <Route path="/login" element={<AuthLayout />} />
-
-    </Routes>
+    <ThemeProvider>  {/* Învelim aplicația în ThemeProvider */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/favorite" element={<Favorite />} />
+        <Route path="/notificari" element={<Notifications />} />
+        <Route path="/cautare" element={<SearchPage />} />
+        <Route path="/addPostForm" element={<AddPostForm />} />
+        <Route path="/authentification-page" element={<AuthLayout />} />
+        <Route path="/account-page" element={<AccountPage />} />
+        <Route path="/inregistrare" element={<RegisterPage />} />
+        <Route path='/anunturi-noi' element={<Card/>}/>
+        <Route path="/anunturi" element={<AllAdsPage />} />
+        <Route path="/ads" element={<DbContent/>} />
+        <Route path='/ad/:id' element={<AdDetails/>}/>
+        <Route path="/login" element={<AuthLayout />} />
+      </Routes>
+    </ThemeProvider>
   );
 }
 
-export default App
+export default App;
 

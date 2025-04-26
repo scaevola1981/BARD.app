@@ -3,6 +3,8 @@ import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaUser, FaLock, FaRedo } from 'react-icons/fa';
 import Api from '../../../api';
 import styles from './register.module.css';
+import { useTheme } from '../../../api/themeContext';
+
 
 const AuthLayout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -13,6 +15,7 @@ const AuthLayout = () => {
   const [isRegistering, setIsRegistering] = useState(false);
   const navigate = useNavigate();
   const location = useLocation(); 
+  const { theme } = useTheme(); // Obține tema din context
 
   // Verificăm dacă utilizatorul este deja logat și redirecționăm la /account-page
   useEffect(() => {
@@ -91,7 +94,10 @@ const AuthLayout = () => {
   };
 
   return (
+   
+
     <div className={styles.authLayout}>
+       <div className={`${styles.authLayout} ${theme === 'dark' ? styles.darkTheme : ''}`}></div>
       <header className={styles.header}>
         <h1 className={styles.logo}>Bun venit!</h1>
         <nav className={styles.nav}>
@@ -172,7 +178,7 @@ const AuthLayout = () => {
     {isRegistering ? 'Înregistrează-te' : 'Login'}
   </button>
 
-  {/* ⬇️ Butonul mutat aici */}
+  
   <button 
     type="button"
     onClick={() => setIsRegistering(!isRegistering)}

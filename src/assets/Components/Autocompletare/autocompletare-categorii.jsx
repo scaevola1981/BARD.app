@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from './autocompletare-categorii.module.css';
 import categoriesData from '../Categories/categoriesData';
 
+
 // Funcția pentru eliminarea diacriticelor
 const removeDiacritics = (text) => {
   const diacriticsMap = {
@@ -10,6 +11,9 @@ const removeDiacritics = (text) => {
   };
   return text.split('').map(char => diacriticsMap[char] || char).join('');
 };
+
+
+
 
 const AutocompletareCategorii = ({ onSelect }) => {
   const [cautareTermeni, setCautareTermeni] = useState('');

@@ -140,4 +140,41 @@
       transform: translateY(0);
     }
   }
-  
+  /* Stiluri de bază */
+.accountPage {
+  min-height: 100vh;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.accountContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.authButton {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+/* Stiluri pentru tema dark */
+.darkTheme {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.darkTheme .accountContent {
+  background-color: #2d2d2d;
+}
+
+.darkTheme .authButton {
+  background-color: #2E7D32;
+  color: white;
+}

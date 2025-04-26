@@ -1,8 +1,8 @@
 // Chat.jsx
 import { useState } from 'react';
-import { auth } from '@/api/firebase'; // ✅ import auth
-import { createOrGetChat } from '../../../api/createNewChat'; // ✅ import funcție
-import UsersList from '../UsersList/usersList'; // ✅ import componentă
+import { auth } from '@/api/firebase';
+import { createOrGetChat } from '../../../api/createNewChat';
+import UsersList from '../UsersList/usersList';
 import Header from '../Header/header';
 import Chats from './chats';
 import Sidebar from './sidebar';
@@ -10,7 +10,6 @@ import Input from './input';
 import Message from './message';
 import Navbar from './navbar';
 import Search from './search';
-
 
 import styles from './chat.module.css';
 
@@ -53,4 +52,3 @@ const Chat = () => {
 };
 
 export default Chat;
-
