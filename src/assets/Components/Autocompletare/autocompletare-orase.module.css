@@ -1,52 +1,139 @@
 .autocompletareContainer {
   position: relative;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .autocompletareInput {
-  width:500px;
+  width: 500px;
   height: 60px;
-  padding: 10px;
-  background-color:#fff ;
-  border-radius:5px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
   border: 1px solid #007BFF;
   color: #000;
   font-size: 1.2rem;
   font-style: oblique;
+  position: relative; 
+  z-index: 2;
 }
 
 .autocompletareInput:hover {
-  background-color:#007BFF ;
+  background-color: #007bff;
   color: #fff;
 }
 
-.autocompletareInput::placeholder{
+.autocompletareInput::placeholder {
   color: #000;
 }
 
 .autocompletareDropdown {
   position: absolute;
+  top: 100%; 
+  left: 0; 
   background-color: #007BFF;
   width: 500px;
-  margin-top: 1px;
+  margin-top: 5px; 
   max-height: 300px;
   overflow-y: auto;
   border: 1px solid #007BFF;
   border-radius: 5px;
   list-style: none;
-  z-index: 10;
+  z-index: 1; 
   color: #fff;
   padding: 0;
-  margin: 0;
+  margin-left: 7rem; 
+  font-style: oblique;
+  animation: fadeSlideDown 0.25s ease forwards;
+}
+
+
+@keyframes fadeSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .dropdownItem {
   padding: 10px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
   font-style: oblique;
+  transition: background-color 0.2s ease;
 }
 
 .dropdownItem:hover {
   background-color: #FFA726;
+}
+
+/* Responsivitate */
+
+/* Tablete (768px - 1024px) */
+@media (max-width: 1024px) {
+  .autocompletareInput {
+    width: 400px;
+    height: 50px;
+    padding: 15px;
+    font-size: 1.1rem;
+  }
+
+  .autocompletareDropdown {
+    width: 400px;
+    max-height: 250px;
+  }
+
+  .dropdownItem {
+    padding: 8px;
+  }
+}
+
+/* Mobil (≤768px) */
+@media (max-width: 768px) {
+  .autocompletareContainer {
+    justify-content: center;
+  }
+
+  .autocompletareInput {
+    width: 90%;
+    max-width: 500px;
+    height: 45px;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .autocompletareDropdown {
+    width: 90%;
+    max-width: 500px;
+    max-height: 200px;
+  }
+
+  .dropdownItem {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobil mic (≤480px) */
+@media (max-width: 480px) {
+  .autocompletareInput {
+    width: 95%;
+    height: 40px;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .autocompletareDropdown {
+    width: 95%;
+    max-height: 180px;
+  }
+
+  .dropdownItem {
+    padding: 6px;
+    font-size: 0.85rem;
+  }
 }

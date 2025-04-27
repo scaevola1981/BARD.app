@@ -1,8 +1,5 @@
-// Chat.jsx
+
 import { useState } from 'react';
-import { auth } from '@/api/firebase';
-import { createOrGetChat } from '../../../api/createNewChat';
-import UsersList from '../UsersList/usersList';
 import Header from '../Header/header';
 import Chats from './chats';
 import Sidebar from './sidebar';
@@ -10,27 +7,20 @@ import Input from './input';
 import Message from './message';
 import Navbar from './navbar';
 import Search from './search';
+import { useTheme } from '../../../api/themeContext';
 
 import styles from './chat.module.css';
 
 const Chat = () => {
+  const { theme } = useTheme();
   const [selectedChat, setSelectedChat] = useState(null);
 
   return (
-    <div className={styles.appContainer}>
+    <div className={`${styles.appContainer} ${theme === 'dark' ? styles.darkTheme : ''}`}>
       <Header />
       <div className={styles.chatContainer}>
         <Sidebar className={styles.sidebar}>
-          <Search />
-          <UsersList
-            onSelectUser={async (selectedUser) => {
-              const chatId = await createOrGetChat(
-                auth.currentUser.uid,
-                selectedUser.uid
-              );
-              setSelectedChat(chatId);
-            }}
-          />
+          <Search onChatSelect={setSelectedChat} />
           <Chats onSelectChat={setSelectedChat} />
         </Sidebar>
         <div className={styles.mainContent}>

@@ -1,31 +1,40 @@
-// Input.jsx
-import { useState } from 'react';
-import { db} from '@/api/firebase';
+import { useState, useEffect } from 'react';
+import { db, observeAuthState } from '../../../api/firebase';
 import { collection, addDoc, serverTimestamp, doc, updateDoc } from 'firebase/firestore';
 import styles from './input.module.css';
 
 const Input = ({ chatId }) => {
   const [message, setMessage] = useState('');
+  const [currentUserId, setCurrentUserId] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = observeAuthState((user) => {
+      if (user) {
+        setCurrentUserId(user.uid);
+      } else {
+        setCurrentUserId(null);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleSend = async () => {
-    if (!message.trim() || !chatId) return;
+    if (!message.trim() || !chatId || !currentUserId) return;
 
     try {
-      // Adaugă mesajul în subcolecția "messages" a chat-ului
       await addDoc(collection(db, 'chat', chatId, 'messages'), {
         text: message,
-        user: 'current', // Într-o aplicație reală, folosește ID-ul utilizatorului autentificat
+        user: currentUserId,
         timestamp: serverTimestamp(),
       });
 
-      // Actualizează documentul chat-ului cu ultimul mesaj (pentru previzualizare în Chats)
       const chatRef = doc(db, 'chat', chatId);
       await updateDoc(chatRef, {
         text: message,
         timestamp: serverTimestamp(),
       });
 
-      setMessage(''); // Resetează input-ul
+      setMessage('');
     } catch (error) {
       console.error('Error sending message:', error);
     }
@@ -35,14 +44,15 @@ const Input = ({ chatId }) => {
     <div className={styles.inputContainer}>
       <input
         type="text"
-        placeholder="Type something..."
+        placeholder="Scrie un mesaj..."
         className={styles.input}
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        onKeyPress={(e) => e.key === 'Enter' && handleSend()}
       />
       <img src="attachment-icon.png" alt="attach" className={styles.icon} />
       <button className={styles.sendButton} onClick={handleSend}>
-        Send
+        Trimite
       </button>
     </div>
   );

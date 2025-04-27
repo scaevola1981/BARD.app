@@ -1,24 +1,20 @@
 import { useEffect, useState } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { db, observeAuthState } from '../../../api/firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '@/api/firebase';
-import { createOrGetChat } from '@/api/createNewChat';
-
+import { createOrGetChat } from '../../../api/createNewChat';
 import styles from './search.module.css';
 
 const Search = ({ onChatSelect }) => {
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
-  const auth = getAuth();
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCurrentUser(user);
-      }
+    const unsubscribe = observeAuthState((user) => {
+      setCurrentUser(user);
     });
     return () => unsubscribe();
-  }, [auth]);
+  }, []);
 
   useEffect(() => {
     if (!currentUser) return;
@@ -27,8 +23,8 @@ const Search = ({ onChatSelect }) => {
       const usersRef = collection(db, 'users');
       const snapshot = await getDocs(usersRef);
       const fetchedUsers = snapshot.docs
-        .map(doc => ({ id: doc.id, ...doc.data() }))
-        .filter(user => user.id !== currentUser.uid);
+        .map((doc) => ({ id: doc.id, ...doc.data() }))
+        .filter((user) => user.id !== currentUser.uid);
       setUsers(fetchedUsers);
     };
 
@@ -41,16 +37,40 @@ const Search = ({ onChatSelect }) => {
     onChatSelect(chatId);
   };
 
+  const filteredUsers = users.filter((user) =>
+    `${user.firstName} ${user.lastName}`
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className={styles.search}>
-      <input type="text" placeholder="Find a user..." className={styles.searchInput} />
+    <div className={styles.searchContainer}>
+      <input
+        type="text"
+        placeholder="Caută un utilizator..."
+        className={styles.searchInput}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
       <div className={styles.userList}>
-        {users.map(user => (
-          <div key={user.id} className={styles.userItem} onClick={() => handleUserClick(user.id)}>
-            <img src="avatar-placeholder.png" alt="avatar" className={styles.avatar} />
-            <span>{user.name || user.email}</span>
-          </div>
-        ))}
+        {filteredUsers.length > 0 ? (
+          filteredUsers.map((user) => (
+            <div
+              key={user.id}
+              className={styles.userItem}
+              onClick={() => handleUserClick(user.id)}
+            >
+              <img
+                src={user.profilePicture || 'avatar-placeholder.png'}
+                alt="avatar"
+                className={styles.avatar}
+              />
+              <span>{`${user.firstName} ${user.lastName}`}</span>
+            </div>
+          ))
+        ) : (
+          <div className={styles.noResults}>Niciun utilizator găsit.</div>
+        )}
       </div>
     </div>
   );

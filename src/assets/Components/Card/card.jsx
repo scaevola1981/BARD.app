@@ -29,7 +29,7 @@ const Card = ({
   return (
     <div className={styles.wrapper}>
       {!isFavoriteView && (
-        <h2 className={styles.cardsTitle}>Anunțuri</h2>
+        <h2 className={styles.cardsTitle}>Cele mai recente anunturi !</h2>
       )}
 
       <div className={styles.cardsGrid}>
@@ -73,9 +73,9 @@ const Card = ({
                   console.log("ID-ul cardului de șters:", ad.id); // Debug
                   console.log("Cardul curent:", ad); // Debug
                   if (isFavorite(ad.id)) {
-                    onRemove(ad.id); // Elimină din favorite
+                    onRemove(ad.id);
                   } else {
-                    onAddFavorite(ad); // Adaugă la favorite
+                    onAddFavorite(ad); 
                   }
                 }}
               >
