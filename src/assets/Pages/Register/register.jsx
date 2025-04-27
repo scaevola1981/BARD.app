@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaUser, FaLock, FaRedo } from 'react-icons/fa';
 import Api from '../../../api';
-import styles from './register.module.css';
+import styles from './register.module.css'; // Poți folosi același CSS
+import Header from '../../Components/Header/header';
 import { useTheme } from '../../../api/themeContext';
-
 
 const AuthLayout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -14,24 +14,22 @@ const AuthLayout = () => {
   const [passwordError, setPasswordError] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation(); 
+  const location = useLocation();
   const { theme } = useTheme(); // Obține tema din context
 
-  // Verificăm dacă utilizatorul este deja logat și redirecționăm la /account-page
+  // Verificăm dacă utilizatorul este deja logat
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) {
+    const justLoggedIn = localStorage.getItem('justLoggedIn');
+    if (token && justLoggedIn === 'true') {
       setIsLoggedIn(true);
-      // Dacă nu suntem deja pe account-page, trimitem utilizatorul acolo
-      if (location.pathname !== '/account-page') {
-        navigate('/account-page');
-      }
+      navigate('/account-page');
+      localStorage.removeItem('justLoggedIn'); // evită redirecționarea ulterioară
     }
-  }, [location.pathname, navigate]);
+  }, [navigate]);
 
-  // Gestionăm comportamentul de autentificare și înregistrare
+  // Verificăm parametrul URL pentru a seta înregistrarea
   useEffect(() => {
-    // Verificăm dacă userul a activat înregistrarea
     const searchParams = new URLSearchParams(location.search);
     if (searchParams.get('mode') === 'register') {
       setIsRegistering(true);
@@ -75,6 +73,7 @@ const AuthLayout = () => {
 
       if (response.success) {
         localStorage.setItem('token', response.data.idToken);
+        localStorage.setItem('justLoggedIn', 'true');
         alert(isRegistering ? 'Înregistrare reușită!' : 'Autentificare reușită!');
         setIsLoggedIn(true);
         navigate('/account-page');
@@ -94,107 +93,99 @@ const AuthLayout = () => {
   };
 
   return (
-   
-
-    <div className={styles.authLayout}>
-       <div className={`${styles.authLayout} ${theme === 'dark' ? styles.darkTheme : ''}`}></div>
-      <header className={styles.header}>
-        <h1 className={styles.logo}>Bun venit!</h1>
-        <nav className={styles.nav}>
-          {isLoggedIn ? (
-            <>
-              <Link to="/account-page" className={styles.navLink}>Profil</Link>
-              <button onClick={handleLogout} className={styles.logoutBtn}>
-                Deconectare
-              </button>
-            </>
-          ) : (
-            <button 
-              onClick={() => setIsRegistering(!isRegistering)}
-              className={styles.toggleBtn}
-            >
-              {isRegistering ? 'Ai deja cont? Autentifică-te' : 'Nu ai cont? Înregistrează-te'}
-            </button>
-          )}
-        </nav>
-      </header>
-
-      <main className={styles.mainContent}>
-        {isLoggedIn ? (
-          <Outlet />
-        ) : (
-          <div className={styles.authSection}>
-            <h2 className={styles.authTitle}>
-              {isRegistering ? 'Înregistrare' : 'Login'}
-            </h2>
-            
-            <form onSubmit={handleSubmit} className={styles.authForm}>
-  <div className={styles.inputGroup}>
-    <FaUser className={styles.inputIcon} />
-    <input
-      type="email"
-      placeholder="Email"
-      value={username}
-      onChange={(e) => setUsername(e.target.value)}
-      required
-      className={styles.input}
-    />
-  </div>
-
-  <div className={styles.inputGroup}>
-    <FaLock className={styles.inputIcon} />
-    <input
-      type="password"
-      placeholder="Parolă"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      required
-      className={styles.input}
-      minLength="6"
-    />
-  </div>
-
-  {isRegistering && (
     <>
-      <div className={styles.inputGroup}>
-        <FaRedo className={styles.inputIcon} />
-        <input
-          type="password"
-          placeholder="Repetă parola"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-          className={styles.input}
-          minLength="6"
-        />
+      <Header />
+
+      <div className={`${styles.authLayout} ${theme === 'dark' ? styles.darkTheme : ''}`}>
+        <header className={styles.header}>
+          <h1 className={styles.logo}>Bun venit!</h1>
+          <nav className={styles.nav}>
+            {isLoggedIn ? (
+              <>
+                <Link to="/account-page" className={styles.navLink}>Profil</Link>
+                <button onClick={handleLogout} className={styles.logoutBtn}>
+                  Deconectare
+                </button>
+              </>
+            ) : (
+              <button 
+                onClick={() => setIsRegistering(!isRegistering)}
+                className={styles.toggleBtn}
+              >
+                {isRegistering ? 'Ai deja cont? Autentifică-te' : 'Nu ai cont? Înregistrează-te'}
+              </button>
+            )}
+          </nav>
+        </header>
+
+        <main className={styles.mainContent}>
+          {isLoggedIn ? (
+            <Outlet />
+          ) : (
+            <div className={styles.authSection}>
+              <h2 className={styles.authTitle}>
+                {isRegistering ? 'Înregistrare' : 'Login'}
+              </h2>
+
+              <form onSubmit={handleSubmit} className={styles.authForm}>
+                <div className={styles.inputGroup}>
+                  <FaUser className={styles.inputIcon} />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                    className={styles.input}
+                  />
+                </div>
+
+                <div className={styles.inputGroup}>
+                  <FaLock className={styles.inputIcon} />
+                  <input
+                    type="password"
+                    placeholder="Parolă"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className={styles.input}
+                    minLength="6"
+                  />
+                </div>
+
+                {isRegistering && (
+                  <>
+                    <div className={styles.inputGroup}>
+                      <FaRedo className={styles.inputIcon} />
+                      <input
+                        type="password"
+                        placeholder="Repetă parola"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                        className={styles.input}
+                        minLength="6"
+                      />
+                    </div>
+                    {passwordError && (
+                      <p className={styles.errorText}>{passwordError}</p>
+                    )}
+                  </>
+                )}
+
+                <button type="submit" className={styles.submitBtn}>
+                  {isRegistering ? 'Înregistrează-te' : 'Login'}
+                </button>
+              </form>
+            </div>
+          )}
+        </main>
       </div>
-      {passwordError && (
-        <p className={styles.errorText}>{passwordError}</p>
-      )}
     </>
-  )}
-
-  <button type="submit" className={styles.submitBtn}>
-    {isRegistering ? 'Înregistrează-te' : 'Login'}
-  </button>
-
-  
-  <button 
-    type="button"
-    onClick={() => setIsRegistering(!isRegistering)}
-    className={styles.toggleBtn}
-  >
-    {isRegistering ? 'Ai deja cont? Autentifică-te' : 'Nu ai cont? Înregistrează-te'}
-  </button>
-</form>
-
-          </div>
-        )}
-      </main>
-    </div>
   );
 };
 
 export default AuthLayout;
+
 
 

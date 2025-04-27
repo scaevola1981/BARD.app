@@ -5,7 +5,7 @@ const categoriesData = [
   {
     "id": 1,
     "name": "Imobiliare",
-    "image": "./foto-icons/logo-imobiliare.png",
+    "image": "./foto-icons/foto-imobiliare.png",
     "subcategories": [
       "Apartamente",
       "Case",
@@ -21,7 +21,7 @@ const categoriesData = [
   {
     "id": 2,
     "name": "Mașini și Piese",
-    "image": "./foto-icons/logo-car.png",
+    "image": "./foto-icons/foto-automobile.png",
     "subcategories": [
       "Mașini",
       "Motoare",
@@ -36,7 +36,7 @@ const categoriesData = [
   {
     "id": 3,
     "name": "Electronice",
-    "image": "./foto-icons/logo-electronic.png",
+    "image": "./foto-icons/foto-electronice.png",
     "subcategories": [
       "Telefoane mobile",
       "Laptopuri",
@@ -51,7 +51,7 @@ const categoriesData = [
   {
     "id": 4,
     "name": "Modă",
-    "image": "./foto-icons/logo-fashion.png",
+    "image": "./foto-icons/foto-moda.png",
     "subcategories": [
       "Îmbrăcăminte",
       "Încălțăminte",
@@ -66,7 +66,7 @@ const categoriesData = [
   {
     "id": 5,
     "name": "Hobby și Crafting",
-    "image": "./foto-icons/logo-hobby.png",
+    "image": "./foto-icons/foto-hobby.png",
     "subcategories": [
       "Pictură",
       "Meșteșuguri",
@@ -81,7 +81,7 @@ const categoriesData = [
   {
     "id": 6,
     "name": "Casă și Grădină",
-    "image": "./foto-icons/logo-garden.png",
+    "image": "./foto-icons/foto-gradina.png",
     "subcategories": [
       "Mobilier casă",
       "Decorațiuni",
@@ -95,7 +95,7 @@ const categoriesData = [
   {
     "id": 7,
     "name": "Mobilier/Decorațiuni",
-    "image": "./foto-icons/logo-mobilier.png",
+    "image": "./foto-icons/foto-mobilier.png",
     "subcategories": [
       "Canapele",
       "Paturi",
@@ -110,7 +110,7 @@ const categoriesData = [
   {
     "id": 8,
     "name": "Cărți/Filme/Muzică",
-    "image": "./foto-icons/logo-books.png",
+    "image": "./foto-icons/foto-carti.png",
     "subcategories": [
       "Cărți",
       "Filme",
@@ -125,7 +125,7 @@ const categoriesData = [
   {
     "id": 9,
     "name": "Echipamente",
-    "image": "./foto-icons/logo-equipment.png",
+    "image": "./foto-icons/foto-echipamente.png",
     "subcategories": [
       "Echipamente sportive",
       "Echipamente de camping",
@@ -139,7 +139,7 @@ const categoriesData = [
   {
     "id": 10,
     "name": "Produse Alimentare",
-    "image": "./foto-icons/logo-food.png",
+    "image": "./foto-icons/foto-alimente.png",
     "subcategories": [
       "Produse bio",
       "Produse din carne",
@@ -154,7 +154,7 @@ const categoriesData = [
   {
     "id": 11,
     "name": "Articole Sportive",
-    "image": "./foto-icons/logo-sports.png",
+    "image": "./foto-icons/foto-sport.png",
     "subcategories": [
       "Echipamente pentru fotbal",
       "Echipamente pentru baschet",
@@ -169,7 +169,7 @@ const categoriesData = [
   {
     "id": 12,
     "name": "Animale",
-    "image": "./foto-icons/logo-animals.png",
+    "image": "./foto-icons/foto-animale.png",
     "subcategories": [
       "Câini",
       "Pisici",
@@ -184,7 +184,7 @@ const categoriesData = [
   {
     "id": 13,
     "name": "Voluntariat",
-    "image": "./foto-icons/logo-voluntary.png",
+    "image": "./foto-icons/foto-voluntariat.png",
     "subcategories": [
       "Proiecte sociale",
       "Voluntariat în educație",
@@ -198,7 +198,7 @@ const categoriesData = [
   {
     "id": 14,
     "name": "Antichități",
-    "image": "./foto-icons/logo-antiques.png",
+    "image": "./foto-icons/foto-antichitati.png",
     "subcategories": [
       "Mobilier antic",
       "Bijuterii antice",
@@ -212,7 +212,7 @@ const categoriesData = [
   {
     "id": 15,
     "name": "IT și Software",
-    "image": "./foto-icons/logo-it.png",
+    "image": "./foto-icons/foto-it.png",
     "subcategories": [
       "Aplicații software",
       "Gadgeturi",
@@ -226,7 +226,7 @@ const categoriesData = [
   {
     "id": 16,
     "name": "Altele",
-    "image": "./foto-icons/logo-others.png",
+    "image": "./foto-icons/foto-altele.png",
     "subcategories": [
       "Produse diverse",
       "Suveniruri",

@@ -7,11 +7,10 @@
 .containerCategories {
   background-color: var(--background-color);
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  align-items: center;
+  grid-template-rows: auto auto;
   width: 100%;
-  max-height: 700px;
-  margin-top: 40px;
+  margin-top: 100px;
+  margin-bottom: 60px;
 }
 
 .containerCategories h2 {
@@ -20,8 +19,10 @@
   color: var(--text-color);
   background-color: var(--background-color);
   font-family: 'Inter', sans-serif;
-  font-weight: 200;
+  font-weight: 400;
   font-style: oblique;
+  margin-bottom: 20px;
+  color: #007bff;
 }
 
 .categoriesContainer {
@@ -29,44 +30,138 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-template-rows: auto;
-  margin: 0px 100px 30px 100px;
+  margin: 0 100px;
   gap: 20px;
 }
 
-.imgFoto {
-  width: 50px;
-  height: 50px;
-  margin-right: 20px;
-  object-fit: cover;
-  max-width: 100%;
+/* Wrapper pentru buton și text */
+.categoryWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Spațiu între buton și text */
+  max-width: 260px; /* Controlează lățimea maximă a wrapper-ului */
 }
 
 .categoryBtn {
   border-radius: 5px;
   border: 1px solid var(--button-border-color);
-  max-width: 260px;
-  height: 80px;
+  width: 100%; /* Ocupă întreaga lățime a wrapper-ului */
+  max-width: 260px; /* Dimensiune maximă */
+  height: 80px; /* Înălțime fixă */
   background-color: var(--button-bg);
-  color: var(--text-color);
   transition: all 0.3s ease;
+  display: block; /* Asigură respectarea dimensiunilor */
 }
 
 .categoryBtn:hover {
   background-color: var(--button-hover-bg);
-  color: var(--hover-text-color);
   border: 1px solid var(--hover-border-color);
 }
 
+.spanBtn {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #007bff;
+  text-align: center;
+}
+
+/* Responsivitate */
+
+/* Tablete (601px - 1024px) */
 @media (min-width: 601px) and (max-width: 1024px) {
+  .containerCategories {
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+  .containerCategories h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
   .categoriesContainer {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    flex-direction: column;
-    gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
     margin: 0 20px;
   }
 
-  .containerCategories {
-    margin-bottom: 50px;
+  .categoryWrapper {
+    max-width: 220px; /* Ajustăm lățimea wrapper-ului */
+  }
+
+  .categoryBtn {
+    max-width: 220px;
+    height: 70px;
+  }
+
+  .spanBtn {
+    font-size: 0.9rem;
   }
 }
 
+/* Mobil (≤600px) */
+@media (max-width: 600px) {
+  .containerCategories {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .containerCategories h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .categoriesContainer {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin: 0 10px;
+  }
+
+  .categoryWrapper {
+    max-width: 180px; /* Ajustăm lățimea wrapper-ului */
+  }
+
+  .categoryBtn {
+    max-width: 180px;
+    height: 60px;
+  }
+
+  .spanBtn {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobil mic (≤480px) */
+@media (max-width: 480px) {
+  .containerCategories {
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+
+  .containerCategories h2 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    margin-top: 8px;
+  }
+
+  .categoriesContainer {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 8px;
+    margin: 0 5px;
+  }
+
+  .categoryWrapper {
+    max-width: 150px; /* Ajustăm lățimea wrapper-ului */
+  }
+
+  .categoryBtn {
+    max-width: 150px;
+    height: 50px;
+  }
+
+  .spanBtn {
+    font-size: 0.8rem;
+  }
+}

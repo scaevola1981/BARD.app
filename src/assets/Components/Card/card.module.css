@@ -5,22 +5,19 @@
   font-family: 'Inter';
 }
 
-
 .wrapper {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-
-
 .cardsTitle {
   text-align: center;
   margin: 2rem 0;
   position: relative;
-  display: inline-block; 
+  display: inline-block;
   left: 50%;
-  transform: translateX(-50%); 
+  transform: translateX(-50%);
 }
 
 .cardsTitle::after {
@@ -32,13 +29,14 @@
   margin: 0.5rem auto 0;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%); 
+  transform: translateX(-50%);
 }
+
 /* Titlu */
 .cardsTitle {
   font-size: 2rem;
   font-weight: 600;
-  color: #333;
+  color: #007bff;
   margin-bottom: 2rem;
   text-align: left;
 }
@@ -125,7 +123,7 @@
 /* Container pentru butoane */
 .cardBtnContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centrăm butonul */
   padding: 1rem;
   border-top: 1px solid #eee;
 }
@@ -162,4 +160,29 @@
 .cardIcon,
 .cardIconHeart {
   font-size: 1rem;
+}
+
+/* Ajustări responsive */
+@media (max-width: 768px) {
+  .cardBtnContainer {
+    padding: 0.8rem;
+  }
+
+  .cardBtn,
+  .cardBtnRemove {
+    padding: 0.4rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardBtnContainer {
+    padding: 0.6rem;
+  }
+
+  .cardBtn,
+  .cardBtnRemove {
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+  }
 }

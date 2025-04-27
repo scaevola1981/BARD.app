@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from './autocompletare-categorii.module.css';
 import categoriesData from '../Categories/categoriesData';
 
-
 // Funcția pentru eliminarea diacriticelor
 const removeDiacritics = (text) => {
   const diacriticsMap = {
@@ -11,9 +10,6 @@ const removeDiacritics = (text) => {
   };
   return text.split('').map(char => diacriticsMap[char] || char).join('');
 };
-
-
-
 
 const AutocompletareCategorii = ({ onSelect }) => {
   const [cautareTermeni, setCautareTermeni] = useState('');
@@ -28,9 +24,8 @@ const AutocompletareCategorii = ({ onSelect }) => {
     setCautareTermeni(value);
 
     if (value.length > 0) {
-      // Filtrăm subcategoriile, eliminând diacriticele și comparându-le
       const filtered = toateSubcategoriile.filter((subcat) =>
-        removeDiacritics(subcat.toLowerCase()).includes(removeDiacritics(value.toLowerCase()))
+        removeDiacritics(subcat.toLowerCase()).startsWith(removeDiacritics(value.toLowerCase()))
       );
       setFiltrareCategorii(filtered);
     } else {
@@ -38,17 +33,25 @@ const AutocompletareCategorii = ({ onSelect }) => {
     }
   };
 
-  // Selectarea unei subcategorii
   const handleSelectCategory = (category) => {
     setCautareTermeni(category);
     setFiltrareCategorii([]);
-    onSelect(category);
+    onSelect(category); // Actualizăm filtrul în AllAdsPage
   };
 
-  // Selectarea unei subcategorii la apăsarea tastei "Enter"
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && filtrareCategorii.length > 0) {
-      handleSelectCategory(filtrareCategorii[0]);
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (filtrareCategorii.length > 0) {
+        handleSelectCategory(filtrareCategorii[0]);
+      }
+    }
+  };
+
+  const handleBlur = () => {
+    if (!toateSubcategoriile.includes(cautareTermeni)) {
+      setCautareTermeni('');
+      setFiltrareCategorii([]);
     }
   };
 
@@ -60,13 +63,19 @@ const AutocompletareCategorii = ({ onSelect }) => {
         value={cautareTermeni}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
+        onBlur={handleBlur}
         className={styles.autocompletareInput}
       />
 
       {filtrareCategorii.length > 0 && (
         <ul className={styles.autocompletareDropdown}>
           {filtrareCategorii.map((subcat, index) => (
-            <li key={index} onClick={() => handleSelectCategory(subcat)} className={styles.dropdownItem}>
+            <li
+              key={index}
+              onClick={() => handleSelectCategory(subcat)}
+              onMouseDown={(e) => e.preventDefault()}
+              className={styles.dropdownItem}
+            >
               {subcat}
             </li>
           ))}
@@ -77,4 +86,3 @@ const AutocompletareCategorii = ({ onSelect }) => {
 };
 
 export default AutocompletareCategorii;
-

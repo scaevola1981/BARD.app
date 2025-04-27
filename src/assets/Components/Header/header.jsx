@@ -15,8 +15,10 @@ import { useTheme } from '../../../api/themeContext';
 const Header = () => {
   const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
-  const { theme, toggleTheme } = useTheme(); // Folosim ThemeContext
+  const { theme, toggleTheme } = useTheme();
   const [hasNotifications, setHasNotifications] = useState(false);
+
+  
 
   useEffect(() => {
     const checkNotifications = () => {
@@ -51,11 +53,12 @@ const Header = () => {
 
   const goToAddPostForm = () => {
     const token = localStorage.getItem('token');
+    console.log('Token:', token);
     if (token) {
       navigate('/addPostForm');
     } else {
       localStorage.setItem('redirectTo', 'AddPostForm');
-      navigate('/authentification-page');
+      navigate('/register');
     }
   };
 
@@ -72,76 +75,76 @@ const Header = () => {
     if (token) {
       navigate('/account-page');
     } else {
-      navigate('/authentification-page');
+      navigate('/register');
     }
   };
 
   return (
-    <div className={`${styles.headerContainer} header-container`}>
-      <header className={styles.header}>
+    <>
+      <div className={`${styles.headerContainer} header-container`}>
         <div className={styles.logoContainer}>
           <button className={styles.buttonHome} onClick={goToHome}>
             <img
               className={styles.logoImg}
-              src="./foto-icons/logo-4-app-bard.png"
+              src="./foto-icons/logo-5-app-bard.png"
               alt="Logo"
             />
           </button>
         </div>
-
-        <div className={styles.headerIcons}>
-          <Link to="/chat" className={styles.chatIcon} aria-label="Chat">
-            <FaRegComment className={styles.chatIconSvg} />
-          </Link>
-
-          <Link
-            to="/favorite"
-            className={styles.favoriteIcon}
-            aria-label="Favorite"
-          >
-            {isFavorite ? (
-              <FaHeart className={styles.heartIconFilled} />
-            ) : (
-              <FaRegHeart className={styles.heartIcon} />
-            )}
-          </Link>
-
-          <button
-            className={styles.notificationIcon}
-            aria-label="Notificări"
-            onClick={goToNotifications}
-          >
-            <div className={styles.notificationWrapper}>
-              <FaRegBell className={styles.bellIcon} />
-              {hasNotifications && (
-                <span className={styles.notificationBadge}></span>
+        <header className={styles.header}>
+          <div className={styles.headerIcons}>
+            <Link to="/chat" className={styles.chatIcon} aria-label="Chat">
+              <FaRegComment className={styles.chatIconSvg} />
+            </Link>
+            <Link
+              to="/favorite"
+              className={styles.favoriteIcon}
+              aria-label="Favorite"
+            >
+              {isFavorite ? (
+                <FaHeart className={styles.heartIconFilled} />
+              ) : (
+                <FaRegHeart className={styles.heartIcon} />
               )}
-            </div>
-          </button>
-
-          <button
-            className={styles.myAccountIcon}
-            aria-label="account"
-            onClick={goToMyAccount}
-          >
-            <FaRegUser className={styles.userNameIcon} />
-          </button>
-
-          <button className={styles.addPostBtn} onClick={goToAddPostForm}>
-            Adaugă Anunț
-          </button>
-        </div>
-      </header>
-      <button
-        onClick={toggleTheme}
-        className={styles.themeButton}
-        aria-label={
-          theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'
-        }
-      >
-        {theme === 'light' ? <FaMoon /> : <FaSun />}
-      </button>
-    </div>
+            </Link>
+            <button
+              className={styles.notificationIcon}
+              aria-label="Notificări"
+              onClick={goToNotifications}
+            >
+              <div className={styles.notificationWrapper}>
+                <FaRegBell className={styles.bellIcon} />
+                {hasNotifications && (
+                  <span className={styles.notificationBadge}></span>
+                )}
+              </div>
+            </button>
+            <button
+              className={styles.myAccountIcon}
+              aria-label="account"
+              onClick={goToMyAccount}
+            >
+              <FaRegUser className={styles.userNameIcon} />
+            </button>
+            <button className={styles.addPostBtn} onClick={goToAddPostForm}>
+              Adaugă Anunț
+            </button>
+            {/* Mutăm butonul de temă în interiorul headerIcons */}
+            <button
+              onClick={toggleTheme}
+              className={styles.themeButton}
+              aria-label={
+                theme === 'light'
+                  ? 'Switch to Dark Mode'
+                  : 'Switch to Light Mode'
+              }
+            >
+              {theme === 'light' ? <FaMoon /> : <FaSun />}
+            </button>
+          </div>
+        </header>
+      </div>
+    </>
   );
 };
 

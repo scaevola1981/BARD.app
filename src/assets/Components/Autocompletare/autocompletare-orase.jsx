@@ -20,7 +20,7 @@ const Autocompletare = ({ onSelect }) => {
 
     if (value.length > 0) {
       const filtered = orase.filter((city) =>
-        city.toLowerCase().includes(value.toLowerCase())
+        city.toLowerCase().startsWith(value.toLowerCase())
       );
       setFiltrareOrase(filtered);
     } else {
@@ -31,12 +31,22 @@ const Autocompletare = ({ onSelect }) => {
   const handleSelectCity = (city) => {
     setCautareTermeni(city);
     setFiltrareOrase([]);
-    onSelect(city);
+    onSelect(city); // Actualizăm filtrul în AllAdsPage
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && filtrareOrase.length > 0) {
-      handleSelectCity(filtrareOrase[0]);
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (filtrareOrase.length > 0) {
+        handleSelectCity(filtrareOrase[0]);
+      }
+    }
+  };
+
+  const handleBlur = () => {
+    if (!orase.includes(cautareTermeni)) {
+      setCautareTermeni('');
+      setFiltrareOrase([]);
     }
   };
 
@@ -44,18 +54,23 @@ const Autocompletare = ({ onSelect }) => {
     <div className={styles.autocompletareContainer}>
       <input
         type="text"
-        placeholder="
-        Toata Romania"
+        placeholder="Toată România"
         value={cautareTermeni}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
+        onBlur={handleBlur}
         className={styles.autocompletareInput}
       />
 
       {filtrareOrase.length > 0 && (
         <ul className={styles.autocompletareDropdown}>
           {filtrareOrase.map((city, index) => (
-            <li key={index} onClick={() => handleSelectCity(city)} className={styles.dropdownItem}>
+            <li
+              key={index}
+              onClick={() => handleSelectCity(city)}
+              onMouseDown={(e) => e.preventDefault()}
+              className={styles.dropdownItem}
+            >
               {city}
             </li>
           ))}

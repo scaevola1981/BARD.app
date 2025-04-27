@@ -1,9 +1,9 @@
-import Header from '../Header/header';
-import Navbar from '../NavBar/navBar';
-import Categories from '../Categories/categories';
-import Card from '../Card/card';
-import Footer from '../Footer/footer';
-import categoriesData from '../Categories/categoriesData';
+import Header from '../../Components/Header/header';
+import Navbar from '../../Components/NavBar/navBar';
+import Categories from '../../Components/Categories/categories';
+import Card from '../../Components/Card/card';
+import Footer from '../../Components/Footer/footer';
+import categoriesData from '../../Components/Categories/categoriesData';
 import adEntity from '../../../api/adEntity';
 import { useEffect, useState } from 'react';
 import styles from './home.module.css';
@@ -91,7 +91,7 @@ const Home = () => {
 
       <main className={styles.mainContent}>
         <section className={styles.adsSection}>
-          <h2 className={styles.sectionTitle}>Cele mai recente anunțuri</h2>
+         
           {error && <p className={styles.errorMessage}>{error}</p>}
           
           <Card

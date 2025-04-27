@@ -8,25 +8,25 @@ const UsersList = ({ onSelectUser }) => {
   const [currentUser, setCurrentUser] = useState(auth.currentUser);
 
   useEffect(() => {
-    // Listen for authentication changes
+   
     const unsubscribeAuth = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
 
-    // Listen for changes in the "users" collection
+   
     const unsubscribe = onSnapshot(collection(db, "users"), (snapshot) => {
       const userList = snapshot.docs
         .map((doc) => ({ id: doc.id, ...doc.data() }))
-        .filter((u) => u.uid !== currentUser?.uid); // exclude current user
+        .filter((u) => u.uid !== currentUser?.uid); 
       setUsers(userList);
     });
 
-    // Cleanup function
+   
     return () => {
       unsubscribe();
       unsubscribeAuth();
     };
-  }, [currentUser]); // Add currentUser as a dependency
+  }, [currentUser]); 
 
   return (
     <div className={styles.usersList}>

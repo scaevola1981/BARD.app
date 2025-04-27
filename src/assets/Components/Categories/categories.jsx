@@ -1,36 +1,31 @@
 import styles from './categories.module.css';
 import { useNavigate } from 'react-router';
-// import { useTheme } from '../../../api/themeContext';
-
 
 const Categories = ({ categories }) => {
+  const navigate = useNavigate();
 
-  // const { theme } = useTheme();// Folosim ThemeContext
-
-   const navigate = useNavigate();
-
-   const handleCategoryClick = (categoryName) => {
-    navigate(`/anunturi?category=${encodeURIComponent(categoryName)}`)
-   };
-
+  const handleCategoryClick = (categoryName) => {
+    navigate(`/anunturi?category=${encodeURIComponent(categoryName)}`);
+  };
 
   return (
     <div className={styles.containerCategories}>
       <h2>CATEGORII PRINCIPALE</h2>
       <div className={styles.categoriesContainer}>
         {categories.map((category) => (
-          <button key={category.id} 
-                  className={styles.categoryBtn}
-                  onClick={() => handleCategoryClick(category.name)}
-          >
-            <img
-              src={category.image}
-              alt={category.name}
-              className={styles.imgFoto}
-              
+          <div key={category.id} className={styles.categoryWrapper}>
+            <button
+              className={styles.categoryBtn}
+              onClick={() => handleCategoryClick(category.name)}
+              style={{
+                backgroundImage: `url(${category.image})`,
+                backgroundSize: '100% auto',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
             />
             <span className={styles.spanBtn}>{category.name}</span>
-          </button>
+          </div>
         ))}
       </div>
     </div>

@@ -1,180 +1,196 @@
-
-.authLayout {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .mainContent {
-    padding: 40px 0;
-  }
-  
-  .loginSection {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-  }
-  
-  .loginForm {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .inputGroup {
-    position: relative;
-  }
-  
-  .icon {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px 10px 10px 35px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .loginBtn {
-    background: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .logoutBtn {
-    background: #f44336;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 15px;
-  }
-
-
-
-
-
-  .accountPage {
-    max-width: 100%;
-    height: 100vh;
-    background-color: #aac8f9;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    animation: fadeIn 0.4s ease-in-out;
-  }
-  
-  .accountPage h2 {
-    font-size: 2rem;
-    color: #333;
-    margin: 10px;
-  }
-  
-  .accountPage p {
-    font-size: 1.1rem;
-    color: #666;
-    margin-bottom: 30px;
-  }
-  
-  .accountPage button {
-    background-color: #007bff;
-    color: white;
-    font-size: 1rem;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .accountPage button:hover {
-    background-color: #0056b3;
-  }
-  
-  @media screen and (max-width: 600px) {
-    .accountPage {
-      margin: 40px 10px;
-      padding: 20px 15px;
-    }
-  
-    .accountPage h2 {
-      font-size: 1.5rem;
-    }
-  
-    .accountPage p {
-      font-size: 1rem;
-    }
-  
-    .accountPage button {
-      width: 100%;
-      padding: 14px;
-    }
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-  
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  /* Stiluri de bază */
 .accountPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
+  background-color: #f5f5f5;
   padding: 20px;
-  transition: all 0.3s ease;
 }
 
 .accountContent {
   max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
 }
 
-.authButton {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 20px;
-}
-
-/* Stiluri pentru tema dark */
 .darkTheme {
   background-color: #1a1a1a;
-  color: #ffffff;
 }
 
 .darkTheme .accountContent {
-  background-color: #2d2d2d;
+  background-color: #2a2a2a;
+  color: white;
 }
 
-.darkTheme .authButton {
-  background-color: #2E7D32;
+.authTitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.darkTheme .authTitle {
+  color: #ddd;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 10px;
+  color: #666;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.errorText {
+  color: #ff4d4f;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.submitBtn {
+  padding: 10px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitBtn:hover {
+  background-color: #0056b3;
+}
+
+.toggleBtn {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.toggleBtn:hover {
+  text-decoration: underline;
+}
+
+/* Stiluri noi pentru secțiunea de profil */
+.profileSection {
+  margin-bottom: 40px;
+}
+
+.profilePicture {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profilePicture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profileIcon {
+  font-size: 60px;
+  color: #666;
+}
+
+.profileSection h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.darkTheme .profileSection h2 {
+  color: #ddd;
+}
+
+.address {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.darkTheme .address {
+  color: #bbb;
+}
+
+.logoutBtn {
+  padding: 10px 20px;
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logoutBtn:hover {
+  background-color: #d9363e;
+}
+
+/* Stiluri pentru secțiunile de anunțuri */
+.adsSection {
+  margin-bottom: 40px;
+}
+
+.adsSection h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.darkTheme .adsSection h3 {
+  color: #ddd;
+}
+
+.adsSection p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.darkTheme .adsSection p {
+  color: #bbb;
+}
+
+.loading {
+  color: #007bff;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.error {
+  color: #ff4d4f;
+  font-size: 1rem;
+  margin-bottom: 20px;
 }
