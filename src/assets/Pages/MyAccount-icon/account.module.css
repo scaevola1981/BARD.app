@@ -96,7 +96,7 @@
   text-decoration: underline;
 }
 
-/* Stiluri noi pentru secțiunea de profil */
+
 .profileSection {
   margin-bottom: 40px;
 }
@@ -159,7 +159,6 @@
   background-color: #d9363e;
 }
 
-/* Stiluri pentru secțiunile de anunțuri */
 .adsSection {
   margin-bottom: 40px;
 }
@@ -193,4 +192,16 @@
   color: #ff4d4f;
   font-size: 1rem;
   margin-bottom: 20px;
+}
+
+.editBtn {
+  padding: 11px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 15px;
 }
