@@ -58,7 +58,7 @@ const Header = () => {
       navigate('/addPostForm');
     } else {
       localStorage.setItem('redirectTo', 'AddPostForm');
-      navigate('/register');
+      navigate('/AddPostForm');
     }
   };
 
