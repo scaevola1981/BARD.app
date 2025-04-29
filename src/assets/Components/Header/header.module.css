@@ -27,7 +27,7 @@
 }
 
 .logoImg {
-  height: 50px;
+  height: 70px;
   width: auto;
   object-fit: contain;
   border-radius: 10px;
@@ -94,11 +94,11 @@
 }
 
 .addPostBtn {
-  background-color: #3182ce;
-  color: white;
+  background-color: #007bff;
+  color: #000;
   border: none;
   border-radius: 6px;
-  padding: 0.7rem 1.5rem;
+  padding: 0.2rem 3rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
