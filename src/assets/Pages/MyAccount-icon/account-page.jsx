@@ -43,12 +43,15 @@ const AccountPage = () => {
   const [profileImageFile, setProfileImageFile] = useState(null);
   const [currentUser, setCurrentUser] = useState(null); // Adaugă stare pentru utilizator
 
+
+
   useEffect(() => {
-    const unsubscribe = observeAuthState((user) => {
+    const unsubscribe = observeAuthState( async (user) => {
       if (user) {
+        const token = await user.getIdToken();
         setCurrentUser(user);
         setIsLoggedIn(true);
-        fetchUserData(user); // Transmite user în loc de token
+        fetchUserData(token); 
         fetchUserAds(user.uid);
         fetchVisitedAds();
       } else {
@@ -60,31 +63,28 @@ const AccountPage = () => {
     return () => unsubscribe();
   }, []);
 
-  const fetchUserData = async (user) => {
+  const fetchUserData = async () => {
     try {
-      const response = await Api.user.getProfile(user); // Ajustează apelul
-      if (response.success) {
-        const data = response.data;
-        setUserData({
-          firstName: data.firstName || 'N/A',
-          lastName: data.lastName || 'N/A',
-          address: data.address || 'Adresa nu este setată',
-          profilePicture: data.profilePicture || '',
-        });
-        setEditForm({
-          firstName: data.firstName || '',
-          lastName: data.lastName || '',
-          address: data.address || '',
-          profilePicture: data.profilePicture || '',
-        });
-      } else {
-        setError('Nu s-au putut prelua datele utilizatorului.');
+      const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+      if (!userFromLocalStorage || !userFromLocalStorage.uid) {
+        console.error('Utilizatorul nu este logat.');
+        return;
       }
-    } catch (err) {
-      console.error('Eroare la preluarea datelor utilizatorului:', err);
-      setError('A apărut o eroare la preluarea datelor utilizatorului.');
+      
+      const response = await Api.user.getProfile(userFromLocalStorage);
+      
+      if (response.success) {
+        console.log('Date utilizator:', response.data);
+      } else {
+        console.error('Eroare la preluare:', response.message);
+      }
+    } catch (error) {
+      console.error('Eroare generală la fetchUserData:', error);
     }
-  };
+  }
+  
+
+ 
 
   const fetchUserAds = async (userId) => {
     setIsLoading(true);
@@ -196,36 +196,38 @@ const AccountPage = () => {
 
   const handleSaveProfile = async (e) => {
     e.preventDefault();
+    
     if (!currentUser) {
       alert('Trebuie să fii autentificat pentru a actualiza profilul.');
       return;
     }
-
+  
     try {
       let updatedData = { ...editForm };
-
-      // Dacă utilizatorul a încărcat o poză, o încărcăm în Firebase Storage
+  
+      // Încărcare imagine (dacă există)
       if (profileImageFile) {
-        const storageRef = ref(storage, `profilePictures/${currentUser.uid}_${profileImageFile.name}`); // Folosește UID-ul utilizatorului
-        await uploadBytes(storageRef, profileImageFile);
-        const downloadURL = await getDownloadURL(storageRef);
-        updatedData.profilePicture = downloadURL;
+        const storageRef = ref(storage, `profilePictures/${currentUser.uid}`);
+        await uploadBytes(storageRef, profileImageFile); // <<-- fără currentUser. greșit acolo
+        updatedData.profilePicture = await getDownloadURL(storageRef);
       }
-
-      const response = await Api.user.updateProfile(currentUser, updatedData); // Ajustează apelul
+  
+      // Actualizare profil prin API
+      const response = await Api.user.updateProfile(updatedData); // <<-- doar updatedData, nu currentUser
+  
       if (response.success) {
         setUserData(updatedData);
         setIsEditing(false);
-        alert('Profilul a fost actualizat cu succes!');
+        alert('Profil actualizat cu succes!');
       } else {
-        setError(response.message || 'A apărut o eroare la actualizarea profilului.');
+        throw new Error(response.message);
       }
     } catch (err) {
-      console.error('Eroare la actualizarea profilului:', err);
-      setError('A apărut o eroare la actualizarea profilului: ' + err.message);
+      console.error('Eroare actualizare:', err);
+      setError(err.message);
     }
   };
-
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditForm((prev) => ({

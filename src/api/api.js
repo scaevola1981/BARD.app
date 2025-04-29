@@ -46,13 +46,28 @@ const Api = {
 
     updateProfile: async (user, updatedData) => {
       try {
+        if (!user || !user.uid) {
+          return { success: false, message: 'Utilizatorul nu este autentificat.' };
+        }
+        
         const userRef = doc(db, 'users', user.uid);
-        await setDoc(userRef, updatedData, { merge: true });
+        await setDoc(userRef, {
+          firstName: updatedData.firstName,
+          lastName: updatedData.lastName,
+          address: updatedData.address,
+          profilePicture: updatedData.profilePicture,
+          lastUpdated: new Date().toISOString()
+        }, { merge: true });
+        
         return { success: true };
       } catch (error) {
-        return { success: false, message: 'Eroare la actualizarea profilului.' };
+        console.error('Eroare la actualizare:', error);
+        return { 
+          success: false, 
+          message: error.message || 'Eroare la actualizarea profilului.' 
+        };
       }
-    },
+    }
   },
 };
 
