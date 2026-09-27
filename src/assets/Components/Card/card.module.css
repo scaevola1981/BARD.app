@@ -64,6 +64,17 @@
   box-shadow: var(--neu-raised-card);
 }
 
+[data-theme="dark"] .containerCard {
+  background-color: #0c121e;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), -3px -3px 12px rgba(255, 255, 255, 0.06), 0 0 18px rgba(38, 96, 164, 0.14);
+}
+
+[data-theme="dark"] .containerCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.95), -4px -4px 16px rgba(255, 255, 255, 0.08), 0 0 28px rgba(38, 96, 164, 0.25);
+}
+
 /* Imagine card cu aspect proporționat */
 .cardImg {
   width: 100%;

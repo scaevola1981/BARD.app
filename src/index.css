@@ -62,7 +62,7 @@
   --neu-border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-/* Tema Dark (Pure Black #000000 cu elemente Neumorphic tactile) */
+/* Tema Dark (Pure Black #000000 cu New Skeuomorphism pronunțat și umbre luminoase de adâncime) */
 [data-theme="dark"] {
   --primary-blue: #2660a4;
   --primary-blue-hover: #3273c2;
@@ -73,12 +73,12 @@
   --background-color: #000000;
   --text-color: #f8fafc;
   --text-muted: #94a3b8;
-  --navbar-bg: #000000;
-  --card-bg: #090d14;
+  --navbar-bg: #05070a;
+  --card-bg: #0c121e;
   --card-text: #f8fafc;
-  --input-bg: #0d121a;
+  --input-bg: #060910;
   --input-text: #ffffff;
-  --input-border: #1e293b;
+  --input-border: rgba(255, 255, 255, 0.14);
 
   --button-bg: #2660a4;
   --button-hover-bg: #3273c2;
@@ -86,25 +86,25 @@
   --btn-warning-bg: #b10909;
   --btn-warning-hover: #d31212;
 
-  --chat-bg: #080c12;
+  --chat-bg: #080c14;
   --chat-text: #ffffff;
-  --sidebar-bg: #05070a;
+  --sidebar-bg: #05080e;
   --message-bg-current: #2660a4;
   --message-text-current: #ffffff;
-  --message-bg-other: #131b26;
+  --message-bg-other: #131c2a;
   --message-text: #ffffff;
-  --form-bg: #090d14;
+  --form-bg: #0c121e;
   --form-text: #ffffff;
   --link-color: #4f8fd8;
 
-  /* Neumorphic Shadows (Dark Mode) */
-  --neu-raised: 6px 6px 16px rgba(0, 0, 0, 0.95), -3px -3px 12px rgba(255, 255, 255, 0.04);
-  --neu-raised-sm: 4px 4px 10px rgba(0, 0, 0, 0.85), -2px -2px 8px rgba(255, 255, 255, 0.03);
-  --neu-raised-card: 8px 12px 28px rgba(0, 0, 0, 0.95), -4px -4px 14px rgba(255, 255, 255, 0.04);
-  --neu-inset: inset 3px 3px 7px rgba(0, 0, 0, 0.95), inset -2px -2px 5px rgba(255, 255, 255, 0.03);
-  --neu-btn-shadow: 0 6px 20px rgba(38, 96, 164, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-  --neu-warning-shadow: 0 6px 20px rgba(177, 9, 9, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-  --neu-border: 1px solid rgba(255, 255, 255, 0.07);
+  /* Neumorphic Shadows (Dark Mode - Contrast ridicat, adâncime 3D și lumini ambientale) */
+  --neu-raised: 8px 10px 26px rgba(0, 0, 0, 0.85), -4px -4px 15px rgba(255, 255, 255, 0.08), 0 0 16px rgba(38, 96, 164, 0.14);
+  --neu-raised-sm: 4px 6px 14px rgba(0, 0, 0, 0.8), -3px -3px 10px rgba(255, 255, 255, 0.06), 0 0 10px rgba(38, 96, 164, 0.1);
+  --neu-raised-card: 12px 18px 38px rgba(0, 0, 0, 0.95), -6px -6px 22px rgba(255, 255, 255, 0.09), 0 0 25px rgba(38, 96, 164, 0.18);
+  --neu-inset: inset 4px 4px 10px rgba(0, 0, 0, 0.9), inset -3px -3px 8px rgba(255, 255, 255, 0.06);
+  --neu-btn-shadow: 0 8px 24px rgba(38, 96, 164, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  --neu-warning-shadow: 0 8px 24px rgba(177, 9, 9, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  --neu-border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Suprascriere clase Bootstrap */
