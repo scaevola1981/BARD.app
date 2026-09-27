@@ -65,7 +65,7 @@
 /* Tema Dark (Pure Black #000000 cu New Skeuomorphism pronunțat și umbre luminoase de adâncime) */
 [data-theme="dark"] {
   --primary-blue: #2660a4;
-  --primary-blue-hover: #3273c2;
+  --primary-blue-hover: #3a7ec9;
   --secondary-blue: #095d7a;
   --warning-red: #b10909;
   --warning-red-hover: #d31212;
@@ -74,37 +74,37 @@
   --text-color: #f8fafc;
   --text-muted: #94a3b8;
   --navbar-bg: #05070a;
-  --card-bg: #0c121e;
+  --card-bg: #111827;
   --card-text: #f8fafc;
-  --input-bg: #060910;
+  --input-bg: #080c14;
   --input-text: #ffffff;
-  --input-border: rgba(255, 255, 255, 0.14);
+  --input-border: rgba(255, 255, 255, 0.18);
 
   --button-bg: #2660a4;
-  --button-hover-bg: #3273c2;
+  --button-hover-bg: #3a7ec9;
   --button-text: #ffffff;
   --btn-warning-bg: #b10909;
   --btn-warning-hover: #d31212;
 
-  --chat-bg: #080c14;
+  --chat-bg: #090e18;
   --chat-text: #ffffff;
   --sidebar-bg: #05080e;
   --message-bg-current: #2660a4;
   --message-text-current: #ffffff;
-  --message-bg-other: #131c2a;
+  --message-bg-other: #162032;
   --message-text: #ffffff;
-  --form-bg: #0c121e;
+  --form-bg: #111827;
   --form-text: #ffffff;
   --link-color: #4f8fd8;
 
-  /* Neumorphic Shadows (Dark Mode - Contrast ridicat, adâncime 3D și lumini ambientale) */
-  --neu-raised: 8px 10px 26px rgba(0, 0, 0, 0.85), -4px -4px 15px rgba(255, 255, 255, 0.08), 0 0 16px rgba(38, 96, 164, 0.14);
-  --neu-raised-sm: 4px 6px 14px rgba(0, 0, 0, 0.8), -3px -3px 10px rgba(255, 255, 255, 0.06), 0 0 10px rgba(38, 96, 164, 0.1);
-  --neu-raised-card: 12px 18px 38px rgba(0, 0, 0, 0.95), -6px -6px 22px rgba(255, 255, 255, 0.09), 0 0 25px rgba(38, 96, 164, 0.18);
-  --neu-inset: inset 4px 4px 10px rgba(0, 0, 0, 0.9), inset -3px -3px 8px rgba(255, 255, 255, 0.06);
-  --neu-btn-shadow: 0 8px 24px rgba(38, 96, 164, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.35);
-  --neu-warning-shadow: 0 8px 24px rgba(177, 9, 9, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.35);
-  --neu-border: 1px solid rgba(255, 255, 255, 0.12);
+  /* Neumorphic 3D Shadows Vizibile în Dark Mode (Lumină albă sus-stânga + Aură Baltic Blue jos-dreapta) */
+  --neu-raised: -5px -5px 16px rgba(255, 255, 255, 0.14), 7px 10px 24px rgba(0, 0, 0, 0.95), 0 0 20px rgba(38, 96, 164, 0.32);
+  --neu-raised-sm: -3px -3px 10px rgba(255, 255, 255, 0.12), 4px 6px 14px rgba(0, 0, 0, 0.9), 0 0 12px rgba(38, 96, 164, 0.22);
+  --neu-raised-card: -7px -7px 22px rgba(255, 255, 255, 0.18), 10px 16px 36px rgba(0, 0, 0, 0.98), 0 0 30px rgba(38, 96, 164, 0.42);
+  --neu-inset: inset 4px 4px 10px rgba(0, 0, 0, 0.95), inset -3px -3px 8px rgba(255, 255, 255, 0.1);
+  --neu-btn-shadow: 0 8px 24px rgba(38, 96, 164, 0.65), 0 0 12px rgba(38, 96, 164, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  --neu-warning-shadow: 0 8px 24px rgba(177, 9, 9, 0.65), 0 0 12px rgba(177, 9, 9, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  --neu-border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 /* Suprascriere clase Bootstrap */
