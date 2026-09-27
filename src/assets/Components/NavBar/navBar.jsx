@@ -26,15 +26,10 @@ const NavBar = () => {
   };
 
   const handleSearchTermSelect = (selectedTerm) => {
-    const queryParams = new URLSearchParams(window.location.search);
-    queryParams.set('searchTerm', selectedTerm);
-    window.history.pushState(null, '', `?${queryParams.toString()}`);
+    setTermeniCautare(selectedTerm);
   };
 
   const handleCitySelect = (selectedCity) => {
-    const queryParams = new URLSearchParams(window.location.search);
-    queryParams.set('city', selectedCity);
-    window.history.pushState(null, '', `?${queryParams.toString()}`);
     setJudet(selectedCity);
   };
 

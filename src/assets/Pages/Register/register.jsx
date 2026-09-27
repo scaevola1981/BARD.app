@@ -5,6 +5,7 @@ import Api from '../../../api';
 import styles from './register.module.css'; // Poți folosi același CSS
 import Header from '../../Components/Header/header';
 import { useTheme } from '../../../api/themeContext';
+import { auth } from '../../../api/firebase';
 
 const AuthLayout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -73,6 +74,13 @@ const AuthLayout = () => {
 
       if (response.success) {
         localStorage.setItem('token', response.data.idToken);
+        localStorage.setItem(
+          'user',
+          JSON.stringify({
+            uid: response.data.localId,
+            email: response.data.email,
+          })
+        );
         localStorage.setItem('justLoggedIn', 'true');
         alert(isRegistering ? 'Înregistrare reușită!' : 'Autentificare reușită!');
         setIsLoggedIn(true);
@@ -86,8 +94,14 @@ const AuthLayout = () => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+    } catch {
+      // Ignorăm
+    }
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     setIsLoggedIn(false);
     navigate('/');
   };

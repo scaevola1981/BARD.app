@@ -1,74 +1,73 @@
-/* Dark theme styles */
+/* favorite.module.css */
+
+.containerFavorites {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  min-height: 80vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .darkTheme {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: #000000;
+  color: #f8fafc;
 }
 
 .darkTheme .containerFavorites {
-  background-color: #1e1e1e;
+  background-color: #000000;
 }
 
-.darkTheme .h1Container h1 {
-  color: #ffffff;
+.h1Container h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
 }
 
-.darkTheme .paraContainer p {
-  color: #e0e0e0;
+.paraContainer p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
 }
 
 .darkToast {
-  background-color: #333;
-  color: #fff;
+  background-color: #090d14;
+  color: #ffffff;
+  border: var(--neu-border);
+  box-shadow: var(--neu-raised-card);
 }
 
-/* [ Notificare nouă ] → [ Animație Slide-In din sus ]
-[ Ștergere notificare ] → [ Animație Slide-Out lateral ] */
-
+/* Buton Ștergere din Favorite cu Inferno Red #B10909 (Warning) */
 .deleteButton {
   margin-top: 10px;
-  padding: 5px 10px;
-  background-color: #ff4d4d;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #c71212, var(--warning-red));
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: var(--neu-warning-shadow);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .deleteButton:hover {
-  background-color: #ff1a1a;
+  background: linear-gradient(135deg, #df1919, var(--warning-red-hover));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(177, 9, 9, 0.45);
 }
 
-.container-notificari {
-  padding: 20px;
+.deleteButton:active {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.grid-cards {
+.gridCards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Coloană flexibilă */
-  gap: 20px;
-}
-
-.card {
-  background: #1e1e1e;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.card-body {
-  padding: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
 }

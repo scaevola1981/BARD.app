@@ -1,36 +1,40 @@
 .headerContainer {
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--navbar-bg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-bottom: var(--neu-border);
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
-  margin-bottom: 2rem;
-  max-width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0.75rem 2rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="dark"] .headerContainer {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
 
 .header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 0.5rem;
 }
 
 .logoContainer {
   display: flex;
   align-items: center;
-  width: 50rem;
 }
 
 .logoImg {
-  height: 70px;
+  height: 52px;
   width: auto;
   object-fit: contain;
-  border-radius: 10px;
+  border-radius: 12px;
+  transition: transform 0.25s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
 }
 
 .buttonHome {
@@ -38,130 +42,151 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  display: flex;
+  align-items: center;
   transition: transform 0.2s ease;
 }
 
-.buttonHome:hover {
-  transform: scale(1.05);
+.buttonHome:hover .logoImg {
+  transform: scale(1.04);
 }
 
 .headerIcons {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
+/* Butoane Tactile Neumorphic pentru Iconițe */
 .chatIcon,
 .favoriteIcon,
 .notificationIcon,
-.myAccountIcon {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #089efb;
+.myAccountIcon,
+.themeButton {
+  background-color: var(--card-bg);
+  border: var(--neu-border);
+  box-shadow: var(--neu-raised-sm);
+  color: var(--text-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
   text-decoration: none;
   position: relative;
-  transition: all 0.2s ease;
-  padding: 0.5rem;
-  border-radius: 8px;
-  margin-left: 5rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
 }
 
 .chatIcon:hover,
 .favoriteIcon:hover,
 .notificationIcon:hover,
-.myAccountIcon:hover {
-  background-color: #0bfd0b;
-  color: #fb00ff;
+.myAccountIcon:hover,
+.themeButton:hover {
+  color: var(--primary-blue);
   transform: translateY(-2px);
+  box-shadow: var(--neu-raised);
+}
+
+.chatIcon:active,
+.favoriteIcon:active,
+.notificationIcon:active,
+.myAccountIcon:active,
+.themeButton:active {
+  transform: translateY(1px);
+  box-shadow: var(--neu-inset);
 }
 
 .chatIconSvg,
 .heartIcon,
 .bellIcon,
 .userNameIcon {
-  font-size: 1.4rem;
-  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
 }
 
 .heartIconFilled {
-  font-size: 1.4rem;
-  margin-bottom: 0.3rem;
-  color: #e53e3e;
+  font-size: 1.2rem;
+  color: var(--warning-red);
 }
 
+.notificationWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notificationBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 9px;
+  height: 9px;
+  background-color: var(--warning-red);
+  border-radius: 50%;
+  border: 2px solid var(--card-bg);
+  box-shadow: 0 0 8px rgba(177, 9, 9, 0.6);
+}
+
+/* Buton Adaugă Anunț cu Baltic Blue #2660A4 și efect de adâncime */
 .addPostBtn {
-  background-color: #007bff;
-  color: #000;
+  background: linear-gradient(135deg, #2a6ab5, #2660a4);
+  color: #ffffff;
   border: none;
-  border-radius: 6px;
-  padding: 0.2rem 3rem;
-  font-weight: 600;
+  border-radius: 12px;
+  padding: 0.65rem 1.6rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  transition: all 0.2s ease;
-  margin-right: 2.5rem;
-  margin-left: 2rem;
+  box-shadow: var(--neu-btn-shadow);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: 0.5rem;
+  margin-right: 0.25rem;
+  white-space: nowrap;
 }
 
 .addPostBtn:hover {
-  background-color: #2c5282;
+  background: linear-gradient(135deg, #3177cb, #1e4f87);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(49, 130, 206, 0.3);
+  box-shadow: 0 8px 22px rgba(38, 96, 164, 0.45);
 }
 
-/* Stiluri pentru butonul de temă */
-.themeButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-color);
-  font-size: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.2s ease;
-  padding: 0.5rem;
-  border-radius: 8px;
-  z-index: 1000;
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.addPostBtn:active {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.themeButton:hover {
-  background-color: #cce8fa;
-  color: #2d3748;
-  transform: translateY(-2px);
-  opacity: 0.8;
-}
-
+/* Butonul de temă */
 .themeButton svg {
-  font-size: 1.4rem;
-  margin-bottom: 0.3rem;
+  font-size: 1.15rem;
+  transition: transform 0.3s ease;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+.themeButton:hover svg {
+  transform: rotate(15deg);
+}
+
+/* Responsivitate Header */
+@media (max-width: 860px) {
   .headerContainer {
-    padding: 0 0.5rem;
-    flex-wrap: wrap; 
+    padding: 0.6rem 1rem;
   }
 
   .headerIcons {
-    gap: 0.8rem; 
-    flex-wrap: wrap; 
-    justify-content: flex-end;
+    gap: 0.6rem;
   }
 
   .chatIcon,
   .favoriteIcon,
   .notificationIcon,
-  .myAccountIcon {
-    margin-left: 0.5rem; 
-    padding: 0.4rem;
+  .myAccountIcon,
+  .themeButton {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
   }
 
   .chatIconSvg,
@@ -169,78 +194,53 @@
   .bellIcon,
   .userNameIcon,
   .heartIconFilled {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
+  }
+
+  .addPostBtn {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.85rem;
+  }
+
+  .logoImg {
+    height: 42px;
+  }
+}
+
+@media (max-width: 520px) {
+  .headerContainer {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .headerIcons {
+    gap: 0.4rem;
+  }
+
+  .chatIcon,
+  .favoriteIcon,
+  .notificationIcon,
+  .myAccountIcon,
+  .themeButton {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+  }
+
+  .chatIconSvg,
+  .heartIcon,
+  .bellIcon,
+  .userNameIcon,
+  .heartIconFilled {
+    font-size: 0.95rem;
   }
 
   .addPostBtn {
     padding: 0.5rem 0.8rem;
     font-size: 0.8rem;
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
-  }
-
-  .themeButton {
-    position: static; 
-    margin-left: 0.5rem;
-  }
-
-  .themeButton svg {
-    font-size: 1.2rem;
-  }
-
-  .chatSpan,
-  .accountSpan {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .headerContainer {
-    padding: 0 0.3rem;
-  }
-
-  .logoContainer {
-    width: 100%; 
-    justify-content: center;
+    margin: 0;
   }
 
   .logoImg {
-    height: 40px;
-  }
-
-  .headerIcons {
-    gap: 0.5rem;
-    justify-content: center; 
-  }
-
-  .chatIcon,
-  .favoriteIcon,
-  .notificationIcon,
-  .myAccountIcon {
-    margin-left: 0.3rem;
-    padding: 0.3rem;
-  }
-
-  .addPostBtn {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.75rem;
-    margin-right: 0.3rem;
-    margin-left: 0.3rem;
-  }
-
-  .themeButton {
-    margin-left: 0.3rem;
-  }
-
-  .chatIconSvg,
-  .heartIcon,
-  .bellIcon,
-  .userNameIcon,
-  .heartIconFilled {
-    font-size: 1rem;
-  }
-
-  .themeButton svg {
-    font-size: 1rem;
+    height: 36px;
   }
 }

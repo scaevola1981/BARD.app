@@ -31,7 +31,7 @@ const Favorite = () => {
   };
 
   const handleCardClick = (id) => {
-    navigate(`/ad-detail/${id}`);
+    navigate(`/ad/${id}`);
   };
 
   return (

@@ -44,10 +44,9 @@ const Autocompletare = ({ onSelect }) => {
   };
 
   const handleBlur = () => {
-    if (!orase.includes(cautareTermeni)) {
-      setCautareTermeni('');
+    setTimeout(() => {
       setFiltrareOrase([]);
-    }
+    }, 200);
   };
 
   return (

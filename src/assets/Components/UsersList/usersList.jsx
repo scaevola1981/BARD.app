@@ -14,12 +14,21 @@ const UsersList = ({ onSelectUser }) => {
     });
 
    
-    const unsubscribe = onSnapshot(collection(db, "users"), (snapshot) => {
-      const userList = snapshot.docs
-        .map((doc) => ({ id: doc.id, ...doc.data() }))
-        .filter((u) => u.uid !== currentUser?.uid); 
-      setUsers(userList);
-    });
+    let unsubscribe = () => {};
+    if (auth.currentUser) {
+      unsubscribe = onSnapshot(
+        collection(db, "users"),
+        (snapshot) => {
+          const userList = snapshot.docs
+            .map((doc) => ({ id: doc.id, ...doc.data() }))
+            .filter((u) => u.uid !== currentUser?.uid); 
+          setUsers(userList);
+        },
+        (error) => {
+          console.warn("UsersList snapshot warning:", error.code || error.message);
+        }
+      );
+    }
 
    
     return () => {

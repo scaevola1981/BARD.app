@@ -1,37 +1,76 @@
-/* input.module.css */
 .inputContainer {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #f5f7fb;
-    border-top: 1px solid #e9ecef;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background-color: var(--card-bg);
+  border-top: var(--neu-border);
+}
+
+.input {
+  flex: 1;
+  height: 48px;
+  padding: 0 16px;
+  border: var(--neu-border);
+  border-radius: 14px;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  box-shadow: var(--neu-inset);
+  font-size: 0.95rem;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.25s ease;
+}
+
+.input:focus {
+  border-color: var(--primary-blue);
+  box-shadow: var(--neu-inset), 0 0 0 3px rgba(38, 96, 164, 0.15);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.sendButton {
+  height: 48px;
+  padding: 0 24px;
+  background: linear-gradient(135deg, #2a6ab5, var(--primary-blue));
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: var(--neu-btn-shadow);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.sendButton:hover {
+  background: linear-gradient(135deg, #3177cb, var(--primary-blue-hover));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(38, 96, 164, 0.45);
+}
+
+.sendButton:active {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+  .inputContainer {
+    padding: 12px 14px;
+    gap: 8px;
   }
-  
+
   .input {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 20px;
-    background-color: #e9ecef;
-    font-size: 14px;
+    height: 44px;
+    font-size: 0.9rem;
   }
-  
-  .input::placeholder {
-    color: #888;
-  }
-  
-  .icon {
-    width: 20px;
-    height: 20px;
-    margin: 0 10px;
-    cursor: pointer;
-  }
-  
+
   .sendButton {
-    background-color: #5f4b8b;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
+    height: 44px;
+    padding: 0 16px;
+    font-size: 0.88rem;
   }
+}

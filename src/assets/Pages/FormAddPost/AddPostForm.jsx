@@ -1,12 +1,15 @@
 import { Form, Button, Container, Alert, Spinner } from 'react-bootstrap';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { storage } from '../../../api/firebase';
+import { storage, auth } from '../../../api/firebase';
+import { compressImageToBase64 } from '../../../api/imageUtils';
 import Header from '../../Components/Header/header';
 import adEntity from '../../../api/adEntity';
 import styles from './addPostForm.module.css';
 
 const AddPostForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: '',
     county: '',
@@ -21,6 +24,7 @@ const AddPostForm = () => {
   });
 
   const [success, setSuccess] = useState(false);
+  const [createdAdId, setCreatedAdId] = useState(null);
   const [error, setError] = useState(null);
   const [uploading, setUploading] = useState(false);
 
@@ -45,14 +49,29 @@ const AddPostForm = () => {
     setError(null);
 
     try {
+      const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
+      const currentUid = storedUser?.uid || auth.currentUser?.uid || '';
+
       let imageUrl = '';
       if (formData.image) {
-        const storageRef = ref(
-          storage,
-          `ads/${Date.now()}_${formData.image.name}`
-        );
-        await uploadBytes(storageRef, formData.image);
-        imageUrl = await getDownloadURL(storageRef);
+        const isStorageBlocked =
+          localStorage.getItem('storageQuotaExceeded') === 'true';
+
+        if (isStorageBlocked) {
+          imageUrl = await compressImageToBase64(formData.image, 800, 0.7);
+        } else {
+          try {
+            const storageRef = ref(
+              storage,
+              `ads/${Date.now()}_${formData.image.name}`
+            );
+            await uploadBytes(storageRef, formData.image);
+            imageUrl = await getDownloadURL(storageRef);
+          } catch {
+            localStorage.setItem('storageQuotaExceeded', 'true');
+            imageUrl = await compressImageToBase64(formData.image, 800, 0.7);
+          }
+        }
       }
 
       const adData = {
@@ -66,13 +85,15 @@ const AddPostForm = () => {
         contactName: formData.contactName || '',
         phone: formData.phone || '',
         email: formData.email || '',
+        userId: currentUid,
         timestamp: Date.now(),
       };
 
-      const { success, error } = await adEntity.create(adData);
+      const { success, data, error } = await adEntity.create(adData);
 
       if (success) {
         setSuccess(true);
+        setCreatedAdId(data?.id || null);
         setFormData({
           title: '',
           county: '',
@@ -110,7 +131,18 @@ const AddPostForm = () => {
               dismissible
               className={`${styles.alert} ${styles.alertSuccess}`}
             >
-              Anunțul a fost adăugat cu succes!
+              <div>Anunțul a fost adăugat cu succes!</div>
+              {createdAdId && (
+                <div style={{ marginTop: '10px' }}>
+                  <Button
+                    variant="success"
+                    size="sm"
+                    onClick={() => navigate(`/ad/${createdAdId}`)}
+                  >
+                    Vezi anunțul adăugat &rarr;
+                  </Button>
+                </div>
+              )}
             </Alert>
           )}
 

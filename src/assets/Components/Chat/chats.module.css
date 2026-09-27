@@ -1,41 +1,80 @@
-/* chats.module.css */
 .chats {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .chatItem {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    background-color: transparent;
-    border-radius: 10px;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .chatItem:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  }
-  
-  .chatInfo {
-    flex: 1;
-  }
-  
-  .chatName {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .lastMessage {
-    font-size: 12px;
-    color: #ddd;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.sectionHeading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+.chatItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background-color: var(--card-bg);
+  border: var(--neu-border);
+  border-radius: 14px;
+  cursor: pointer;
+  color: var(--card-text);
+  box-shadow: var(--neu-raised-sm);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chatItem:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--neu-raised);
+  border-color: rgba(38, 96, 164, 0.35);
+  background-color: rgba(38, 96, 164, 0.05);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-blue);
+  flex-shrink: 0;
+}
+
+.chatInfo {
+  flex: 1;
+  overflow: hidden;
+}
+
+.chatName {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--card-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lastMessage {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.emptyState {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  text-align: center;
+  padding: 18px 10px;
+  background-color: var(--input-bg);
+  border-radius: 12px;
+  border: var(--neu-border);
+}

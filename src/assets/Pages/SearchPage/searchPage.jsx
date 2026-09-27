@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import adEntity from '../../../api/adEntity'; 
 import Card from '../../Components/Card/card'; 
 import Header from '../../Components/Header/header';
 import styles from './searchPage.module.css'; 
 
 const SearchPage = () => {
+  const navigate = useNavigate();
   const [ads, setAds] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -86,6 +87,7 @@ const SearchPage = () => {
             onRemove={handleRemoveFavorite}
             isFavoriteView={false}
             favoriteAds={favoriteAds}
+            onCardClick={(id) => navigate(`/ad/${id}`)}
           />
         )}
       </div>

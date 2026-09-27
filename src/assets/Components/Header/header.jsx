@@ -86,7 +86,7 @@ const Header = () => {
           <button className={styles.buttonHome} onClick={goToHome}>
             <img
               className={styles.logoImg}
-              src="./foto-icons/logo-6-app-exvero.png"
+              src="/foto-icons/logo-6-app-exvero.png"
               alt="Logo"
             />
           </button>

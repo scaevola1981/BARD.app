@@ -1,92 +1,157 @@
 /* Container principal */
 .detailContainer {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 2rem auto;
-  padding: 1rem;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid #007bff;
-  height: auto;
-}
-
-/* Buton Înapoi */
-.backButton {
-  background-color: #007bff;
-  color: white;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-  transition: background-color 0.2s ease;
-  margin-left: 750px;
-}
-
-.backButton:hover {
-  background-color: #0056b3;
+  padding: 2.5rem;
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--neu-raised-card);
+  border: var(--neu-border);
+  transition: all 0.3s ease;
 }
 
 /* Titlul anunțului */
-h1 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: #333;
-  margin-left: 400px;
+.detailContainer h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+/* Buton Înapoi cu New Skeuomorphism */
+.backButton {
+  background: linear-gradient(135deg, #2a6ab5, var(--primary-blue));
+  color: #ffffff;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 1.5rem auto 3rem auto;
+  display: block;
+  box-shadow: var(--neu-btn-shadow);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backButton:hover {
+  background: linear-gradient(135deg, #3177cb, var(--primary-blue-hover));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(38, 96, 164, 0.45);
+}
+
+.backButton:active {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 /* Imagine principală */
 .imageContainer {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .mainImage {
   max-width: 100%;
-  max-height: 450px;
-  border-radius: 12px;
+  max-height: 480px;
+  border-radius: 16px;
   object-fit: cover;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--neu-raised);
+  border: var(--neu-border);
 }
 
 /* Grilă de detalii */
 .detailsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1.75rem;
+  margin-top: 1.5rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .detailsGrid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 }
 
-/* Secțiuni */
+/* Secțiuni Neumorphic */
 .detailSection,
 .descriptionSection,
 .contactSection {
-  background-color: #f9f9f9;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 1px 5px 20px #868686;
-  border: 1px solid #007bff;
+  background-color: var(--input-bg);
+  padding: 1.75rem;
+  border-radius: 16px;
+  box-shadow: var(--neu-raised-sm);
+  border: var(--neu-border);
+  transition: transform 0.2s ease;
+}
+
+.detailSection:hover,
+.descriptionSection:hover,
+.contactSection:hover {
+  transform: translateY(-2px);
 }
 
 .detailSection h2,
 .descriptionSection h2,
 .contactSection h2 {
-  font-size: 1.2rem;
-  color: #007bff;
-  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* Text */
-p {
+.detailSection p,
+.descriptionSection p,
+.contactSection p {
   font-size: 0.95rem;
-  color: #444;
-  line-height: 1.5;
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 0.6rem;
+}
+
+.detailSection strong,
+.contactSection strong {
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-right: 0.3rem;
+}
+
+.chatButton {
+  margin-top: 1.25rem;
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  background: linear-gradient(135deg, #2a6ab5, var(--primary-blue));
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--neu-btn-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chatButton:hover {
+  background: linear-gradient(135deg, #3177cb, var(--primary-blue-hover));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(38, 96, 164, 0.45);
+}
+
+.chatButton:active {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Loading & Error */
@@ -95,6 +160,26 @@ p {
 .notFound {
   text-align: center;
   font-size: 1.2rem;
-  color: #888;
-  padding: 2rem;
+  color: var(--text-muted);
+  padding: 4rem 2rem;
+  font-weight: 600;
+}
+
+.error {
+  color: var(--warning-red);
+}
+
+@media (max-width: 768px) {
+  .detailContainer {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .detailContainer h1 {
+    font-size: 1.8rem;
+  }
+
+  .mainImage {
+    max-height: 320px;
+  }
 }

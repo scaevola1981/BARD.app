@@ -8,7 +8,7 @@ const Footer = () => {
       <div className={styles.footerHead}>
         <img
           className={styles.footerLogo}
-          src="./foto-icons/stock-logo.jpg"
+          src="/foto-icons/stock-logo.jpg"
           alt="Logo stock-market"
         />
         <p className={styles.footerParagraph}>
@@ -33,17 +33,17 @@ const Footer = () => {
       <div className={styles.socialIcons}>
         <img
           className={styles.socialIconImg}
-          src="./foto-icons/logo-icon2.jpg"
+          src="/foto-icons/logo-icon2.jpg"
           alt="Instagram"
         />
         <img
           className={styles.socialIconImg}
-          src="./foto-icons/facebook-icon.jpg"
+          src="/foto-icons/facebook-icon.jpg"
           alt="Facebook"
         />
         <img
           className={styles.socialIconImg}
-          src="./foto-icons/ytb-icon.jpg"
+          src="/foto-icons/ytb-icon.jpg"
           alt="YouTube"
         />
       </div>
@@ -79,7 +79,7 @@ const Footer = () => {
 
         <img
           className={styles.storeIcons}
-          src="./foto-icons/google & appStore icons.jpg"
+          src="/foto-icons/google & appStore icons.jpg"
           alt="Google & App Store"
         />
 

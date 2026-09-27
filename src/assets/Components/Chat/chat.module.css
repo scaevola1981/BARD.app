@@ -2,41 +2,49 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #0d1117; /* Fundal dark, inspirat de GitHub dark */
-  color: #c9d1d9; /* Text gri-albicios */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .chatContainer {
   display: flex;
   flex: 1;
-  border-radius: 12px;
+  border-radius: 20px;
   overflow: hidden;
-  margin: 20px;
-  background-color: #161b22; /* Dark mai deschis pentru interior */
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin: 20px auto;
+  max-width: 1300px;
+  width: calc(100% - 40px);
+  background-color: var(--card-bg);
+  border: var(--neu-border);
+  box-shadow: var(--neu-raised-card);
+  min-height: 75vh;
 }
 
 .sidebar {
-  width: 300px;
-  background-color: #21262d; /* Dark SideBar */
-  padding: 20px;
+  width: 340px;
+  background-color: var(--sidebar-bg);
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-right: 1px solid #30363d; /* Liniuță de separare subtilă */
+  border-right: var(--neu-border);
+  flex-shrink: 0;
 }
 
 .mainContent {
   flex: 1;
-  background-color: #0d1117;
+  background-color: var(--card-bg);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .chatContent {
   display: flex;
   flex-direction: column;
   flex: 1;
+  height: 100%;
 }
 
 .placeholder {
@@ -44,21 +52,181 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #8b949e; /* Text placeholder ușor de citit */
-  font-size: 18px;
-  padding: 20px;
+  padding: 40px 20px;
+}
+
+.placeholderBox {
+  text-align: center;
+  max-width: 420px;
+}
+
+.placeholderIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.placeholderBox h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin-bottom: 10px;
+}
+
+.placeholderBox p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Ecran Autentificare Necesară */
+.authRequiredContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.authCard {
+  background-color: var(--card-bg);
+  border: var(--neu-border);
+  box-shadow: var(--neu-raised-card);
+  border-radius: 24px;
+  padding: 48px 36px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.authLockIcon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  display: inline-block;
+  padding: 16px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  box-shadow: var(--neu-inset);
+}
+
+.authCard h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin-bottom: 12px;
+}
+
+.authCard p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.authActions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.loginBtn {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 24px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  box-shadow: var(--neu-btn-shadow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.loginBtn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.registerBtn {
+  background-color: transparent;
+  color: var(--text-color);
+  border: var(--neu-border);
+  border-radius: 14px;
+  padding: 13px 24px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: var(--neu-raised-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.registerBtn:hover {
+  box-shadow: var(--neu-inset);
+  color: var(--primary-blue);
+}
+
+.authHint {
+  font-size: 0.85rem !important;
+  color: var(--text-muted);
+  opacity: 0.8;
+  margin-bottom: 0 !important;
+}
+
+.chatLoader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 16px;
+  color: var(--text-muted);
+}
+
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid rgba(38, 96, 164, 0.2);
+  border-top-color: var(--primary-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsivitate */
-@media (max-width: 768px) {
+@media (max-width: 820px) {
   .chatContainer {
     flex-direction: column;
     margin: 10px;
+    width: calc(100% - 20px);
+    border-radius: 14px;
   }
 
   .sidebar {
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid #30363d;
+    border-bottom: var(--neu-border);
+    padding: 16px;
+  }
+
+  .authCard {
+    padding: 32px 20px;
   }
 }

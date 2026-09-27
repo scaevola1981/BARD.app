@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import adEntity from '../../../api/adEntity';
 import Card from '../../Components/Card/card';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import styles from './allAdsPage.module.css';
 import Header from '../../Components/Header/header';
 import AutocompletareCategorii from '../../Components/Autocompletare/autocompletare-categorii';
 import Autocompletare from '../../Components/Autocompletare/autocompletare-orase';
 
 const AllAdsPage = () => {
+  const navigate = useNavigate();
   const [allAds, setAllAds] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterCategorie, setFilterCategorie] = useState('');
@@ -133,6 +134,7 @@ const AllAdsPage = () => {
               onRemove={handleRemoveFavorite}
               isFavoriteView={false}
               favoriteAds={favoriteAds}
+              onCardClick={(id) => navigate(`/ad/${id}`)}
             />
 
             {filteredAds.length > 0 && (

@@ -1,56 +1,63 @@
 .autocompletareContainer {
   position: relative;
   width: 100%;
+  max-width: 440px;
   display: flex;
   justify-content: center;
 }
 
+/* Inset Neumorphic Input Field */
 .autocompletareInput {
-  width: 500px;
-  height: 60px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  border: 1px solid #007BFF;
-  color: #000;
-  font-size: 1.2rem;
-  font-style: oblique;
+  width: 100%;
+  height: 56px;
+  padding: 0 1.25rem;
+  background-color: var(--input-bg);
+  border-radius: 14px;
+  border: var(--neu-border);
+  box-shadow: var(--neu-inset);
+  color: var(--input-text);
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  transition: all 0.25s ease;
+  outline: none;
 }
 
-.autocompletareInput:hover {
-  background-color: #007bff;
-  color: #fff;
+.autocompletareInput:focus {
+  border-color: var(--primary-blue);
+  box-shadow: var(--neu-inset), 0 0 0 3px rgba(38, 96, 164, 0.15);
 }
 
 .autocompletareInput::placeholder {
-  color: #000;
+  color: var(--text-muted);
+  opacity: 0.8;
+  font-style: normal;
 }
 
+/* Floating Neumorphic Dropdown */
 .autocompletareDropdown {
   position: absolute;
-  top: 100%; 
-  left: 0; 
-  background-color: #007BFF;
-  width: 500px;
-  margin-top: 5px; 
-  max-height: 300px;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background-color: var(--card-bg);
+  border: var(--neu-border);
+  border-radius: 14px;
+  box-shadow: var(--neu-raised-card);
+  max-height: 280px;
   overflow-y: auto;
-  border: 1px solid #007BFF;
-  border-radius: 5px;
   list-style: none;
-  z-index: 1; 
-  color: #fff;
-  padding: 0;
-  margin-left: 7rem; 
-  font-style: oblique;
-  animation: fadeSlideDown 0.25s ease forwards;
+  z-index: 100;
+  color: var(--card-text);
+  padding: 6px;
+  margin: 0;
+  animation: fadeSlideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* 🛠️ Definirea animatiei */
 @keyframes fadeSlideDown {
   0% {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
   100% {
     opacity: 1;
@@ -59,79 +66,34 @@
 }
 
 .dropdownItem {
-  padding: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
   cursor: pointer;
-  font-style: oblique;
-  transition: background-color 0.2s ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--card-text);
+  transition: background-color 0.18s ease, color 0.18s ease;
 }
 
 .dropdownItem:hover {
-  background-color: #FFA726;
+  background-color: rgba(38, 96, 164, 0.12);
+  color: var(--primary-blue);
 }
 
-/* Responsivitate */
-
-/* Tablete (768px - 1024px) */
-@media (max-width: 1024px) {
-  .autocompletareInput {
-    width: 400px;
-    height: 50px;
-    padding: 15px;
-    font-size: 1.1rem;
-  }
-
-  .autocompletareDropdown {
-    width: 400px;
-    max-height: 250px;
-  }
-
-  .dropdownItem {
-    padding: 8px;
-  }
-}
-
-/* Mobil (≤768px) */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .autocompletareContainer {
-    justify-content: center;
+    max-width: 500px;
   }
 
   .autocompletareInput {
-    width: 90%;
-    max-width: 500px;
-    height: 45px;
-    padding: 12px;
-    font-size: 1rem;
-  }
-
-  .autocompletareDropdown {
-    width: 90%;
-    max-width: 500px;
-    max-height: 200px;
-  }
-
-  .dropdownItem {
-    padding: 8px;
-    font-size: 0.9rem;
+    height: 52px;
   }
 }
 
-/* Mobil mic (≤480px) */
-@media (max-width: 480px) {
+@media (max-width: 500px) {
   .autocompletareInput {
-    width: 95%;
-    height: 40px;
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-
-  .autocompletareDropdown {
-    width: 95%;
-    max-height: 180px;
-  }
-
-  .dropdownItem {
-    padding: 6px;
-    font-size: 0.85rem;
+    height: 48px;
+    font-size: 0.92rem;
+    border-radius: 12px;
   }
 }

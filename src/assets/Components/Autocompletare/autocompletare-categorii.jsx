@@ -49,10 +49,9 @@ const AutocompletareCategorii = ({ onSelect }) => {
   };
 
   const handleBlur = () => {
-    if (!toateSubcategoriile.includes(cautareTermeni)) {
-      setCautareTermeni('');
+    setTimeout(() => {
       setFiltrareCategorii([]);
-    }
+    }, 200);
   };
 
   return (

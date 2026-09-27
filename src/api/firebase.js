@@ -46,13 +46,4 @@ export const observeAuthState = (callback) => {
   });
 };
 
-// Exemplu de folosire
-observeAuthState((user) => {
-  if (user) {
-    console.log('User este logat:', user.uid);
-  } else {
-    console.log('User delogat');
-  }
-});
-
 export { storage, db };

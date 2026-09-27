@@ -1,102 +1,136 @@
 /* notificari.module.css */
 
 .notificariContainer {
-    padding: 20px;
-    text-align: center;
-  }
+  padding: 30px 15px;
+  text-align: center;
+  min-height: 80vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
 
-  .containerNotificari {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.containerNotificari {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Buton Șterge Tot cu Inferno Red #B10909 (Warning) */
+.clearAllButton {
+  background: linear-gradient(135deg, #c71212, var(--warning-red));
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: var(--neu-warning-shadow);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clearAllButton:hover {
+  background: linear-gradient(135deg, #df1919, var(--warning-red-hover));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(177, 9, 9, 0.45);
+}
+
+.clearAllButton:active {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.listaNotificari {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Card Notificare Neumorphic */
+.notificationCard {
+  display: flex;
+  align-items: center;
+  background-color: var(--card-bg);
+  border: var(--neu-border);
+  border-radius: 14px;
+  margin-bottom: 16px;
+  padding: 16px 20px;
+  width: 100%;
+  animation: slideIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  position: relative;
+  box-shadow: var(--neu-raised-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notificationCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--neu-raised);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
   }
-  
-  .clearAllButton {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .clearAllButton:hover {
-    background-color: #c0392b;
-  }
-  
-  .listaNotificari {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .notificationCard {
-    display: flex;
-    align-items: center;
-    background-color: #fefefe;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    padding: 15px;
-    width: 100%;
-    max-width: 500px;
-    animation: slideIn 0.5s ease forwards;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .notificationCard img {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-    margin-right: 15px;
-  }
-  
-  .notificationContent {
-    flex-grow: 1;
-    text-align: left;
-  }
-  
-  .notificationContent h4 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .notificationContent p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .notificationContent span {
-    font-size: 12px;
-    color: #888;
-  }
-  
-  .deleteButton {
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    color: #e74c3c;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
+}
+
+.notificationCard img {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  margin-right: 18px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notificationContent {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.notificationContent h4 {
+  margin: 0 0 4px 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--card-text);
+}
+
+.notificationContent p {
+  margin: 4px 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.notificationContent span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Buton ștergere individuală cu Inferno Red */
+.deleteButton {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: var(--warning-red);
+  cursor: pointer;
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  padding: 4px;
+  transition: transform 0.2s ease, color 0.2s ease;
+  line-height: 1;
+}
+
+.deleteButton:hover {
+  transform: scale(1.2);
+  color: var(--warning-red-hover);
+}

@@ -1,53 +1,91 @@
-/* message.module.css */
 .messages {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .message {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    max-width: 60%;
-  }
-  
-  .messageCurrentUser {
-    align-self: flex-start;
-  }
-  
-  .messageOtherUser {
-    align-self: flex-end;
-  }
-  
-  .avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-  }
-  
-  .text {
-    padding: 10px 15px;
-    border-radius: 15px;
-    font-size: 14px;
-  }
-  
-  .textCurrentUser {
-    background-color: #5f4b8b;
-    color: white;
-  }
-  
-  .textOtherUser {
-    background-color: #e9ecef;
-    color: #333;
-  }
-  
-  .timestamp {
-    font-size: 10px;
-    color: #888;
-    margin-top: 5px;
-    text-align: right;
-  }
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--card-bg);
+}
+
+.message {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  max-width: 75%;
+}
+
+.messageCurrentUser {
+  align-self: flex-end;
+  flex-direction: row;
+}
+
+.messageOtherUser {
+  align-self: flex-start;
+  flex-direction: row;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.bubbleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.text {
+  padding: 10px 16px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* Mesajele utilizatorului curent: Baltic Blue #2660a4 */
+.textCurrentUser {
+  background: linear-gradient(135deg, #2a6ab5, var(--primary-blue));
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+  box-shadow: var(--neu-btn-shadow);
+}
+
+/* Mesajele partenerului: Surface neutru */
+.textOtherUser {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: var(--neu-border);
+  border-bottom-left-radius: 4px;
+  box-shadow: var(--neu-raised-sm);
+}
+
+.timestamp {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  padding: 0 4px;
+}
+
+.messageCurrentUser .timestamp {
+  text-align: right;
+}
+
+.messageOtherUser .timestamp {
+  text-align: left;
+}
+
+.noMessages {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding: 40px;
+  text-align: center;
+}

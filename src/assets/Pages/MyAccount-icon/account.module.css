@@ -3,37 +3,45 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
-  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 30px 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .accountContent {
-  max-width: 800px;
+  max-width: 900px;
   width: 100%;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  border: var(--neu-border);
+  box-shadow: var(--neu-raised-card);
+  padding: 35px;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 .darkTheme {
-  background-color: #1a1a1a;
+  background-color: #000000;
+  color: #f8fafc;
 }
 
 .darkTheme .accountContent {
-  background-color: #2a2a2a;
-  color: white;
+  background-color: #090d14;
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .authTitle {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #333;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: var(--primary-blue);
+  letter-spacing: -0.02em;
 }
 
 .darkTheme .authTitle {
-  color: #ddd;
+  color: var(--primary-blue);
 }
 
 .authForm {
@@ -50,44 +58,65 @@
 
 .inputIcon {
   position: absolute;
-  left: 10px;
-  color: #666;
+  left: 15px;
+  color: var(--text-muted);
 }
 
 .input {
   width: 100%;
-  padding: 10px 10px 10px 40px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 12px 15px 12px 45px;
+  border: var(--neu-border);
+  border-radius: 12px;
   font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  box-shadow: var(--neu-inset);
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.input:focus {
+  border-color: var(--primary-blue);
+  box-shadow: var(--neu-inset), 0 0 0 3px rgba(38, 96, 164, 0.2);
 }
 
 .errorText {
-  color: #ff4d4f;
+  color: var(--warning-red);
   font-size: 0.9rem;
   margin-top: 5px;
 }
 
+/* Buton Autentificare / Înregistrare cu Baltic Blue #2660A4 */
 .submitBtn {
-  padding: 10px;
-  background-color: #007bff;
+  padding: 12px;
+  background: linear-gradient(135deg, #2a6ab5, var(--primary-blue));
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: var(--neu-btn-shadow);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .submitBtn:hover {
-  background-color: #0056b3;
+  background: linear-gradient(135deg, #3177cb, var(--primary-blue-hover));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(38, 96, 164, 0.45);
+}
+
+.submitBtn:active {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .toggleBtn {
   background: none;
   border: none;
-  color: #007bff;
-  font-size: 0.9rem;
+  color: var(--primary-blue);
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
   margin-top: 10px;
 }
@@ -95,7 +124,6 @@
 .toggleBtn:hover {
   text-decoration: underline;
 }
-
 
 .profileSection {
   margin-bottom: 40px;
@@ -107,7 +135,9 @@
   margin: 0 auto 20px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #ddd;
+  background-color: var(--input-bg);
+  box-shadow: var(--neu-raised);
+  border: 3px solid var(--primary-blue);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,42 +151,79 @@
 
 .profileIcon {
   font-size: 60px;
-  color: #666;
+  color: var(--text-muted);
 }
 
 .profileSection h2 {
   font-size: 1.8rem;
-  color: #333;
+  font-weight: 700;
+  color: var(--text-color);
   margin-bottom: 10px;
 }
 
 .darkTheme .profileSection h2 {
-  color: #ddd;
+  color: #f8fafc;
 }
 
 .address {
-  font-size: 1.1rem;
-  color: #666;
+  font-size: 1.05rem;
+  color: var(--text-muted);
   margin-bottom: 20px;
 }
 
 .darkTheme .address {
-  color: #bbb;
+  color: var(--text-muted);
 }
 
-.logoutBtn {
-  padding: 10px 20px;
-  background-color: #ff4d4f;
+/* Buton Editare cu Baltic Blue */
+.editBtn {
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #2a6ab5, var(--primary-blue));
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: var(--neu-btn-shadow);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-right: 15px;
+}
+
+.editBtn:hover {
+  background: linear-gradient(135deg, #3177cb, var(--primary-blue-hover));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(38, 96, 164, 0.45);
+}
+
+.editBtn:active {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Buton Logout cu Inferno Red #B10909 (Warning) */
+.logoutBtn {
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #c71212, var(--warning-red));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--neu-warning-shadow);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logoutBtn:hover {
-  background-color: #d9363e;
+  background: linear-gradient(135deg, #df1919, var(--warning-red-hover));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(177, 9, 9, 0.45);
+}
+
+.logoutBtn:active {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .adsSection {
@@ -165,43 +232,30 @@
 
 .adsSection h3 {
   font-size: 1.5rem;
-  color: #333;
+  font-weight: 700;
+  color: var(--text-color);
   margin-bottom: 20px;
 }
 
 .darkTheme .adsSection h3 {
-  color: #ddd;
+  color: #f8fafc;
 }
 
 .adsSection p {
-  font-size: 1.1rem;
-  color: #666;
-}
-
-.darkTheme .adsSection p {
-  color: #bbb;
+  font-size: 1rem;
+  color: var(--text-muted);
 }
 
 .loading {
-  color: #007bff;
+  color: var(--primary-blue);
   font-size: 1rem;
   margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .error {
-  color: #ff4d4f;
+  color: var(--warning-red);
   font-size: 1rem;
   margin-bottom: 20px;
-}
-
-.editBtn {
-  padding: 11px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-right: 15px;
+  font-weight: 600;
 }

@@ -1,174 +1,122 @@
 .wrapper {
-    margin: 20px;
-    text-align: center;
-  }
-  
-  .title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .subtitle {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #007bff;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-
-  .loading {
-    color: #007bff;
-    font-size: 1rem;
-    margin-bottom: 20px;
-  }
-
-  
-  .noAdsMessage {
-    font-size: 1.2rem;
-    color: #555;
-    margin: 20px 0;
-  }
-
-  .error {
-  color: #ff4d4f;
-  font-size: 1rem;
-  margin-bottom: 20px;
+  margin: 30px auto;
+  max-width: 1300px;
+  padding: 0 20px;
+  text-align: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
-  
-  .filters {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-  
-  .select {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    background-color: #fff;
-    color: #333;
-  }
-  
-  .autocompleteButton {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 200px;
-    text-align: center;
-  }
-  
-  .autocompleteButton:hover {
-    background-color: #0056b3;
-  }
-  
-  .autocompleteButton:focus {
-    outline: none;
-  }
-  
-  .autocompleteButton + .autocompleteButton {
-    margin-left: 10px;
-  }
-  
-  .autocompletare {
-    margin-top: 10px;
-    padding: 5px 0;
-    border-radius: 4px;
-  }
-  
-  .autocompletare ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    max-height: 200px;
-    overflow-y: auto;
-  }
-  
-  .autocompletare li {
-    padding: 8px;
-    cursor: pointer;
-  }
-  
-  .autocompletare li:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-  }
-  
-  /* ... Stilurile existente ... */
 
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 15px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+  margin-bottom: 25px;
+  letter-spacing: -0.02em;
+}
+
+.loading {
+  color: var(--primary-blue);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.noAdsMessage {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin: 35px 0;
+  font-weight: 500;
+}
+
+.error {
+  color: var(--warning-red);
+  font-size: 1rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.filters {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.select {
+  padding: 10px 16px;
+  border: var(--neu-border);
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  box-shadow: var(--neu-inset);
+  outline: none;
+  font-family: inherit;
+}
 
 .searchButton {
-  padding: 10px 20px;
+  padding: 10px 24px;
   border: none;
-  background-color: #007bff;
+  background: linear-gradient(135deg, #2a6ab5, var(--primary-blue));
   color: white;
   font-size: 1rem;
-  border-radius: 5px;
+  font-weight: 700;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 200px; 
-  text-align: center;
+  box-shadow: var(--neu-btn-shadow);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .searchButton:hover {
-  background-color: #0056b3;
+  background: linear-gradient(135deg, #3177cb, var(--primary-blue-hover));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(38, 96, 164, 0.45);
 }
 
-.searchButton:focus {
-  outline: none;
+.searchButton:active {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  gap: 8px;
+}
 
-  .pageButton {
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    background-color: #f8f8f8;
-    margin: 0 5px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .pageButton:hover {
-    background-color: #ddd;
-  }
-  
-  .pageButtonActive {
-    background-color: #007bff;
-    color: white;
-    border: 1px solid #007bff;
-  }
-  
-  .pageButton:focus {
-    outline: none;
-  }
-  
-  .noAdsMessage {
-    font-size: 1.2rem;
-    color: #555;
-    text-align: center;
-    margin: 20px 0;
-  }
+.pageButton {
+  padding: 8px 16px;
+  border: var(--neu-border);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: var(--neu-raised-sm);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
 
-  .filters {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
+.pageButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--neu-raised);
+}
+
+.pageButtonActive {
+  background: linear-gradient(135deg, #2a6ab5, var(--primary-blue));
+  color: white;
+  border-color: var(--primary-blue);
+  box-shadow: var(--neu-btn-shadow);
+}

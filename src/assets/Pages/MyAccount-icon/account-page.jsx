@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate} from 'react-router-dom';
 import { FaUser, FaLock, FaRedo, FaEdit } from 'react-icons/fa';
-import { storage, observeAuthState } from '../../../api/firebase'; // Adaugă observeAuthState
+import { storage, auth, observeAuthState } from '../../../api/firebase'; // Adaugă observeAuthState
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { compressImageToBase64 } from '../../../api/imageUtils';
 import Api from '../../../api';
 import adEntity from '../../../api/adEntity';
 import styles from './account.module.css';
@@ -46,42 +47,60 @@ const AccountPage = () => {
 
 
   useEffect(() => {
-    const unsubscribe = observeAuthState( async (user) => {
+    const unsubscribe = observeAuthState(async (user) => {
+      const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
       if (user) {
-        const token = await user.getIdToken();
         setCurrentUser(user);
         setIsLoggedIn(true);
-        fetchUserData(token); 
+        fetchUserData(user);
         fetchUserAds(user.uid);
+        fetchVisitedAds();
+      } else if (storedUser?.uid) {
+        setCurrentUser(storedUser);
+        setIsLoggedIn(true);
+        fetchUserData(storedUser);
+        fetchUserAds(storedUser.uid);
         fetchVisitedAds();
       } else {
         setCurrentUser(null);
         setIsLoggedIn(false);
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
       }
     });
     return () => unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const fetchUserData = async () => {
+  const fetchUserData = async (activeUser) => {
     try {
-      const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
-      if (!userFromLocalStorage || !userFromLocalStorage.uid) {
-        console.error('Utilizatorul nu este logat.');
+      const userToFetch =
+        activeUser ||
+        currentUser ||
+        JSON.parse(localStorage.getItem('user') || 'null');
+
+      if (!userToFetch || !userToFetch.uid) {
         return;
       }
-      
-      const response = await Api.user.getProfile(userFromLocalStorage);
-      
-      if (response.success) {
-        console.log('Date utilizator:', response.data);
-      } else {
-        console.error('Eroare la preluare:', response.message);
+
+      const response = await Api.user.getProfile(userToFetch);
+
+      if (response.success && response.data) {
+        setUserData((prev) => ({
+          ...prev,
+          ...response.data,
+        }));
+        setEditForm((prev) => ({
+          ...prev,
+          ...response.data,
+        }));
+      } else if (!response.success) {
+        console.error('Eroare la preluare profil:', response.message);
       }
     } catch (error) {
       console.error('Eroare generală la fetchUserData:', error);
     }
-  }
+  };
   
 
  
@@ -155,10 +174,16 @@ const AccountPage = () => {
 
       if (response.success) {
         localStorage.setItem('token', response.data.idToken);
+        const userObj = {
+          uid: response.data.localId,
+          email: response.data.email,
+        };
+        localStorage.setItem('user', JSON.stringify(userObj));
         alert(isRegistering ? 'Înregistrare reușită!' : 'Autentificare reușită!');
         setIsLoggedIn(true);
-        fetchUserData(response.data.idToken);
-        fetchUserAds(response.data.idToken);
+        setCurrentUser(userObj);
+        fetchUserData(userObj);
+        fetchUserAds(userObj.uid);
         fetchVisitedAds();
       } else {
         alert(response.message || 'Eroare la autentificare');
@@ -169,10 +194,17 @@ const AccountPage = () => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+    } catch {
+      // Ignorăm
+    }
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     localStorage.removeItem('visitedAds');
     setIsLoggedIn(false);
+    setCurrentUser(null);
     setUserData({ firstName: '', lastName: '', address: '', profilePicture: '' });
     setUserAds([]);
     setVisitedAds([]);
@@ -196,25 +228,48 @@ const AccountPage = () => {
 
   const handleSaveProfile = async (e) => {
     e.preventDefault();
-    
-    if (!currentUser) {
+
+    const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
+    const activeUid = currentUser?.uid || storedUser?.uid;
+
+    if (!activeUid) {
       alert('Trebuie să fii autentificat pentru a actualiza profilul.');
       return;
     }
-  
+
     try {
-      let updatedData = { ...editForm };
-  
+      let updatedData = { ...editForm, uid: activeUid };
+
       // Încărcare imagine (dacă există)
       if (profileImageFile) {
-        const storageRef = ref(storage, `profilePictures/${currentUser.uid}`);
-        await uploadBytes(storageRef, profileImageFile); // <<-- fără currentUser. greșit acolo
-        updatedData.profilePicture = await getDownloadURL(storageRef);
+        const isStorageBlocked =
+          localStorage.getItem('storageQuotaExceeded') === 'true';
+
+        if (isStorageBlocked) {
+          updatedData.profilePicture = await compressImageToBase64(
+            profileImageFile,
+            300,
+            0.7
+          );
+        } else {
+          try {
+            const storageRef = ref(storage, `profilePictures/${activeUid}`);
+            await uploadBytes(storageRef, profileImageFile);
+            updatedData.profilePicture = await getDownloadURL(storageRef);
+          } catch {
+            localStorage.setItem('storageQuotaExceeded', 'true');
+            updatedData.profilePicture = await compressImageToBase64(
+              profileImageFile,
+              300,
+              0.7
+            );
+          }
+        }
       }
-  
+
       // Actualizare profil prin API
-      const response = await Api.user.updateProfile(updatedData); // <<-- doar updatedData, nu currentUser
-  
+      const response = await Api.user.updateProfile({ uid: activeUid }, updatedData);
+
       if (response.success) {
         setUserData(updatedData);
         setIsEditing(false);
@@ -343,6 +398,7 @@ const AccountPage = () => {
                     onRemove={() => {}}
                     isFavoriteView={false}
                     favoriteAds={[]}
+                    onCardClick={(id) => navigate(`/ad/${id}`)}
                   />
                 )}
               </div>
@@ -360,6 +416,7 @@ const AccountPage = () => {
                     onRemove={() => {}}
                     isFavoriteView={false}
                     favoriteAds={[]}
+                    onCardClick={(id) => navigate(`/ad/${id}`)}
                   />
                 )}
               </div>

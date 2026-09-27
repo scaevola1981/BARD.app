@@ -16,8 +16,12 @@ const Home = () => {
   const navigate = useNavigate();
 
 
-  const handleCardClick = () => {
-    navigate('/ads'); 
+  const handleCardClick = (id) => {
+    if (id) {
+      navigate(`/ad/${id}`);
+    } else {
+      navigate('/ads');
+    }
   };
 
   useEffect(() => {
@@ -25,18 +29,14 @@ const Home = () => {
       try {
         setIsLoading(true);
         const { data, success } = await adEntity.readAllSorted();
-        
-        console.log('Date primite de la Firebase:', data); // Debugging
-        
-        if (success) {
-          // Transformă datele pentru compatibilitate
-          const adaptedAds = Object.keys(data).map(key => ({
+
+        if (success && Array.isArray(data)) {
+          setLatestAds(data.slice(0, 8));
+        } else if (success && data && typeof data === 'object') {
+          const adaptedAds = Object.entries(data).map(([key, value]) => ({
             id: key,
-            ...data[key],
-            // Dacă este necesar, poți adăuga aici transformări suplimentare
-            // De exemplu: image: data[key].image || 'default-image-url'
+            ...value,
           }));
-          
           setLatestAds(adaptedAds.slice(0, 8));
         } else {
           setError('Nu s-au putut încărca anunțurile');
