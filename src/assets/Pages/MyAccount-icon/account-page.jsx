@@ -399,6 +399,7 @@ const AccountPage = () => {
                     isFavoriteView={false}
                     favoriteAds={[]}
                     onCardClick={(id) => navigate(`/ad/${id}`)}
+                    hideTitle={true}
                   />
                 )}
               </div>
@@ -417,6 +418,7 @@ const AccountPage = () => {
                     isFavoriteView={false}
                     favoriteAds={[]}
                     onCardClick={(id) => navigate(`/ad/${id}`)}
+                    hideTitle={true}
                   />
                 )}
               </div>

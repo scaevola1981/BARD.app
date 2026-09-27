@@ -88,6 +88,7 @@ const SearchPage = () => {
             isFavoriteView={false}
             favoriteAds={favoriteAds}
             onCardClick={(id) => navigate(`/ad/${id}`)}
+            hideTitle={true}
           />
         )}
       </div>

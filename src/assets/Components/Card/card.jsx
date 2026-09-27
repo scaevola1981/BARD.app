@@ -10,7 +10,8 @@ const Card = ({
   onRemove = () => {},
   isFavoriteView = false,
   onCardClick = () => {} ,
-  isFavorite = () => false
+  isFavorite = () => false,
+  hideTitle = false
 }) => {
 
   
@@ -28,7 +29,7 @@ const Card = ({
 
   return (
     <div className={styles.wrapper}>
-      {!isFavoriteView && (
+      {!isFavoriteView && !hideTitle && (
         <h2 className={styles.cardsTitle}>Cele mai recente anunturi !</h2>
       )}
 

@@ -38,6 +38,7 @@ const Notificari = () => {
             ads={anunturi}
             isLoading={loading}
             onCardClick={(id) => navigate(`/ad/${id}`)}
+            hideTitle={true}
           />
         </div>
       </div>
