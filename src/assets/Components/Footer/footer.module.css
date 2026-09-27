@@ -1,182 +1,81 @@
-/* Reset specific doar pentru Footer */
 .footer {
   width: 100%;
-  height: auto;
-  background-color: #06090e;
-  color: #cbd5e1;
-  font-size: 14px;
-  padding: 40px 20px 20px 20px;
+  background-color: var(--card-bg);
   border-top: var(--neu-border);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.03);
+  padding: 18px 24px;
+  margin-top: auto;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-[data-theme="light"] .footer {
-  background-color: #f8fafc;
-  color: #475569;
-  border-top: var(--neu-border);
-}
-
-/* HEADER Footer */
-.footerHead {
+.footerInner {
+  max-width: 1300px;
+  margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #095d7a, #043040);
-  padding: 30px 40px;
-  border-radius: 18px;
-  margin-bottom: 25px;
-  color: #ffffff;
-  box-shadow: 0 10px 25px rgba(9, 93, 122, 0.25);
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  gap: 20px;
-}
-
-.footerLogo {
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.footerParagraph {
-  flex: 1;
-  min-width: 250px;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin: 0;
-}
-
-.detailsButton {
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-weight: 700;
-  border: none;
-  background-color: #ffffff;
-  color: #095d7a;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-  transition: all 0.25s ease;
-  white-space: nowrap;
-}
-
-.detailsButton:hover {
-  background-color: #f1f5f9;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-}
-
-/* MAIN Content */
-.mainContent {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto 25px auto;
-  background-color: var(--card-bg);
-  border: var(--neu-border);
-  box-shadow: var(--neu-raised-sm);
-  padding: 25px 30px;
-  border-radius: 16px;
-}
-
-.mainParagraph {
-  text-align: center;
-  color: var(--text-color);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin: 0;
-}
-
-/* SOCIAL Icons */
-.socialIcons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto 25px auto;
-  padding: 15px;
-}
-
-.socialIconImg {
-  height: 38px;
-  width: 38px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: var(--neu-raised-sm);
-  border: var(--neu-border);
-  transition: transform 0.2s ease;
-  cursor: pointer;
-}
-
-.socialIconImg:hover {
-  transform: translateY(-3px) scale(1.1);
-}
-
-/* FOOTER Info */
-.footerInfo {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   flex-wrap: wrap;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px 0;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.brandText {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.brandText strong {
+  color: var(--primary-blue);
+  font-weight: 700;
+}
+
+.links {
+  display: flex;
+  align-items: center;
   gap: 20px;
 }
 
-.footerInfoText {
-  font-weight: 400;
-  line-height: 2;
+.link {
+  font-size: 0.88rem;
   color: var(--text-muted);
-  margin: 0;
-}
-
-.storeIcons {
-  width: 160px;
-  height: auto;
-}
-
-.flagContainer {
-  width: 100%;
-  max-width: 1200px;
-  margin: 20px auto 0 auto;
-  padding: 15px;
-  background-color: var(--input-bg);
-  color: var(--text-muted);
-  text-align: center;
-  border-radius: 12px;
-  border: var(--neu-border);
-  font-size: 0.85rem;
-}
-
-/* Footer links */
-footer a {
-  color: var(--primary-blue);
   text-decoration: none;
+  font-weight: 500;
   transition: color 0.2s ease;
 }
 
-footer a:hover {
-  color: var(--primary-blue-hover);
+.link:hover {
+  color: var(--primary-blue);
 }
 
 @media (max-width: 768px) {
-  .footerHead {
+  .footer {
+    padding: 16px 12px;
+  }
+
+  .footerInner {
     flex-direction: column;
     text-align: center;
-    padding: 20px;
+    gap: 12px;
   }
 
-  .detailsButton {
-    width: 100%;
+  .brand {
+    justify-content: center;
   }
 
-  .footerParagraph {
-    font-size: 1.1rem;
+  .links {
+    justify-content: center;
+    gap: 16px;
   }
 }
