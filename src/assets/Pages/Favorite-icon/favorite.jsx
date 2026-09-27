@@ -1,33 +1,44 @@
 import Header from '../../Components/Header/header';
 import styles from './favorite.module.css';
 import Footer from '../../Components/Footer/footer';
+import Modal from '../../Components/Modal/Modal';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Card from '../../Components/Card/card';
-import { useTheme } from '../../../api/themeContext'; // Importă ThemeContext
+import { useTheme } from '../../../api/themeContext';
+import { getFavorites, removeFavorite } from '../../../api/favoritesManager';
 
 const Favorite = () => {
   const navigate = useNavigate();
   const [favoritesAds, setFavoritesAds] = useState([]);
-  const [showMessage, setShowMessage] = useState(false);
-  const { theme } = useTheme(); // Folosește ThemeContext
+  const [modalConfig, setModalConfig] = useState({
+    isOpen: false,
+    title: '',
+    message: '',
+    type: 'info',
+  });
+  const { theme } = useTheme();
 
   useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    setFavoritesAds(storedFavorites);
+    setFavoritesAds(getFavorites());
+
+    const handleStorageChange = () => {
+      setFavoritesAds(getFavorites());
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
   const handleRemoveFavorite = (idToRemove) => {
-    const updatedFavorites = favoritesAds.filter(
-      (card) => String(card.id) !== String(idToRemove)
-      // (card) => card.id !== idToRemove
-    );
-    setFavoritesAds(updatedFavorites);
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-    setShowMessage(true);
-    setTimeout(() => setShowMessage(false), 3000);
-    console.log("ID primit pentru ștergere:", idToRemove); // Debug
-    console.log("Lista actualizată de favorite:", updatedFavorites); // Debug
+    const updated = removeFavorite(idToRemove);
+    setFavoritesAds(updated);
+    setModalConfig({
+      isOpen: true,
+      title: 'Eliminat din Favorite',
+      message: 'Anunțul a fost șters din lista ta de favorite.',
+      type: 'info',
+    });
   };
 
   const handleCardClick = (id) => {
@@ -45,7 +56,7 @@ const Favorite = () => {
         {favoritesAds.length === 0 ? (
           <div className={styles.paraContainer}>
             <p>Anunțuri favorite</p>
-            <p>Nu ai adăugat încă niciun anunț.</p>
+            <p>Nu ai adăugat încă niciun anunț la favorite.</p>
           </div>
         ) : (
           <Card
@@ -53,17 +64,20 @@ const Favorite = () => {
             isFavoriteView={true}
             onRemove={handleRemoveFavorite}
             onCardClick={handleCardClick}
+            hideTitle={true}
           />
         )}
       </div>
 
-      {showMessage && (
-        <div className={`${styles.toast} ${theme === 'dark' ? styles.darkToast : ''}`}>
-          ✅ Anunțul a fost șters din favorite!
-        </div>
-      )}
-
       <Footer />
+
+      <Modal
+        isOpen={modalConfig.isOpen}
+        onClose={() => setModalConfig((prev) => ({ ...prev, isOpen: false }))}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        type={modalConfig.type}
+      />
     </div>
   );
 };

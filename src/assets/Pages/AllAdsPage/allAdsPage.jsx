@@ -4,25 +4,43 @@ import Card from '../../Components/Card/card';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import styles from './allAdsPage.module.css';
 import Header from '../../Components/Header/header';
+import Modal from '../../Components/Modal/Modal';
 import AutocompletareCategorii from '../../Components/Autocompletare/autocompletare-categorii';
 import Autocompletare from '../../Components/Autocompletare/autocompletare-orase';
+import { getFavorites, addFavorite, removeFavorite } from '../../../api/favoritesManager';
 
 const AllAdsPage = () => {
   const navigate = useNavigate();
   const [allAds, setAllAds] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterCategorie, setFilterCategorie] = useState('');
-  const [filterCity, setFilterCity] = useState(''); // Adăugăm filtru pentru oraș
-  const [favoriteAds, setFavoriteAds] = useState([]);
+  const [filterCity, setFilterCity] = useState('');
+  const [favoritesList, setFavoritesList] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [modalConfig, setModalConfig] = useState({
+    isOpen: false,
+    title: '',
+    message: '',
+    type: 'info',
+  });
 
   const adsPerPage = 8;
 
   const [searchParams] = useSearchParams();
   const selectedCategory = searchParams.get('category');
-  const selectedCity = searchParams.get('city'); // Obținem orașul din URL
+  const selectedCity = searchParams.get('city');
+
+  useEffect(() => {
+    setFavoritesList(getFavorites());
+
+    const handleStorageChange = () => {
+      setFavoritesList(getFavorites());
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   useEffect(() => {
     const fetchAds = async () => {
@@ -30,7 +48,6 @@ const AllAdsPage = () => {
       try {
         const { data, success } = await adEntity.readAll();
         if (success) {
-          console.log('Anunțuri preluate:', data);
           setAllAds(data);
         } else {
           setError('Nu s-au putut prelua anunțurile.');
@@ -42,6 +59,7 @@ const AllAdsPage = () => {
         setIsLoading(false);
       }
     };
+
     fetchAds();
 
     if (selectedCategory) {
@@ -53,13 +71,40 @@ const AllAdsPage = () => {
   }, [selectedCategory, selectedCity]);
 
   const handleAddFavorite = (ad) => {
-    setFavoriteAds((prevFavorites) => [...prevFavorites, ad]);
+    const isAlready = favoritesList.some((fav) => String(fav.id) === String(ad.id));
+    if (isAlready) {
+      setModalConfig({
+        isOpen: true,
+        title: 'Anunț deja salvat',
+        message: 'Acest anunț este deja în lista ta de favorite!',
+        type: 'info',
+      });
+      return;
+    }
+
+    const updated = addFavorite(ad);
+    setFavoritesList(updated);
+    setModalConfig({
+      isOpen: true,
+      title: 'Adăugat la Favorite! ❤️',
+      message: `Anunțul „${ad.title}” a fost adăugat în favorite.`,
+      type: 'favorite',
+    });
   };
 
   const handleRemoveFavorite = (adId) => {
-    setFavoriteAds((prevFavorites) =>
-      prevFavorites.filter((ad) => ad.id !== adId)
-    );
+    const updated = removeFavorite(adId);
+    setFavoritesList(updated);
+    setModalConfig({
+      isOpen: true,
+      title: 'Eliminat din Favorite',
+      message: 'Anunțul a fost eliminat din lista ta de favorite.',
+      type: 'info',
+    });
+  };
+
+  const checkIsFavorite = (adId) => {
+    return favoritesList.some((fav) => String(fav.id) === String(adId));
   };
 
  
@@ -132,8 +177,8 @@ const AllAdsPage = () => {
               error={error}
               onAddFavorite={handleAddFavorite}
               onRemove={handleRemoveFavorite}
+              isFavorite={checkIsFavorite}
               isFavoriteView={false}
-              favoriteAds={favoriteAds}
               onCardClick={(id) => navigate(`/ad/${id}`)}
             />
 
@@ -155,6 +200,14 @@ const AllAdsPage = () => {
           </>
         )}
       </div>
+
+      <Modal
+        isOpen={modalConfig.isOpen}
+        onClose={() => setModalConfig((prev) => ({ ...prev, isOpen: false }))}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        type={modalConfig.type}
+      />
     </>
   );
 };

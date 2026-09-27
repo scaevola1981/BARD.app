@@ -3,19 +3,38 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import adEntity from '../../../api/adEntity'; 
 import Card from '../../Components/Card/card'; 
 import Header from '../../Components/Header/header';
+import Modal from '../../Components/Modal/Modal';
+import { getFavorites, addFavorite, removeFavorite } from '../../../api/favoritesManager';
 import styles from './searchPage.module.css'; 
 
 const SearchPage = () => {
   const navigate = useNavigate();
   const [ads, setAds] = useState([]);
+  const [favoritesList, setFavoritesList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [favoriteAds, setFavoriteAds] = useState([]);
+  const [modalConfig, setModalConfig] = useState({
+    isOpen: false,
+    title: '',
+    message: '',
+    type: 'info',
+  });
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const searchTerm = queryParams.get('searchTerm') || '';
   const city = queryParams.get('city') || '';
+
+  useEffect(() => {
+    setFavoritesList(getFavorites());
+
+    const handleStorageChange = () => {
+      setFavoritesList(getFavorites());
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   useEffect(() => {
     const fetchAds = async () => {
@@ -38,13 +57,40 @@ const SearchPage = () => {
   }, []);
 
   const handleAddFavorite = (ad) => {
-    setFavoriteAds((prevFavorites) => [...prevFavorites, ad]);
+    const isAlready = favoritesList.some((fav) => String(fav.id) === String(ad.id));
+    if (isAlready) {
+      setModalConfig({
+        isOpen: true,
+        title: 'Anunț deja salvat',
+        message: 'Acest anunț este deja în lista ta de favorite!',
+        type: 'info',
+      });
+      return;
+    }
+
+    const updated = addFavorite(ad);
+    setFavoritesList(updated);
+    setModalConfig({
+      isOpen: true,
+      title: 'Adăugat la Favorite! ❤️',
+      message: `Anunțul „${ad.title}” a fost adăugat în favorite.`,
+      type: 'favorite',
+    });
   };
 
   const handleRemoveFavorite = (adId) => {
-    setFavoriteAds((prevFavorites) =>
-      prevFavorites.filter((ad) => ad.id !== adId)
-    );
+    const updated = removeFavorite(adId);
+    setFavoritesList(updated);
+    setModalConfig({
+      isOpen: true,
+      title: 'Eliminat din Favorite',
+      message: 'Anunțul a fost eliminat din lista ta de favorite.',
+      type: 'info',
+    });
+  };
+
+  const checkIsFavorite = (adId) => {
+    return favoritesList.some((fav) => String(fav.id) === String(adId));
   };
 
   const filteredAds = ads.filter((ad) => {
@@ -85,13 +131,21 @@ const SearchPage = () => {
             error={error}
             onAddFavorite={handleAddFavorite}
             onRemove={handleRemoveFavorite}
+            isFavorite={checkIsFavorite}
             isFavoriteView={false}
-            favoriteAds={favoriteAds}
             onCardClick={(id) => navigate(`/ad/${id}`)}
             hideTitle={true}
           />
         )}
       </div>
+
+      <Modal
+        isOpen={modalConfig.isOpen}
+        onClose={() => setModalConfig((prev) => ({ ...prev, isOpen: false }))}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        type={modalConfig.type}
+      />
     </>
   );
 };
