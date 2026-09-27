@@ -10,6 +10,8 @@ import styles from './account.module.css';
 import { useTheme } from '../../../api/themeContext';
 import Header from '../../Components/Header/header';
 import Card from '../../Components/Card/card';
+import Modal from '../../Components/Modal/Modal';
+import { getFavorites, addFavorite, removeFavorite } from '../../../api/favoritesManager';
 
 const AccountPage = () => {
   const { theme } = useTheme();
@@ -22,6 +24,13 @@ const AccountPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
+  const [favoritesList, setFavoritesList] = useState([]);
+  const [modalConfig, setModalConfig] = useState({
+    isOpen: false,
+    title: '',
+    message: '',
+    type: 'info',
+  });
 
   const [userData, setUserData] = useState({
     firstName: '',
@@ -45,6 +54,52 @@ const AccountPage = () => {
   const [currentUser, setCurrentUser] = useState(null); // Adaugă stare pentru utilizator
 
 
+
+  useEffect(() => {
+    setFavoritesList(getFavorites());
+    const handleStorageChange = () => {
+      setFavoritesList(getFavorites());
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  const handleAddFavorite = (ad) => {
+    const isAlready = favoritesList.some((fav) => String(fav.id) === String(ad.id));
+    if (isAlready) {
+      setModalConfig({
+        isOpen: true,
+        title: 'Anunț deja salvat',
+        message: 'Acest anunț este deja în lista ta de favorite!',
+        type: 'info',
+      });
+      return;
+    }
+
+    const updated = addFavorite(ad);
+    setFavoritesList(updated);
+    setModalConfig({
+      isOpen: true,
+      title: 'Adăugat la Favorite! ❤️',
+      message: `Anunțul „${ad.title}” a fost adăugat în favorite.`,
+      type: 'favorite',
+    });
+  };
+
+  const handleRemoveFavorite = (adId) => {
+    const updated = removeFavorite(adId);
+    setFavoritesList(updated);
+    setModalConfig({
+      isOpen: true,
+      title: 'Eliminat din Favorite',
+      message: 'Anunțul a fost eliminat din lista ta de favorite.',
+      type: 'info',
+    });
+  };
+
+  const checkIsFavorite = (adId) => {
+    return favoritesList.some((fav) => String(fav.id) === String(adId));
+  };
 
   useEffect(() => {
     const unsubscribe = observeAuthState(async (user) => {
@@ -394,10 +449,10 @@ const AccountPage = () => {
                     ads={userAds}
                     isLoading={isLoading}
                     error={error}
-                    onAddFavorite={() => {}}
-                    onRemove={() => {}}
+                    onAddFavorite={handleAddFavorite}
+                    onRemove={handleRemoveFavorite}
+                    isFavorite={checkIsFavorite}
                     isFavoriteView={false}
-                    favoriteAds={[]}
                     onCardClick={(id) => navigate(`/ad/${id}`)}
                     hideTitle={true}
                   />
@@ -413,10 +468,10 @@ const AccountPage = () => {
                     ads={visitedAds}
                     isLoading={false}
                     error={null}
-                    onAddFavorite={() => {}}
-                    onRemove={() => {}}
+                    onAddFavorite={handleAddFavorite}
+                    onRemove={handleRemoveFavorite}
+                    isFavorite={checkIsFavorite}
                     isFavoriteView={false}
-                    favoriteAds={[]}
                     onCardClick={(id) => navigate(`/ad/${id}`)}
                     hideTitle={true}
                   />
@@ -490,6 +545,14 @@ const AccountPage = () => {
           )}
         </div>
       </div>
+
+      <Modal
+        isOpen={modalConfig.isOpen}
+        onClose={() => setModalConfig((prev) => ({ ...prev, isOpen: false }))}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        type={modalConfig.type}
+      />
     </>
   );
 };

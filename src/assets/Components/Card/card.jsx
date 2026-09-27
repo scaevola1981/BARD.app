@@ -1,5 +1,5 @@
 import styles from './card.module.css';
-import { FaRegHeart, FaTimes } from 'react-icons/fa';
+import { FaRegHeart, FaHeart, FaTimes } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 const Card = ({ 
@@ -14,7 +14,6 @@ const Card = ({
   hideTitle = false
 }) => {
 
-  
   if (isLoading) {
     return <div className={styles.loading}>Se încarcă anunțurile...</div>;
   }
@@ -34,59 +33,70 @@ const Card = ({
       )}
 
       <div className={styles.cardsGrid}>
-        {ads.map((ad) => (
-          <div 
-            key={ad.id} 
-            className={styles.containerCard}
-            onClick={() => onCardClick(ad.id)}
-          >
-            <img
-              src={ad.image || 'https://placehold.co/300x200?text=Imagine+Lipsă'}
-              alt={ad.title}
-              className={styles.cardImg}
-              onError={(e) => {
-                e.target.src = 'https://placehold.co/300x200?text=Imagine+Lipsă';
-              }}
-            />
-            <h2 className={styles.cardTitle}>{ad.title}</h2>
-            <p className={styles.cardInfo}>Județ: {ad.county}</p>
-            <p className={styles.cardInfo}>Oraș: {ad.city}</p>
-            {ad.comune && <p className={styles.cardInfo}>Comuna: {ad.comune}</p>}
-            <p className={styles.cardPara}>{ad.description}</p>
+        {ads.map((ad) => {
+          const favoriteActive = Boolean(isFavorite(ad.id));
 
-            <div className={styles.cardBtnContainer}>
-              {isFavoriteView ? (
-                <button
-                  className={styles.cardBtnRemove}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onRemove(ad.id);
-                  }}
-                >
-                  <FaTimes className={styles.cardIcon} />
-                  Șterge
-                </button>
-              ) : (
-                <button
-                className={styles.cardBtn}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  console.log("ID-ul cardului de șters:", ad.id); // Debug
-                  console.log("Cardul curent:", ad); // Debug
-                  if (isFavorite(ad.id)) {
-                    onRemove(ad.id);
-                  } else {
-                    onAddFavorite(ad); 
-                  }
+          return (
+            <div 
+              key={ad.id} 
+              className={styles.containerCard}
+              onClick={() => onCardClick(ad.id)}
+            >
+              <img
+                src={ad.image || 'https://placehold.co/300x200?text=Imagine+Lipsă'}
+                alt={ad.title}
+                className={styles.cardImg}
+                onError={(e) => {
+                  e.target.src = 'https://placehold.co/300x200?text=Imagine+Lipsă';
                 }}
-              >
-                <FaRegHeart className={isFavorite(ad.id) ? styles.cardIconHeartActive : styles.cardIconHeart} />
-                {isFavorite(ad.id) ? 'Elimină din favorite' : 'Adaugă la favorite'}
-              </button>
-              )}
+              />
+              <h2 className={styles.cardTitle}>{ad.title}</h2>
+              <p className={styles.cardInfo}>Județ: {ad.county}</p>
+              <p className={styles.cardInfo}>Oraș: {ad.city}</p>
+              {ad.comune && <p className={styles.cardInfo}>Comuna: {ad.comune}</p>}
+              <p className={styles.cardPara}>{ad.description}</p>
+
+              <div className={styles.cardBtnContainer}>
+                {isFavoriteView ? (
+                  <button
+                    className={styles.cardBtnRemove}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onRemove(ad.id);
+                    }}
+                  >
+                    <FaTimes className={styles.cardIcon} />
+                    Șterge
+                  </button>
+                ) : (
+                  <button
+                    className={favoriteActive ? styles.cardBtnActive : styles.cardBtn}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (favoriteActive) {
+                        onRemove(ad.id);
+                      } else {
+                        onAddFavorite(ad); 
+                      }
+                    }}
+                  >
+                    {favoriteActive ? (
+                      <>
+                        <FaHeart className={styles.cardIconHeartActive} />
+                        <span>Favorit</span>
+                      </>
+                    ) : (
+                      <>
+                        <FaRegHeart className={styles.cardIconHeart} />
+                        <span>Adaugă la favorite</span>
+                      </>
+                    )}
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
